@@ -1,0 +1,1310 @@
+Last login: Mon Aug  3 17:12:46 on ttys001
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ ls
+./                                  Hackbright_Flight_Project_Key.json  lib/
+../                                 api_test1.json                      requests/
+.git/                               appengine_config.py
+.gitignore                          env/
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> r = requests.get('https://www.googleapis.com/qpxExpress/v1/trips/search')
+>>> r = requests.args('https://www.googleapis.com/qpxExpress/v1/trips/search')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'args'
+>>> r = requests.args.get('https://www.googleapis.com/qpxExpress/v1/trips/search')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'args'
+>>> r = requests.get('https://www.googleapis.com/qpxExpress/v1/trips/search')
+>>> r = requests.post("https://www.googleapis.com/qpxExpress/v1/trips/search")
+>>> payload = {{
+...   "request": {
+...     "slice": [
+...       {
+...         "origin": "SFO",
+...         "destination": "JFK",
+...         "date": "2015-09-01"
+...       }
+...     ],
+...     "passengers": {
+...       "adultCount": 1,
+...       "infantInLapCount": 0,
+...       "infantInSeatCount": 0,
+...       "childCount": 0,
+...       "seniorCount": 0
+...     },
+...     "solutions": 20,
+...     "refundable": false
+...   }
+... 
+... 
+... ;
+  File "<stdin>", line 22
+    ;
+    ^
+SyntaxError: invalid syntax
+>>> payload = {
+...   "request": {
+...     "slice": [
+...       {
+...         "origin": "SFO",
+...         "destination": "JFK",
+...         "date": "2015-09-01"
+...       }
+...     ],
+...     "passengers": {
+...       "adultCount": 1,
+...       "infantInLapCount": 0,
+...       "infantInSeatCount": 0,
+...       "childCount": 0,
+...       "seniorCount": 0
+...     },
+...     "solutions": 20,
+...     "refundable": false
+...   }
+... }
+Traceback (most recent call last):
+  File "<stdin>", line 18, in <module>
+NameError: name 'false' is not defined
+>>> ^D
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ clear
+
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> r = requests.post("{
+  File "<stdin>", line 1
+    r = requests.post("{
+                       ^
+SyntaxError: EOL while scanning string literal
+>>>   "request": {
+  File "<stdin>", line 1
+    "request": {
+    ^
+IndentationError: unexpected indent
+>>>     "slice": [
+  File "<stdin>", line 1
+    "slice": [
+    ^
+IndentationError: unexpected indent
+>>>       {
+  File "<stdin>", line 1
+    {
+    ^
+IndentationError: unexpected indent
+>>>         "origin": "SFO",
+  File "<stdin>", line 1
+    "origin": "SFO",
+    ^
+IndentationError: unexpected indent
+>>>         "destination": "JFK",
+  File "<stdin>", line 1
+    "destination": "JFK",
+    ^
+IndentationError: unexpected indent
+>>>         "date": "2015-09-01"
+  File "<stdin>", line 1
+    "date": "2015-09-01"
+    ^
+IndentationError: unexpected indent
+>>>       }
+  File "<stdin>", line 1
+    }
+    ^
+IndentationError: unexpected indent
+>>>     ],
+  File "<stdin>", line 1
+    ],
+    ^
+IndentationError: unexpected indent
+>>>     "passengers": {
+  File "<stdin>", line 1
+    "passengers": {
+    ^
+IndentationError: unexpected indent
+>>>       "adultCount": 1,
+  File "<stdin>", line 1
+    "adultCount": 1,
+    ^
+IndentationError: unexpected indent
+>>>       "infantInLapCount": 0,
+  File "<stdin>", line 1
+    "infantInLapCount": 0,
+    ^
+IndentationError: unexpected indent
+>>>       "infantInSeatCount": 0,
+  File "<stdin>", line 1
+    "infantInSeatCount": 0,
+    ^
+IndentationError: unexpected indent
+>>>       "childCount": 0,
+  File "<stdin>", line 1
+    "childCount": 0,
+    ^
+IndentationError: unexpected indent
+>>>       "seniorCount": 0
+  File "<stdin>", line 1
+    "seniorCount": 0
+    ^
+IndentationError: unexpected indent
+>>>     },
+  File "<stdin>", line 1
+    },
+    ^
+IndentationError: unexpected indent
+>>>     "solutions": 20,
+  File "<stdin>", line 1
+    "solutions": 20,
+    ^
+IndentationError: unexpected indent
+>>>     "refundable": false
+  File "<stdin>", line 1
+    "refundable": false
+    ^
+IndentationError: unexpected indent
+>>>   }
+  File "<stdin>", line 1
+    }
+    ^
+IndentationError: unexpected indent
+>>> }
+  File "<stdin>", line 1
+    }
+    ^
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> ^D
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ clear
+
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> r = requests.post("https://www.googleapis.com/qpxExpress/v1/trips/search")
+>>> r.json()
+{u'error': {u'code': 403, u'message': u'Daily Limit for Unauthenticated Use Exceeded. Continued use requires signup.', u'errors': [{u'domain': u'usageLimits', u'message': u'Daily Limit for Unauthenticated Use Exceeded. Continued use requires signup.', u'reason': u'dailyLimitExceededUnreg', u'extendedHelp': u'https://code.google.com/apis/console'}]}}
+>>> r = requests.post("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc")
+>>> r.json()
+{u'error': {u'code': 400, u'message': u'Invalid inputs: received empty request.', u'errors': [{u'domain': u'global', u'message': u'Invalid inputs: received empty request.', u'reason': u'badRequest'}]}}
+>>> r = requests.post("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc")
+>>> r.json() [{                                                                                                     ...   "request": {
+...     "slice": [
+...       {
+...         "origin": "SFO",
+...         "destination": "JFK",
+...         "date": "2015-09-01"
+...       }
+...     ],
+...     "passengers": {
+...       "adultCount": 1,
+...       "infantInLapCount": 0,
+...       "infantInSeatCount": 0,
+...       "childCount": 0,
+...       "seniorCount": 0
+...     },
+...     "solutions": 20,
+...     "refundable": false
+...   }
+... }]
+Traceback (most recent call last):
+  File "<stdin>", line 18, in <module>
+NameError: name 'false' is not defined
+>>> r = requests.post("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc")
+>>> r = requests.post("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc")
+>>> r.json() 
+{u'error': {u'code': 400, u'message': u'Invalid inputs: received empty request.', u'errors': [{u'domain': u'global', u'message': u'Invalid inputs: received empty request.', u'reason': u'badRequest'}]}}
+>>> r = requests.get('https://api.github.com/events')
+>>> r.json()
+[{u'payload': {u'size': 1, u'head': u'63d6be1bb90da3000d108aeef516c75bf12c56b6', u'commits': [{u'distinct': True, u'sha': u'63d6be1bb90da3000d108aeef516c75bf12c56b6', u'message': u'Signed-off-by: Massimo Manganiello <massimo.manganiello@gmail.com>', u'url': u'https://api.github.com/repos/Auwia/hypertherm_app/commits/63d6be1bb90da3000d108aeef516c75bf12c56b6', u'author': {u'email': u'massimo.manganiello@gmail.com', u'name': u'Massimo Manganiello'}}], u'distinct_size': 1, u'push_id': 746567779, u'ref': u'refs/heads/1.03', u'before': u'a30f7bca63b04267c4627836bdf0f4639b85c25d'}, u'created_at': u'2015-08-04T00:35:12Z', u'actor': {u'url': u'https://api.github.com/users/Auwia', u'login': u'Auwia', u'avatar_url': u'https://avatars.githubusercontent.com/u/1296864?', u'id': 1296864, u'gravatar_id': u''}, u'id': u'3028025732', u'repo': {u'url': u'https://api.github.com/repos/Auwia/hypertherm_app', u'id': 38653103, u'name': u'Auwia/hypertherm_app'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'0987d797655a80405eac2a7726b1235152fe91a6', u'commits': [{u'distinct': True, u'sha': u'0987d797655a80405eac2a7726b1235152fe91a6', u'message': u'Test - Clear repository branch', u'url': u'https://api.github.com/repos/pbaffiliate1/repoForPurge/commits/0987d797655a80405eac2a7726b1235152fe91a6', u'author': {u'email': u'pbaffiliate1@gmail.com', u'name': u'pbaffiliate1'}}], u'distinct_size': 1, u'push_id': 746567776, u'ref': u'refs/heads/branchForPurge', u'before': u'a0a871ef2e6b2791e90566d4d34fe0d5d8291359'}, u'created_at': u'2015-08-04T00:35:12Z', u'actor': {u'url': u'https://api.github.com/users/pbaffiliate1', u'login': u'pbaffiliate1', u'avatar_url': u'https://avatars.githubusercontent.com/u/10029825?', u'id': 10029825, u'gravatar_id': u''}, u'id': u'3028025725', u'repo': {u'url': u'https://api.github.com/repos/pbaffiliate1/repoForPurge', u'id': 30405136, u'name': u'pbaffiliate1/repoForPurge'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'e4b600c02006d59ac0fa448e769942b2be6994e3', u'commits': [{u'distinct': True, u'sha': u'e4b600c02006d59ac0fa448e769942b2be6994e3', u'message': u'a little cleaning, plus print-logs functionality for forth interpreter', u'url': u'https://api.github.com/repos/IRIXUser/XwinTox/commits/e4b600c02006d59ac0fa448e769942b2be6994e3', u'author': {u'email': u'davidjx8p@gmail.com', u'name': u'David Mackay'}}], u'distinct_size': 1, u'push_id': 746567771, u'ref': u'refs/heads/master', u'before': u'207bd427b9f117c6797f57c90665a84a1893f9c3'}, u'created_at': u'2015-08-04T00:35:11Z', u'actor': {u'url': u'https://api.github.com/users/IRIXUser', u'login': u'IRIXUser', u'avatar_url': u'https://avatars.githubusercontent.com/u/5460559?', u'id': 5460559, u'gravatar_id': u''}, u'id': u'3028025719', u'repo': {u'url': u'https://api.github.com/repos/IRIXUser/XwinTox', u'id': 37163583, u'name': u'IRIXUser/XwinTox'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'action': u'created', u'comment': {u'body': u'Yes, definitely we can do some better storing of test results so that its easy to make out whats failing.', u'url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/issues/comments/127441561', u'created_at': u'2015-08-04T00:35:11Z', u'html_url': u'https://github.com/forcedotcom/SalesforceMobileSDK-iOS/pull/1131#issuecomment-127441561', u'updated_at': u'2015-08-04T00:35:11Z', u'user': {u'following_url': u'https://api.github.com/users/kchitalia/following{/other_user}', u'events_url': u'https://api.github.com/users/kchitalia/events{/privacy}', u'organizations_url': u'https://api.github.com/users/kchitalia/orgs', u'url': u'https://api.github.com/users/kchitalia', u'gists_url': u'https://api.github.com/users/kchitalia/gists{/gist_id}', u'html_url': u'https://github.com/kchitalia', u'subscriptions_url': u'https://api.github.com/users/kchitalia/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/9594228?v=3', u'repos_url': u'https://api.github.com/users/kchitalia/repos', u'received_events_url': u'https://api.github.com/users/kchitalia/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/kchitalia/starred{/owner}{/repo}', u'site_admin': False, u'login': u'kchitalia', u'type': u'User', u'id': 9594228, u'followers_url': u'https://api.github.com/users/kchitalia/followers'}, u'id': 127441561, u'issue_url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/issues/1131'}, u'issue': {u'body': u'The build will fail once this PR is merged. To get the build to pass, we need to fix the failing tests. Not adding the tests for RestAPI as that freezes the build completely. Once we fix the tests, will add that back in.', u'labels': [], u'locked': False, u'title': u'Add tests to travis CI', u'url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/issues/1131', u'labels_url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/issues/1131/labels{/name}', u'created_at': u'2015-08-04T00:04:56Z', u'events_url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/issues/1131/events', u'comments_url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/issues/1131/comments', u'html_url': u'https://github.com/forcedotcom/SalesforceMobileSDK-iOS/pull/1131', u'comments': 2, u'number': 1131, u'updated_at': u'2015-08-04T00:35:11Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/kchitalia/following{/other_user}', u'events_url': u'https://api.github.com/users/kchitalia/events{/privacy}', u'organizations_url': u'https://api.github.com/users/kchitalia/orgs', u'url': u'https://api.github.com/users/kchitalia', u'gists_url': u'https://api.github.com/users/kchitalia/gists{/gist_id}', u'html_url': u'https://github.com/kchitalia', u'subscriptions_url': u'https://api.github.com/users/kchitalia/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/9594228?v=3', u'repos_url': u'https://api.github.com/users/kchitalia/repos', u'received_events_url': u'https://api.github.com/users/kchitalia/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/kchitalia/starred{/owner}{/repo}', u'site_admin': False, u'login': u'kchitalia', u'type': u'User', u'id': 9594228, u'followers_url': u'https://api.github.com/users/kchitalia/followers'}, u'milestone': None, u'closed_at': None, u'pull_request': {u'url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS/pulls/1131', u'diff_url': u'https://github.com/forcedotcom/SalesforceMobileSDK-iOS/pull/1131.diff', u'html_url': u'https://github.com/forcedotcom/SalesforceMobileSDK-iOS/pull/1131', u'patch_url': u'https://github.com/forcedotcom/SalesforceMobileSDK-iOS/pull/1131.patch'}, u'id': 98861686}}, u'created_at': u'2015-08-04T00:35:11Z', u'actor': {u'url': u'https://api.github.com/users/kchitalia', u'login': u'kchitalia', u'avatar_url': u'https://avatars.githubusercontent.com/u/9594228?', u'id': 9594228, u'gravatar_id': u''}, u'id': u'3028025707', u'repo': {u'url': u'https://api.github.com/repos/forcedotcom/SalesforceMobileSDK-iOS', u'id': 2338086, u'name': u'forcedotcom/SalesforceMobileSDK-iOS'}, u'org': {u'url': u'https://api.github.com/orgs/forcedotcom', u'login': u'forcedotcom', u'avatar_url': u'https://avatars.githubusercontent.com/u/464563?', u'id': 464563, u'gravatar_id': u''}, u'type': u'IssueCommentEvent', u'public': True}, {u'payload': {u'action': u'closed', u'number': 1, u'pull_request': {u'deletions': 305, u'merge_commit_sha': u'6b58d7512b0fa32ff18739d1792cb0aab05cead0', u'number': 1, u'assignee': None, u'mergeable': None, u'closed_at': u'2015-08-04T00:35:11Z', u'additions': 648, u'statuses_url': u'https://api.github.com/repos/cravelight/winforms-modernui/statuses/b94a88105950a1a4dc2f838de186a4ece47b45c0', u'id': 41524252, u'title': u'Pulling in fozzedout updates', u'comments': 0, u'merged_at': u'2015-08-04T00:35:11Z', u'state': u'closed', u'_links': {u'review_comment': {u'href': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/comments{/number}'}, u'commits': {u'href': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/1/commits'}, u'self': {u'href': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/1'}, u'review_comments': {u'href': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/1/comments'}, u'html': {u'href': u'https://github.com/cravelight/winforms-modernui/pull/1'}, u'comments': {u'href': u'https://api.github.com/repos/cravelight/winforms-modernui/issues/1/comments'}, u'issue': {u'href': u'https://api.github.com/repos/cravelight/winforms-modernui/issues/1'}, u'statuses': {u'href': u'https://api.github.com/repos/cravelight/winforms-modernui/statuses/b94a88105950a1a4dc2f838de186a4ece47b45c0'}}, u'changed_files': 24, u'diff_url': u'https://github.com/cravelight/winforms-modernui/pull/1.diff', u'issue_url': u'https://api.github.com/repos/cravelight/winforms-modernui/issues/1', u'body': u'', u'head': {u'repo': {u'issues_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/issues{/number}', u'stargazers_count': 6, u'forks_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/forks', u'mirror_url': None, u'subscription_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/subscription', u'notifications_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/notifications{?since,all,participating}', u'collaborators_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/collaborators{/collaborator}', u'updated_at': u'2015-06-28T04:38:58Z', u'private': False, u'pulls_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/pulls{/number}', u'issue_comment_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/issues/comments{/number}', u'labels_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/labels{/name}', u'has_wiki': False, u'full_name': u'fozzedout/winforms-modernui', u'owner': {u'following_url': u'https://api.github.com/users/fozzedout/following{/other_user}', u'events_url': u'https://api.github.com/users/fozzedout/events{/privacy}', u'organizations_url': u'https://api.github.com/users/fozzedout/orgs', u'url': u'https://api.github.com/users/fozzedout', u'gists_url': u'https://api.github.com/users/fozzedout/gists{/gist_id}', u'html_url': u'https://github.com/fozzedout', u'subscriptions_url': u'https://api.github.com/users/fozzedout/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/6894919?v=3', u'repos_url': u'https://api.github.com/users/fozzedout/repos', u'received_events_url': u'https://api.github.com/users/fozzedout/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/fozzedout/starred{/owner}{/repo}', u'site_admin': False, u'login': u'fozzedout', u'type': u'User', u'id': 6894919, u'followers_url': u'https://api.github.com/users/fozzedout/followers'}, u'statuses_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/statuses/{sha}', u'id': 35154256, u'keys_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/keys{/key_id}', u'description': u'My humble attempt to bring the new Modern UI alias Metro UI of Windows 8 to .NET Windows Forms applications ...', u'tags_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/tags', u'downloads_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/downloads', u'assignees_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/assignees{/user}', u'contents_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/contents/{+path}', u'has_pages': True, u'git_refs_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/git/refs{/sha}', u'open_issues_count': 1, u'clone_url': u'https://github.com/fozzedout/winforms-modernui.git', u'watchers_count': 6, u'git_tags_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/git/tags{/sha}', u'milestones_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/milestones{/number}', u'languages_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/languages', u'size': 1639, u'homepage': u'http://viperneo.github.io/winforms-modernui', u'fork': True, u'commits_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/commits{/sha}', u'releases_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/releases{/id}', u'issue_events_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/issues/events{/number}', u'archive_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/{archive_format}{/ref}', u'comments_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/comments{/number}', u'events_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/events', u'contributors_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/contributors', u'html_url': u'https://github.com/fozzedout/winforms-modernui', u'forks': 3, u'compare_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/compare/{base}...{head}', u'open_issues': 1, u'git_url': u'git://github.com/fozzedout/winforms-modernui.git', u'svn_url': u'https://github.com/fozzedout/winforms-modernui', u'merges_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/merges', u'has_issues': False, u'ssh_url': u'git@github.com:fozzedout/winforms-modernui.git', u'blobs_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/git/blobs{/sha}', u'git_commits_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/git/commits{/sha}', u'hooks_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/hooks', u'has_downloads': True, u'watchers': 6, u'name': u'winforms-modernui', u'language': u'C#', u'url': u'https://api.github.com/repos/fozzedout/winforms-modernui', u'created_at': u'2015-05-06T10:50:28Z', u'pushed_at': u'2015-05-30T19:04:37Z', u'forks_count': 3, u'default_branch': u'master', u'teams_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/teams', u'trees_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/git/trees{/sha}', u'branches_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/branches{/branch}', u'subscribers_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/subscribers', u'stargazers_url': u'https://api.github.com/repos/fozzedout/winforms-modernui/stargazers'}, u'sha': u'b94a88105950a1a4dc2f838de186a4ece47b45c0', u'ref': u'master', u'user': {u'following_url': u'https://api.github.com/users/fozzedout/following{/other_user}', u'events_url': u'https://api.github.com/users/fozzedout/events{/privacy}', u'organizations_url': u'https://api.github.com/users/fozzedout/orgs', u'url': u'https://api.github.com/users/fozzedout', u'gists_url': u'https://api.github.com/users/fozzedout/gists{/gist_id}', u'html_url': u'https://github.com/fozzedout', u'subscriptions_url': u'https://api.github.com/users/fozzedout/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/6894919?v=3', u'repos_url': u'https://api.github.com/users/fozzedout/repos', u'received_events_url': u'https://api.github.com/users/fozzedout/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/fozzedout/starred{/owner}{/repo}', u'site_admin': False, u'login': u'fozzedout', u'type': u'User', u'id': 6894919, u'followers_url': u'https://api.github.com/users/fozzedout/followers'}, u'label': u'fozzedout:master'}, u'commits_url': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/1/commits', u'commits': 20, u'comments_url': u'https://api.github.com/repos/cravelight/winforms-modernui/issues/1/comments', u'html_url': u'https://github.com/cravelight/winforms-modernui/pull/1', u'updated_at': u'2015-08-04T00:35:11Z', u'base': {u'repo': {u'issues_url': u'https://api.github.com/repos/cravelight/winforms-modernui/issues{/number}', u'stargazers_count': 0, u'forks_url': u'https://api.github.com/repos/cravelight/winforms-modernui/forks', u'mirror_url': None, u'subscription_url': u'https://api.github.com/repos/cravelight/winforms-modernui/subscription', u'notifications_url': u'https://api.github.com/repos/cravelight/winforms-modernui/notifications{?since,all,participating}', u'collaborators_url': u'https://api.github.com/repos/cravelight/winforms-modernui/collaborators{/collaborator}', u'updated_at': u'2015-08-04T00:24:58Z', u'private': False, u'pulls_url': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls{/number}', u'issue_comment_url': u'https://api.github.com/repos/cravelight/winforms-modernui/issues/comments{/number}', u'labels_url': u'https://api.github.com/repos/cravelight/winforms-modernui/labels{/name}', u'has_wiki': False, u'full_name': u'cravelight/winforms-modernui', u'owner': {u'following_url': u'https://api.github.com/users/cravelight/following{/other_user}', u'events_url': u'https://api.github.com/users/cravelight/events{/privacy}', u'organizations_url': u'https://api.github.com/users/cravelight/orgs', u'url': u'https://api.github.com/users/cravelight', u'gists_url': u'https://api.github.com/users/cravelight/gists{/gist_id}', u'html_url': u'https://github.com/cravelight', u'subscriptions_url': u'https://api.github.com/users/cravelight/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/543163?v=3', u'repos_url': u'https://api.github.com/users/cravelight/repos', u'received_events_url': u'https://api.github.com/users/cravelight/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/cravelight/starred{/owner}{/repo}', u'site_admin': False, u'login': u'cravelight', u'type': u'User', u'id': 543163, u'followers_url': u'https://api.github.com/users/cravelight/followers'}, u'statuses_url': u'https://api.github.com/repos/cravelight/winforms-modernui/statuses/{sha}', u'id': 40154481, u'keys_url': u'https://api.github.com/repos/cravelight/winforms-modernui/keys{/key_id}', u'description': u'My humble attempt to bring the new Modern UI alias Metro UI of Windows 8 to .NET Windows Forms applications ...', u'tags_url': u'https://api.github.com/repos/cravelight/winforms-modernui/tags', u'downloads_url': u'https://api.github.com/repos/cravelight/winforms-modernui/downloads', u'assignees_url': u'https://api.github.com/repos/cravelight/winforms-modernui/assignees{/user}', u'contents_url': u'https://api.github.com/repos/cravelight/winforms-modernui/contents/{+path}', u'has_pages': True, u'git_refs_url': u'https://api.github.com/repos/cravelight/winforms-modernui/git/refs{/sha}', u'open_issues_count': 0, u'clone_url': u'https://github.com/cravelight/winforms-modernui.git', u'watchers_count': 0, u'git_tags_url': u'https://api.github.com/repos/cravelight/winforms-modernui/git/tags{/sha}', u'milestones_url': u'https://api.github.com/repos/cravelight/winforms-modernui/milestones{/number}', u'languages_url': u'https://api.github.com/repos/cravelight/winforms-modernui/languages', u'size': 2143, u'homepage': u'http://viperneo.github.io/winforms-modernui', u'fork': True, u'commits_url': u'https://api.github.com/repos/cravelight/winforms-modernui/commits{/sha}', u'releases_url': u'https://api.github.com/repos/cravelight/winforms-modernui/releases{/id}', u'issue_events_url': u'https://api.github.com/repos/cravelight/winforms-modernui/issues/events{/number}', u'archive_url': u'https://api.github.com/repos/cravelight/winforms-modernui/{archive_format}{/ref}', u'comments_url': u'https://api.github.com/repos/cravelight/winforms-modernui/comments{/number}', u'events_url': u'https://api.github.com/repos/cravelight/winforms-modernui/events', u'contributors_url': u'https://api.github.com/repos/cravelight/winforms-modernui/contributors', u'html_url': u'https://github.com/cravelight/winforms-modernui', u'forks': 0, u'compare_url': u'https://api.github.com/repos/cravelight/winforms-modernui/compare/{base}...{head}', u'open_issues': 0, u'git_url': u'git://github.com/cravelight/winforms-modernui.git', u'svn_url': u'https://github.com/cravelight/winforms-modernui', u'merges_url': u'https://api.github.com/repos/cravelight/winforms-modernui/merges', u'has_issues': False, u'ssh_url': u'git@github.com:cravelight/winforms-modernui.git', u'blobs_url': u'https://api.github.com/repos/cravelight/winforms-modernui/git/blobs{/sha}', u'git_commits_url': u'https://api.github.com/repos/cravelight/winforms-modernui/git/commits{/sha}', u'hooks_url': u'https://api.github.com/repos/cravelight/winforms-modernui/hooks', u'has_downloads': True, u'watchers': 0, u'name': u'winforms-modernui', u'language': u'C#', u'url': u'https://api.github.com/repos/cravelight/winforms-modernui', u'created_at': u'2015-08-04T00:24:57Z', u'pushed_at': u'2015-08-04T00:35:11Z', u'forks_count': 0, u'default_branch': u'master', u'teams_url': u'https://api.github.com/repos/cravelight/winforms-modernui/teams', u'trees_url': u'https://api.github.com/repos/cravelight/winforms-modernui/git/trees{/sha}', u'branches_url': u'https://api.github.com/repos/cravelight/winforms-modernui/branches{/branch}', u'subscribers_url': u'https://api.github.com/repos/cravelight/winforms-modernui/subscribers', u'stargazers_url': u'https://api.github.com/repos/cravelight/winforms-modernui/stargazers'}, u'sha': u'b6a440e6ce7c34931e4f44712deb397dce978e32', u'ref': u'master', u'user': {u'following_url': u'https://api.github.com/users/cravelight/following{/other_user}', u'events_url': u'https://api.github.com/users/cravelight/events{/privacy}', u'organizations_url': u'https://api.github.com/users/cravelight/orgs', u'url': u'https://api.github.com/users/cravelight', u'gists_url': u'https://api.github.com/users/cravelight/gists{/gist_id}', u'html_url': u'https://github.com/cravelight', u'subscriptions_url': u'https://api.github.com/users/cravelight/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/543163?v=3', u'repos_url': u'https://api.github.com/users/cravelight/repos', u'received_events_url': u'https://api.github.com/users/cravelight/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/cravelight/starred{/owner}{/repo}', u'site_admin': False, u'login': u'cravelight', u'type': u'User', u'id': 543163, u'followers_url': u'https://api.github.com/users/cravelight/followers'}, u'label': u'cravelight:master'}, u'user': {u'following_url': u'https://api.github.com/users/cravelight/following{/other_user}', u'events_url': u'https://api.github.com/users/cravelight/events{/privacy}', u'organizations_url': u'https://api.github.com/users/cravelight/orgs', u'url': u'https://api.github.com/users/cravelight', u'gists_url': u'https://api.github.com/users/cravelight/gists{/gist_id}', u'html_url': u'https://github.com/cravelight', u'subscriptions_url': u'https://api.github.com/users/cravelight/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/543163?v=3', u'repos_url': u'https://api.github.com/users/cravelight/repos', u'received_events_url': u'https://api.github.com/users/cravelight/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/cravelight/starred{/owner}{/repo}', u'site_admin': False, u'login': u'cravelight', u'type': u'User', u'id': 543163, u'followers_url': u'https://api.github.com/users/cravelight/followers'}, u'milestone': None, u'locked': False, u'merged_by': {u'following_url': u'https://api.github.com/users/cravelight/following{/other_user}', u'events_url': u'https://api.github.com/users/cravelight/events{/privacy}', u'organizations_url': u'https://api.github.com/users/cravelight/orgs', u'url': u'https://api.github.com/users/cravelight', u'gists_url': u'https://api.github.com/users/cravelight/gists{/gist_id}', u'html_url': u'https://github.com/cravelight', u'subscriptions_url': u'https://api.github.com/users/cravelight/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/543163?v=3', u'repos_url': u'https://api.github.com/users/cravelight/repos', u'received_events_url': u'https://api.github.com/users/cravelight/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/cravelight/starred{/owner}{/repo}', u'site_admin': False, u'login': u'cravelight', u'type': u'User', u'id': 543163, u'followers_url': u'https://api.github.com/users/cravelight/followers'}, u'url': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/1', u'mergeable_state': u'unknown', u'created_at': u'2015-08-04T00:34:54Z', u'merged': True, u'review_comments_url': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/1/comments', u'review_comments': 0, u'review_comment_url': u'https://api.github.com/repos/cravelight/winforms-modernui/pulls/comments{/number}', u'patch_url': u'https://github.com/cravelight/winforms-modernui/pull/1.patch'}}, u'created_at': u'2015-08-04T00:35:11Z', u'actor': {u'url': u'https://api.github.com/users/cravelight', u'login': u'cravelight', u'avatar_url': u'https://avatars.githubusercontent.com/u/543163?', u'id': 543163, u'gravatar_id': u''}, u'id': u'3028025693', u'repo': {u'url': u'https://api.github.com/repos/cravelight/winforms-modernui', u'id': 40154481, u'name': u'cravelight/winforms-modernui'}, u'type': u'PullRequestEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'c0b5baa732e1c0a0822a38252fb82f5d001d8806', u'commits': [{u'distinct': True, u'sha': u'c0b5baa732e1c0a0822a38252fb82f5d001d8806', u'message': u'Added additional fails during configuration', u'url': u'https://api.github.com/repos/sonicjolt/serilog-sinks-rabbitmq/commits/c0b5baa732e1c0a0822a38252fb82f5d001d8806', u'author': {u'email': u'steffenjaques@gmail.com', u'name': u'Steffen Lyng'}}], u'distinct_size': 1, u'push_id': 746567759, u'ref': u'refs/heads/master', u'before': u'ded9b66cafe91ee0b00225bedfa2d65a0591a9d4'}, u'created_at': u'2015-08-04T00:35:11Z', u'actor': {u'url': u'https://api.github.com/users/sonicjolt', u'login': u'sonicjolt', u'avatar_url': u'https://avatars.githubusercontent.com/u/2269609?', u'id': 2269609, u'gravatar_id': u''}, u'id': u'3028025686', u'repo': {u'url': u'https://api.github.com/repos/sonicjolt/serilog-sinks-rabbitmq', u'id': 40139664, u'name': u'sonicjolt/serilog-sinks-rabbitmq'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'1e8cf0a814955cc0fd9a7922b56b360c987bd6f3', u'commits': [{u'distinct': True, u'sha': u'1e8cf0a814955cc0fd9a7922b56b360c987bd6f3', u'message': u"Use an indexed update script\n\nThe previous implementation dynamically generated document\nupdate scripts for every single modification. This would prove\nrather costly, as this means every script will need to be\nindividually compiled. It's also rather prone to injection issues\n(i.e. the previously fixed $ escaping is now superseded). This\npatch sets the update functionality up as an indexed script\nthat takes parameters from each update, thereby taking\nadvantage of cached compilation. It also avoids substituting\nindexed values directly into a script, avoiding potential\ninjection attacks.", u'url': u'https://api.github.com/repos/URXtech/titan/commits/1e8cf0a814955cc0fd9a7922b56b360c987bd6f3', u'author': {u'email': u'tim@urx.com', u'name': u'Tim Wu'}}], u'distinct_size': 1, u'push_id': 746567757, u'ref': u'refs/heads/elastic-search-bulk-rejection-fix', u'before': u'5e48cce909c124a5349c36d0eb279927b6ec383f'}, u'created_at': u'2015-08-04T00:35:11Z', u'actor': {u'url': u'https://api.github.com/users/timwu', u'login': u'timwu', u'avatar_url': u'https://avatars.githubusercontent.com/u/117731?', u'id': 117731, u'gravatar_id': u''}, u'id': u'3028025684', u'repo': {u'url': u'https://api.github.com/repos/URXtech/titan', u'id': 39029123, u'name': u'URXtech/titan'}, u'org': {u'url': u'https://api.github.com/orgs/URXtech', u'login': u'URXtech', u'avatar_url': u'https://avatars.githubusercontent.com/u/3820629?', u'id': 3820629, u'gravatar_id': u''}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'c1e1be2be27430eb63c2947921a4b2f13ce54a38', u'commits': [{u'distinct': True, u'sha': u'c1e1be2be27430eb63c2947921a4b2f13ce54a38', u'message': u'forgot to make request', u'url': u'https://api.github.com/repos/justinotero/ancestryHealth/commits/c1e1be2be27430eb63c2947921a4b2f13ce54a38', u'author': {u'email': u'tojustinotero@gmail.com', u'name': u'Justin Otero'}}], u'distinct_size': 1, u'push_id': 746567758, u'ref': u'refs/heads/develop', u'before': u'ea661f2b216f0a1d86d9ab29e3b9a53205975d36'}, u'created_at': u'2015-08-04T00:35:11Z', u'actor': {u'url': u'https://api.github.com/users/justinotero', u'login': u'justinotero', u'avatar_url': u'https://avatars.githubusercontent.com/u/6645983?', u'id': 6645983, u'gravatar_id': u''}, u'id': u'3028025683', u'repo': {u'url': u'https://api.github.com/repos/justinotero/ancestryHealth', u'id': 40056600, u'name': u'justinotero/ancestryHealth'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'3319b4afc4bf841b2bd29079749bb245f090d67c', u'commits': [{u'distinct': True, u'sha': u'3319b4afc4bf841b2bd29079749bb245f090d67c', u'message': u'Test - Clear repository branch', u'url': u'https://api.github.com/repos/pbaffiliate1/repoForPurge/commits/3319b4afc4bf841b2bd29079749bb245f090d67c', u'author': {u'email': u'pbaffiliate1@gmail.com', u'name': u'pbaffiliate1'}}], u'distinct_size': 1, u'push_id': 746567756, u'ref': u'refs/heads/master', u'before': u'd2d690ea4bff359c47a2ea1545e633bf0a536e2b'}, u'created_at': u'2015-08-04T00:35:11Z', u'actor': {u'url': u'https://api.github.com/users/pbaffiliate1', u'login': u'pbaffiliate1', u'avatar_url': u'https://avatars.githubusercontent.com/u/10029825?', u'id': 10029825, u'gravatar_id': u''}, u'id': u'3028025682', u'repo': {u'url': u'https://api.github.com/repos/pbaffiliate1/repoForPurge', u'id': 30405136, u'name': u'pbaffiliate1/repoForPurge'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 2, u'head': u'5374e810f7b22cc54bbaf7ece9f63414ee1a66c8', u'commits': [{u'distinct': True, u'sha': u'b938b3f6ff03358e0c5df1a7f3fe631c03f9348b', u'message': u'Added PG and Rails12 facotrs for Heroki', u'url': u'https://api.github.com/repos/Geoffsharpe/pinteresting/commits/b938b3f6ff03358e0c5df1a7f3fe631c03f9348b', u'author': {u'email': u'geoff@geoffsharpe.com', u'name': u'Geoff Sharpe'}}, {u'distinct': True, u'sha': u'5374e810f7b22cc54bbaf7ece9f63414ee1a66c8', u'message': u'Changed gemfile', u'url': u'https://api.github.com/repos/Geoffsharpe/pinteresting/commits/5374e810f7b22cc54bbaf7ece9f63414ee1a66c8', u'author': {u'email': u'geoff@geoffsharpe.com', u'name': u'Geoff Sharpe'}}], u'distinct_size': 2, u'push_id': 746567752, u'ref': u'refs/heads/master', u'before': u'73ae53376132dd14c2c54f0588ff4ffe3137e50b'}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/Geoffsharpe', u'login': u'Geoffsharpe', u'avatar_url': u'https://avatars.githubusercontent.com/u/7033924?', u'id': 7033924, u'gravatar_id': u''}, u'id': u'3028025677', u'repo': {u'url': u'https://api.github.com/repos/Geoffsharpe/pinteresting', u'id': 40147215, u'name': u'Geoffsharpe/pinteresting'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'action': u'opened', u'issue': {u'body': u'<p><strong><b>Aerobic exercise</b> helpful for asthma</strong><br>\nWhile it\'s not surprising that asthma patients may benefit from aerobic exercise, the findings offer new evidence that physical activity can help even in patients who are already controlling symptoms with medication, said lead author Dr. Celso Carvalho &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1SEEIps">Reuters</a><br><br></i></p>\n<p><strong>New study finds <b>aerobic exercise</b> helps to control asthma</strong><br>\nST. LOUIS, MO (KTVI) &ndash; Drugs and medication may not be the only way to control moderate to severe asthma. According to a new Thorax study, people who do regular aerobic exercise have an easier time controlling common asthma symptoms than people&nbsp;&hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1flVQON">fox2now.com</a><br><br></i></p>\n<p><strong>Aquatic <b>Aerobic Exercise</b> Offers Therapeutic Benefits to Fibromyalgia Patients</strong><br>\nFMS, or simply fibromyalgia, is a medical disorder characterized by a set of symptoms that includes widespread chronic musculoskeletal pain, incapacitating fatigue, stiffness and numbness in certain parts of the body, painful response to pressure &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1SEEJd3">Fibromyalgia News Today</a><br><br></i></p>\n<p><strong><b>Aerobic Exercise</b> May Curb Severity of Asthma Symptoms</strong><br>\nThey found that the quality of life score rose significantly in those in the aerobic exercise group, while maximum oxygen intake and aerobic power increased. The effects were most noticeable in those with higher levels of systemic inflammation and &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1N5PEFV">University Herald</a><br><br></i></p>\n<p><strong>Postmenopausal adiposity benefits with increasing <b>aerobic exercise</b></strong><br>\nAn aerobic exercise regimen of 300 min/week versus 150 min/week significantly improves adiposity outcomes among postmenopausal women, shows research published in JAMA Oncology. Additionally, the benefits of higher-volume exercise could include&nbsp;&hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1Jt8DXn">News-Medical.net</a><br><br></i></p>\n<p><strong>To fend off dementia, run &mdash; or dance, bike, power-walk or step</strong><br>\nIn older adults with mild cognitive impairment &mdash; a condition that frequently precedes an Alzheimer\'s diagnosis &mdash; one study found that a program of regular intensive aerobic exercise reduced the quantity of tau protein found in cerebrospinal fluid &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1N5PEW8">Los Angeles Times</a><br><br></i></p>\n<p><strong><b>Aerobic exercise</b> is as good for the older brain as it is for the body</strong><br>\nBreak out the sweatbands and the oldies &ndash; 60 minutes of good old-fashioned aerobic exercise may be more potent than any pill to reduce older adults\' risk of cognitive decline due to mini-strokes, according to research by Vancouver Coastal Health &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1Dc5zSU">University of British Columbia</a><br><br></i></p>\n<p>The post <a rel="nofollow" href="http://ift.tt/1IBTAdm"><b>Aerobic exercise</b> helpful for asthma</a> appeared first on <a rel="nofollow" href="http://ift.tt/1zeJY9S">Bigger Muscles Now</a>.</p>\n<br><br>\nvia WordPress http://ift.tt/1IBTAdm', u'labels': [], u'locked': False, u'title': u'Aerobic exercise helpful for asthma', u'url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27733', u'labels_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27733/labels{/name}', u'created_at': u'2015-08-04T00:35:10Z', u'events_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27733/events', u'comments_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27733/comments', u'html_url': u'https://github.com/allendrehmer75/allen/issues/27733', u'comments': 0, u'number': 27733, u'updated_at': u'2015-08-04T00:35:10Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/allendrehmer75/following{/other_user}', u'events_url': u'https://api.github.com/users/allendrehmer75/events{/privacy}', u'organizations_url': u'https://api.github.com/users/allendrehmer75/orgs', u'url': u'https://api.github.com/users/allendrehmer75', u'gists_url': u'https://api.github.com/users/allendrehmer75/gists{/gist_id}', u'html_url': u'https://github.com/allendrehmer75', u'subscriptions_url': u'https://api.github.com/users/allendrehmer75/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/11863032?v=3', u'repos_url': u'https://api.github.com/users/allendrehmer75/repos', u'received_events_url': u'https://api.github.com/users/allendrehmer75/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/allendrehmer75/starred{/owner}{/repo}', u'site_admin': False, u'login': u'allendrehmer75', u'type': u'User', u'id': 11863032, u'followers_url': u'https://api.github.com/users/allendrehmer75/followers'}, u'milestone': None, u'closed_at': None, u'id': 98864117}}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/allendrehmer75', u'login': u'allendrehmer75', u'avatar_url': u'https://avatars.githubusercontent.com/u/11863032?', u'id': 11863032, u'gravatar_id': u''}, u'id': u'3028025676', u'repo': {u'url': u'https://api.github.com/repos/allendrehmer75/allen', u'id': 33641398, u'name': u'allendrehmer75/allen'}, u'type': u'IssuesEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'ba25b49ec1bacc48e725e1b65e1a501ba841fb49', u'commits': [{u'distinct': True, u'sha': u'ba25b49ec1bacc48e725e1b65e1a501ba841fb49', u'message': u'Adding responsive tabs', u'url': u'https://api.github.com/repos/lrascius/Stock-Calculator/commits/ba25b49ec1bacc48e725e1b65e1a501ba841fb49', u'author': {u'email': u'lrascius93@gmail.com', u'name': u'Lukas Rascius'}}], u'distinct_size': 1, u'push_id': 746567750, u'ref': u'refs/heads/master', u'before': u'c0aaa4065e9e742e7f0933f51920be23be6b1f91'}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/lrascius', u'login': u'lrascius', u'avatar_url': u'https://avatars.githubusercontent.com/u/8249009?', u'id': 8249009, u'gravatar_id': u''}, u'id': u'3028025674', u'repo': {u'url': u'https://api.github.com/repos/lrascius/Stock-Calculator', u'id': 40152036, u'name': u'lrascius/Stock-Calculator'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'action': u'opened', u'issue': {u'body': u'<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PCO3"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t2.gstatic.com/images?q=tbn:ANd9GcTfNta-ntwgzYwq2Genf5UoadeAxLJQLmY9WuFH10VsXA_tGP_IWd_c-Y4q8XYKbpUtQv5Qhsc" alt="" border="1" width="80" height="80"><br><font size="-2">Wall Street Journal</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PCO3"><b>Workout Buddies and Work Colleagues</b></a><br><font size="-1"><b><font color="#6F6F6F">Wall Street Journal</font></b></font><br><font size="-1">San Francisco technology executive Adam Zbar likes to <b>work out</b> and have business meetings before sunrise. Most mornings, the chief executive of Sun Basket, a food delivery service that emphasizes organic, local ingredients, runs, bikes or surfs with&nbsp;&hellip;</font><br><br><a target="_blank" class="p" href="http://ift.tt/1P16dUt"></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PCO3">workout &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PCO5"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t1.gstatic.com/images?q=tbn:ANd9GcQy771tAh1T21iAiQcCZhB-ETUS82HbvVdZJXZMT1pAh5IetKLODtU1rmtsJaUCw4yvDkKH9XDB" alt="" border="1" width="80" height="80"><br><font size="-2">Yahoo Health</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PCO5"><b>Try the Calorie-Torching Workout Models Can\'t Resist</b></a><br><font size="-1"><b><font color="#6F6F6F">Yahoo Health</font></b></font><br><font size="-1">So you want to learn how to box. Join the club &mdash; boxing\'s the <b>workout</b> of the moment, and not just because of the Jake Gyllenhaal-fronted Southpaw. The biggest reason behind boxing\'s surge in popularity? Its model fan club: Gigi Hadid, Alessandra <b>&hellip;</b></font><br><br><a target="_blank" class="p" href="http://ift.tt/1JHjpxQ"></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PCO5">workout &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PCO7"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t2.gstatic.com/images?q=tbn:ANd9GcRe6OrYRV_GDfBCsmhG5uANb5kZKwToQ9rK1jXGPm0IkepQt7LXutndCEdpvW7LBiKS_43Nfs_a" alt="" border="1" width="80" height="80"><br><font size="-2">STLtoday.com</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PCO7"><b>Rams in pads for spirited special teams workout</b></a><br><font size="-1"><b><font color="#6F6F6F">STLtoday.com</font></b></font><br><font size="-1">The highlight of the spirited <b>workout</b> came at the end of the session when players battled one-on-one in a gunner drill in which one player tries to keep another from getting to a tackling dummy. The drill produced plenty of competition to go along with <b>&hellip;</b></font><br><br><a target="_blank" class="p" href="http://ift.tt/1gF5fSF"><font class="p" size="-1"><b>and more&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PCO7">workout &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PCO9"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t1.gstatic.com/images?q=tbn:ANd9GcShnlP4paq3Xcj0oyyH6Pe8G5yAEegbOrxvdors3gZMsv_fPvrf3kCc_-TWI-kASlEtCfz2ig8" alt="" border="1" width="80" height="80"><br><font size="-2">WNDU-TV</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PCO9"><b>Gym workout vs. yoga: Researchers test to see which is more beneficial</b></a><br><font size="-1"><b><font color="#6F6F6F">WNDU-TV</font></b></font><br><font size="-1">SAN ANTONIO Get a regular at the gym and one from a yoga class to compare their <b>workouts</b> and fireworks may break out. Researchers put the question of which <b>workout</b> is best to the test and the result may surprise you. Yoga, stretching, balance and core&nbsp;&hellip;</font><br><br><a target="_blank" class="p" href="http://ift.tt/1Ifi0w6"></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PCO9">workout &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PEFK"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t2.gstatic.com/images?q=tbn:ANd9GcTvHEIue0dg8lA1Jj_EeWA4SWLmtdDLGqMKQAVGV_6NTwdytrebhwTVLztMCyTuQpdXnComf8I" alt="" border="1" width="80" height="80"><br><font size="-2">Observer</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PEFK"><b>Your Weekly Workout Plan: Yoga With Gisele B&uuml;ndchen and Bar Refaeli</b></a><br><font size="-1"><b><font color="#6F6F6F">Observer</font></b></font><br><font size="-1">Is your Fitbit just not cutting it? Need some extra ideas for staying active throughout the week? Let these <b>workout</b>-centric Instagrams inspire you from Monday to Friday. Monday: Looking for an intense cardio and toning <b>workout</b> that combines everything <b>&hellip;</b></font><br><br><a target="_blank" class="p" href="http://ift.tt/1JHB4W4"></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PEFK">workout &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PCOb"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t3.gstatic.com/images?q=tbn:ANd9GcSvLB4HuVpVRf8U7ZgVGk74KnNdqVHjwkLqB7mtN6NnIVKFn4nPYBtvWrkRE-ggYWOJzIjdDXg" alt="" border="1" width="80" height="80"><br><font size="-2">Mic</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PCOb"><b>Beast Body Workout: Inside Eminem\'s Newest Fitness Addiction</b></a><br><font size="-1"><b><font color="#6F6F6F">Mic</font></b></font><br><font size="-1">Running miles, boxing and at-home exercise regimens were all part of the "Phenomenal" singer\'s weight loss plan, but Mathers\' latest <b>workout</b>, he said, is Body Beast, a high-intensity weightlifting routine from the same guys behind the popular P90X <b>workout</b>.</font><br><font size="-1"><a target="_blank" href="http://ift.tt/1KNpNSE">Eminem Loves Those <b>Workout</b> DVDs: Here\'s Why</a><font size="-1" color="#6F6F6F">MTV.com</font></font><br><font size="-1"><a target="_blank" href="http://ift.tt/1N5PEFO">Eminem Talks Drug Addiction, Intense <b>Workouts</b> That Helped Him Kick It</a><font size="-1" color="#6F6F6F">Softpedia News</font></font><br><font size="-1"><a target="_blank" href="http://ift.tt/1KNpNSG">The Popular Fitness DVDs That Got Eminem Back in Shape</a><font size="-1" color="#6F6F6F">Yahoo Health</font></font><br><font size="-1" class="p"><a target="_blank" href="http://ift.tt/1N5PEFQ">The Detroit News</a>&nbsp;&ndash;<a target="_blank" href="http://ift.tt/1KNpQhA">Celebrity Health &amp; Fitness (blog)</a></font><br><a target="_blank" class="p" href="http://ift.tt/1JIsoyN"><font class="p" size="-1"><b>all 11 news articles&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PCOb">workout &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1KNpNSK"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t3.gstatic.com/images?q=tbn:ANd9GcRqrcvVcZAd79SM_f53RW7qI3R_WyQg2Lj7OpE2_NyryuINTV7K246a59HWktxE8YF6IomeGC0" alt="" border="1" width="80" height="80"><br><font size="-2">POPSUGAR</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1KNpNSK"><b>A Long Cardio Routine Can\'t Compare to This Short Workout</b></a><br><font size="-1"><b><font color="#6F6F6F">POPSUGAR</font></b></font><br><font size="-1">An 8-minute treadmill <b>workout</b> that will do more for you than a longer routine &mdash; Self; The minimum amount of time you should strength train &mdash; Greatist; These blended breakfast smoothies will help you see weight-loss results &mdash; Women\'s Health; Will an&nbsp;&hellip;</font><br><br><a target="_blank" class="p" href="http://ift.tt/1Ifi132"><font class="p" size="-1"><b>and more&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1KNpNSK">workout &ndash; Google News</a></p>\n<p>The post <a rel="nofollow" href="http://ift.tt/1IBTAtP">Workout Buddies and Work Colleagues &ndash; Wall Street Journal</a> appeared first on <a rel="nofollow" href="http://ift.tt/1zeJY9S">Bigger Muscles Now</a>.</p>\n<br><br>\nvia WordPress http://ift.tt/1IBTAtP', u'labels': [], u'locked': False, u'title': u'Workout Buddies and Work Colleagues  Wall Street Journal', u'url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27732', u'labels_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27732/labels{/name}', u'created_at': u'2015-08-04T00:35:10Z', u'events_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27732/events', u'comments_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27732/comments', u'html_url': u'https://github.com/allendrehmer75/allen/issues/27732', u'comments': 0, u'number': 27732, u'updated_at': u'2015-08-04T00:35:10Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/allendrehmer75/following{/other_user}', u'events_url': u'https://api.github.com/users/allendrehmer75/events{/privacy}', u'organizations_url': u'https://api.github.com/users/allendrehmer75/orgs', u'url': u'https://api.github.com/users/allendrehmer75', u'gists_url': u'https://api.github.com/users/allendrehmer75/gists{/gist_id}', u'html_url': u'https://github.com/allendrehmer75', u'subscriptions_url': u'https://api.github.com/users/allendrehmer75/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/11863032?v=3', u'repos_url': u'https://api.github.com/users/allendrehmer75/repos', u'received_events_url': u'https://api.github.com/users/allendrehmer75/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/allendrehmer75/starred{/owner}{/repo}', u'site_admin': False, u'login': u'allendrehmer75', u'type': u'User', u'id': 11863032, u'followers_url': u'https://api.github.com/users/allendrehmer75/followers'}, u'milestone': None, u'closed_at': None, u'id': 98864116}}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/allendrehmer75', u'login': u'allendrehmer75', u'avatar_url': u'https://avatars.githubusercontent.com/u/11863032?', u'id': 11863032, u'gravatar_id': u''}, u'id': u'3028025667', u'repo': {u'url': u'https://api.github.com/repos/allendrehmer75/allen', u'id': 33641398, u'name': u'allendrehmer75/allen'}, u'type': u'IssuesEvent', u'public': True}, {u'payload': {u'action': u'opened', u'issue': {u'body': u'<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1SEEFKn"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t2.gstatic.com/images?q=tbn:ANd9GcQYTqizQZC5Gv0vCSrW5zG-lhNhvjF4RInV2tzcJarzBRwAtukebC_f9LUdAorxFsTuSOKaWxg" alt="" border="1" width="80" height="80"><br><font size="-2">Mirror.co.uk</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1SEEFKn"><b>\'Fat kid\' turned successful bodybuilder reveals his diet and fitness secrets</b></a><br><font size="-1"><b><font color="#6F6F6F">Mirror.co.uk</font></b></font><br><font size="-1">A man who went from tubby child to successful <b>bodybuilder</b> has revealed how he turned his life around when he met Mr Universe. Adam Foster, from Hartlepool, Co Durham, always struggled with his weight, and was 16st at his heaviest. Although his mum&nbsp;&hellip;</font><br><br><a target="_blank" class="p" href="http://ift.tt/1OopG1a"><font class="p" size="-1"><b>and more&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1SEEFKn">bodybuilding diet &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1SEEG0E"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t2.gstatic.com/images?q=tbn:ANd9GcT60q-N1Ar6GrRRSXJAw7vljXbNRDG8NBZp2w6xBcYZWZPxLlsfUWgeuxpiqBbBXq4RQaMj7EA" alt="" border="1" width="80" height="80"><br><font size="-2">NEWS.com.au</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PAWG"><b>Dean Wharmby loses battle to liver cancer which he blamed on 10k calorie diet</b></a><br><font size="-1"><b><font color="#6F6F6F">Daily Mail</font></b></font><br><font size="-1">Previously, he had survived on a 10,000 calorie a day <b>diet</b> of burgers, pizzas and bacon sandwiches &ndash; washed down with seven to eight cans of energy drink. Before he died, he admitted that his quest to create the \'perfect\' <b>bodybuilder\'s</b> physique may <b>&hellip;</b></font><br><font size="-1"><a target="_blank" href="http://ift.tt/1SEEG0E">Dean Wharmby dead: former <b>bodybuilder</b> loses battle with liver cancer which he <b>&hellip;</b></a><font size="-1" color="#6F6F6F">NEWS.com.au</font></font><br><br><a target="_blank" class="p" href="http://ift.tt/1LTGLSy"><font class="p" size="-1"><b>all 5 news articles&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PAWG">bodybuilding diet &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PDS5"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t1.gstatic.com/images?q=tbn:ANd9GcRaVrHkErLPEeqm84cnb5TwD6zIZwY-O_7xr5A2nFUCtXYst38IDMkEoXb9pt-6tW638VY8yyA" alt="" border="1" width="80" height="80"><br><font size="-2">Mirror.co.uk</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PDS5"><b>From chubby to chiselled in just 12 weeks: Office worker reveals secrets of &hellip;</b></a><br><font size="-1"><b><font color="#6F6F6F">Mirror.co.uk</font></b></font><br><font size="-1">The 35-year-old decided to overhaul his life by changing his <b>diet</b> and commencing an extreme fitness regime. In just 12 weeks he transformed himself into a ripped <b>bodybuilder</b>, becoming practically unrecognisable from his former self. He has since left <b>&hellip;</b></font><br><br><a target="_blank" class="p" href="http://ift.tt/1SCWAkH"><font class="p" size="-1"><b>and more&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PDS5">bodybuilding diet &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1SEEHC3"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t1.gstatic.com/images?q=tbn:ANd9GcToTS4LLPzYeQpD0FAnahJEc7koDX_T5WnwTqiNtIGvOsF9ZZ7fXAm_Jmaw6YegOUSXyq7ltMaK" alt="" border="1" width="80" height="80"><br><font size="-2">Jackson Clarion Ledger</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1SEEHC3"><b>Shed and shred: Bodybuilder back in the game</b></a><br><font size="-1"><b><font color="#6F6F6F">Jackson Clarion Ledger</font></b></font><br><font size="-1">SAUCIER, Miss. &ndash; After a 14-week <b>diet</b> of egg white shakes, rice, grilled chicken and boiled shrimp, Jimmy Bryan of Saucier treated himself two weekends ago. The 45-year-old demolished two Mugshots Bar and Grill hamburgers, each with a side of fries.</font><br><br><a target="_blank" class="p" href="http://ift.tt/1IFbBMd"><font class="p" size="-1"><b>and more&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1SEEHC3">bodybuilding diet &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1SEEG0J"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t1.gstatic.com/images?q=tbn:ANd9GcReHh_IZRTmxxUNaaRSL5gknzV4zrExflNtkQwy0_mntOZYpYcMAeh1dKQR2Ux3E5mSFj_7R7Q" alt="" border="1" width="80" height="80"><br><font size="-2">Charleston Post Courier</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PBK6"><b>Diabetic, body-building, Mount Pleasant chiropractor shares healthy tips</b></a><br><font size="-1"><b><font color="#6F6F6F">Charleston Post Courier</font></b></font><br><font size="-1">That\'s when Kahn entered a local <b>bodybuilding</b> contest and found out he had a knack for &ldquo;Men\'s Physique,&rdquo; a division of competition geared to men who &ldquo;keep fit and eat a healthy balanced <b>diet</b> but who prefer to develop a less muscular, yet athletic and&nbsp;&hellip;</font><br><br><a target="_blank" class="p" href="http://ift.tt/1DdEBoj"><font class="p" size="-1"><b>and more&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PBK6">bodybuilding diet &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PDSb"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t1.gstatic.com/images?q=tbn:ANd9GcS03IHVpCOCs8XF6GbiETcx3IBMmDQXzJt_OhbGzY9oUq75Gjh7V5dZYXHomgnWlwwRPVU2gpQ" alt="" border="1" width="80" height="80"><br><font size="-2">Davisclipper</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PDSb"><b>Bodybuilder wins national titles</b></a><br><font size="-1"><b><font color="#6F6F6F">Davisclipper</font></b></font><br><font size="-1">Last fall, a friend encouraged Tracy to try <b>bodybuilding</b> and, after attending a local competition, she signed up with trainer Shane Heugly. She competed in the NPC Complete <b>Nutrition</b> competition at Granger High School in March and took home two first <b>&hellip;</b></font><br><br><a target="_blank" class="p" href="http://ift.tt/1gEPoDz"><font class="p" size="-1"><b>and more&nbsp;&raquo;</b></font></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PDSb">bodybuilding diet &ndash; Google News</a></p>\n<table border="0" cellpadding="2" cellspacing="7" style="vertical-align: top;"><tr>\n<td width="80" align="center" valign="top"><a target="_blank" href="http://ift.tt/1N5PBK8"><font style="font-size: 85%; font-family: arial,sans-serif;"><img src="//t3.gstatic.com/images?q=tbn:ANd9GcTpWnX1JkgDW3zx0QPgZYnu5VNAZRwxUiBx_lLK2l8VfH5qc1mr-Xv7vdBjjYr69o0ZvFdz78s" alt="" border="1" width="80" height="80"><br><font size="-2">NBC Chicago</font></font></a></td>\n<td valign="top" class="j">\n<div style="padding-top: 0.8em;"><font style="font-size: 85%; font-family: arial,sans-serif;"><img alt="" height="1" width="1"></font></div>\n<div class="lh"><font style="font-size: 85%; font-family: arial,sans-serif;"><a target="_blank" href="http://ift.tt/1N5PBK8"><b>Chicago Documentary-Maker Completes Stunning Four-Month Fitness Transformation</b></a><br><font size="-1"><b><font color="#6F6F6F">NBC Chicago</font></b></font><br><font size="-1">Kenneth Yoder, a 39-year-old filmmaker in Chicago, decided to make a life change and transform from an out-of-shape man into a competitive <b>bodybuilder</b> in just 100 days. NBC 5\'s Anthony Ponce has the story. (Published Saturday, April 18, 2015). "If I <b>&hellip;</b></font><br><br><a target="_blank" class="p" href="http://ift.tt/1LWFRmP"></a></font></div>\n</td>\n</tr></table><p><a target="_blank" rel="nofollow" href="http://ift.tt/1N5PBK8">bodybuilding diet &ndash; Google News</a></p>\n<p>The post <a rel="nofollow" href="http://ift.tt/1MBSYZ1">&lsquo;Fat kid&rsquo; turned successful bodybuilder reveals his diet and fitness secrets &ndash; Mirror.co.uk</a> appeared first on <a rel="nofollow" href="http://ift.tt/1zeJY9S">Bigger Muscles Now</a>.</p>\n<br><br>\nvia WordPress http://ift.tt/1MBSYZ1', u'labels': [], u'locked': False, u'title': u'Fat kid turned successful bodybuilder reveals his diet and fitness secrets  Mirror.co.uk', u'url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27731', u'labels_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27731/labels{/name}', u'created_at': u'2015-08-04T00:35:09Z', u'events_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27731/events', u'comments_url': u'https://api.github.com/repos/allendrehmer75/allen/issues/27731/comments', u'html_url': u'https://github.com/allendrehmer75/allen/issues/27731', u'comments': 0, u'number': 27731, u'updated_at': u'2015-08-04T00:35:09Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/allendrehmer75/following{/other_user}', u'events_url': u'https://api.github.com/users/allendrehmer75/events{/privacy}', u'organizations_url': u'https://api.github.com/users/allendrehmer75/orgs', u'url': u'https://api.github.com/users/allendrehmer75', u'gists_url': u'https://api.github.com/users/allendrehmer75/gists{/gist_id}', u'html_url': u'https://github.com/allendrehmer75', u'subscriptions_url': u'https://api.github.com/users/allendrehmer75/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/11863032?v=3', u'repos_url': u'https://api.github.com/users/allendrehmer75/repos', u'received_events_url': u'https://api.github.com/users/allendrehmer75/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/allendrehmer75/starred{/owner}{/repo}', u'site_admin': False, u'login': u'allendrehmer75', u'type': u'User', u'id': 11863032, u'followers_url': u'https://api.github.com/users/allendrehmer75/followers'}, u'milestone': None, u'closed_at': None, u'id': 98864115}}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/allendrehmer75', u'login': u'allendrehmer75', u'avatar_url': u'https://avatars.githubusercontent.com/u/11863032?', u'id': 11863032, u'gravatar_id': u''}, u'id': u'3028025664', u'repo': {u'url': u'https://api.github.com/repos/allendrehmer75/allen', u'id': 33641398, u'name': u'allendrehmer75/allen'}, u'type': u'IssuesEvent', u'public': True}, {u'payload': {u'action': u'opened', u'issue': {u'body': u"Hi i'm glad that you guys are adding this function, very handy.\r\n\r\ni understand this particular function is in beta, but thought i'd share a bug with you.\r\n\r\nspec export function works fine but for some pages, it creates blank html documents.\r\n\r\ni have tried to get rid of one elements at a time and re-exporting and found out that a type layer (paragraph, custom fonts) is causing the issue.\r\n\r\nI have other custom fonts exporting ok so i'm not sure if the font is the issue?\r\n\r\nWould be great if you guys could take a look at any bugs around font layer with spec export.\r\n\r\nthanks for great work guys!\r\n\r\n", u'labels': [], u'locked': False, u'title': u'Bug: Spec export', u'url': u'https://api.github.com/repos/utom/sketch-measure/issues/52', u'labels_url': u'https://api.github.com/repos/utom/sketch-measure/issues/52/labels{/name}', u'created_at': u'2015-08-04T00:35:09Z', u'events_url': u'https://api.github.com/repos/utom/sketch-measure/issues/52/events', u'comments_url': u'https://api.github.com/repos/utom/sketch-measure/issues/52/comments', u'html_url': u'https://github.com/utom/sketch-measure/issues/52', u'comments': 0, u'number': 52, u'updated_at': u'2015-08-04T00:35:09Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/bedrmninja/following{/other_user}', u'events_url': u'https://api.github.com/users/bedrmninja/events{/privacy}', u'organizations_url': u'https://api.github.com/users/bedrmninja/orgs', u'url': u'https://api.github.com/users/bedrmninja', u'gists_url': u'https://api.github.com/users/bedrmninja/gists{/gist_id}', u'html_url': u'https://github.com/bedrmninja', u'subscriptions_url': u'https://api.github.com/users/bedrmninja/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/13633483?v=3', u'repos_url': u'https://api.github.com/users/bedrmninja/repos', u'received_events_url': u'https://api.github.com/users/bedrmninja/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/bedrmninja/starred{/owner}{/repo}', u'site_admin': False, u'login': u'bedrmninja', u'type': u'User', u'id': 13633483, u'followers_url': u'https://api.github.com/users/bedrmninja/followers'}, u'milestone': None, u'closed_at': None, u'id': 98864114}}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/bedrmninja', u'login': u'bedrmninja', u'avatar_url': u'https://avatars.githubusercontent.com/u/13633483?', u'id': 13633483, u'gravatar_id': u''}, u'id': u'3028025663', u'repo': {u'url': u'https://api.github.com/repos/utom/sketch-measure', u'id': 18256968, u'name': u'utom/sketch-measure'}, u'type': u'IssuesEvent', u'public': True}, {u'payload': {u'action': u'opened', u'number': 1, u'pull_request': {u'deletions': 0, u'merge_commit_sha': None, u'number': 1, u'assignee': None, u'mergeable': None, u'closed_at': None, u'additions': 112, u'statuses_url': u'https://api.github.com/repos/odeke-em/cache/statuses/3276deb49fa23985cd35adde8b2b1376ec59ea6f', u'id': 41524265, u'title': u'Added Swift implementation', u'comments': 0, u'merged_at': None, u'state': u'open', u'_links': {u'review_comment': {u'href': u'https://api.github.com/repos/odeke-em/cache/pulls/comments{/number}'}, u'commits': {u'href': u'https://api.github.com/repos/odeke-em/cache/pulls/1/commits'}, u'self': {u'href': u'https://api.github.com/repos/odeke-em/cache/pulls/1'}, u'review_comments': {u'href': u'https://api.github.com/repos/odeke-em/cache/pulls/1/comments'}, u'html': {u'href': u'https://github.com/odeke-em/cache/pull/1'}, u'comments': {u'href': u'https://api.github.com/repos/odeke-em/cache/issues/1/comments'}, u'issue': {u'href': u'https://api.github.com/repos/odeke-em/cache/issues/1'}, u'statuses': {u'href': u'https://api.github.com/repos/odeke-em/cache/statuses/3276deb49fa23985cd35adde8b2b1376ec59ea6f'}}, u'changed_files': 2, u'diff_url': u'https://github.com/odeke-em/cache/pull/1.diff', u'issue_url': u'https://api.github.com/repos/odeke-em/cache/issues/1', u'body': u'Just a proof of concept. Tests are not complete by any means, but you get the idea!', u'head': {u'repo': {u'issues_url': u'https://api.github.com/repos/indragiek/cache/issues{/number}', u'stargazers_count': 0, u'forks_url': u'https://api.github.com/repos/indragiek/cache/forks', u'mirror_url': None, u'subscription_url': u'https://api.github.com/repos/indragiek/cache/subscription', u'notifications_url': u'https://api.github.com/repos/indragiek/cache/notifications{?since,all,participating}', u'collaborators_url': u'https://api.github.com/repos/indragiek/cache/collaborators{/collaborator}', u'updated_at': u'2015-08-04T00:30:10Z', u'private': False, u'pulls_url': u'https://api.github.com/repos/indragiek/cache/pulls{/number}', u'issue_comment_url': u'https://api.github.com/repos/indragiek/cache/issues/comments{/number}', u'labels_url': u'https://api.github.com/repos/indragiek/cache/labels{/name}', u'has_wiki': True, u'full_name': u'indragiek/cache', u'owner': {u'following_url': u'https://api.github.com/users/indragiek/following{/other_user}', u'events_url': u'https://api.github.com/users/indragiek/events{/privacy}', u'organizations_url': u'https://api.github.com/users/indragiek/orgs', u'url': u'https://api.github.com/users/indragiek', u'gists_url': u'https://api.github.com/users/indragiek/gists{/gist_id}', u'html_url': u'https://github.com/indragiek', u'subscriptions_url': u'https://api.github.com/users/indragiek/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/353158?v=3', u'repos_url': u'https://api.github.com/users/indragiek/repos', u'received_events_url': u'https://api.github.com/users/indragiek/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/indragiek/starred{/owner}{/repo}', u'site_admin': False, u'login': u'indragiek', u'type': u'User', u'id': 353158, u'followers_url': u'https://api.github.com/users/indragiek/followers'}, u'statuses_url': u'https://api.github.com/repos/indragiek/cache/statuses/{sha}', u'id': 40154627, u'keys_url': u'https://api.github.com/repos/indragiek/cache/keys{/key_id}', u'description': u'Simple cache with expirable values', u'tags_url': u'https://api.github.com/repos/indragiek/cache/tags', u'downloads_url': u'https://api.github.com/repos/indragiek/cache/downloads', u'assignees_url': u'https://api.github.com/repos/indragiek/cache/assignees{/user}', u'contents_url': u'https://api.github.com/repos/indragiek/cache/contents/{+path}', u'has_pages': False, u'git_refs_url': u'https://api.github.com/repos/indragiek/cache/git/refs{/sha}', u'open_issues_count': 0, u'clone_url': u'https://github.com/indragiek/cache.git', u'watchers_count': 0, u'git_tags_url': u'https://api.github.com/repos/indragiek/cache/git/tags{/sha}', u'milestones_url': u'https://api.github.com/repos/indragiek/cache/milestones{/number}', u'languages_url': u'https://api.github.com/repos/indragiek/cache/languages', u'size': 0, u'homepage': None, u'fork': True, u'commits_url': u'https://api.github.com/repos/indragiek/cache/commits{/sha}', u'releases_url': u'https://api.github.com/repos/indragiek/cache/releases{/id}', u'issue_events_url': u'https://api.github.com/repos/indragiek/cache/issues/events{/number}', u'archive_url': u'https://api.github.com/repos/indragiek/cache/{archive_format}{/ref}', u'comments_url': u'https://api.github.com/repos/indragiek/cache/comments{/number}', u'events_url': u'https://api.github.com/repos/indragiek/cache/events', u'contributors_url': u'https://api.github.com/repos/indragiek/cache/contributors', u'html_url': u'https://github.com/indragiek/cache', u'forks': 0, u'compare_url': u'https://api.github.com/repos/indragiek/cache/compare/{base}...{head}', u'open_issues': 0, u'git_url': u'git://github.com/indragiek/cache.git', u'svn_url': u'https://github.com/indragiek/cache', u'merges_url': u'https://api.github.com/repos/indragiek/cache/merges', u'has_issues': False, u'ssh_url': u'git@github.com:indragiek/cache.git', u'blobs_url': u'https://api.github.com/repos/indragiek/cache/git/blobs{/sha}', u'git_commits_url': u'https://api.github.com/repos/indragiek/cache/git/commits{/sha}', u'hooks_url': u'https://api.github.com/repos/indragiek/cache/hooks', u'has_downloads': True, u'watchers': 0, u'name': u'cache', u'language': u'Go', u'url': u'https://api.github.com/repos/indragiek/cache', u'created_at': u'2015-08-04T00:30:10Z', u'pushed_at': u'2015-08-04T00:34:47Z', u'forks_count': 0, u'default_branch': u'master', u'teams_url': u'https://api.github.com/repos/indragiek/cache/teams', u'trees_url': u'https://api.github.com/repos/indragiek/cache/git/trees{/sha}', u'branches_url': u'https://api.github.com/repos/indragiek/cache/branches{/branch}', u'subscribers_url': u'https://api.github.com/repos/indragiek/cache/subscribers', u'stargazers_url': u'https://api.github.com/repos/indragiek/cache/stargazers'}, u'sha': u'3276deb49fa23985cd35adde8b2b1376ec59ea6f', u'ref': u'swift', u'user': {u'following_url': u'https://api.github.com/users/indragiek/following{/other_user}', u'events_url': u'https://api.github.com/users/indragiek/events{/privacy}', u'organizations_url': u'https://api.github.com/users/indragiek/orgs', u'url': u'https://api.github.com/users/indragiek', u'gists_url': u'https://api.github.com/users/indragiek/gists{/gist_id}', u'html_url': u'https://github.com/indragiek', u'subscriptions_url': u'https://api.github.com/users/indragiek/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/353158?v=3', u'repos_url': u'https://api.github.com/users/indragiek/repos', u'received_events_url': u'https://api.github.com/users/indragiek/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/indragiek/starred{/owner}{/repo}', u'site_admin': False, u'login': u'indragiek', u'type': u'User', u'id': 353158, u'followers_url': u'https://api.github.com/users/indragiek/followers'}, u'label': u'indragiek:swift'}, u'commits_url': u'https://api.github.com/repos/odeke-em/cache/pulls/1/commits', u'commits': 1, u'comments_url': u'https://api.github.com/repos/odeke-em/cache/issues/1/comments', u'html_url': u'https://github.com/odeke-em/cache/pull/1', u'updated_at': u'2015-08-04T00:35:09Z', u'base': {u'repo': {u'issues_url': u'https://api.github.com/repos/odeke-em/cache/issues{/number}', u'stargazers_count': 0, u'forks_url': u'https://api.github.com/repos/odeke-em/cache/forks', u'mirror_url': None, u'subscription_url': u'https://api.github.com/repos/odeke-em/cache/subscription', u'notifications_url': u'https://api.github.com/repos/odeke-em/cache/notifications{?since,all,participating}', u'collaborators_url': u'https://api.github.com/repos/odeke-em/cache/collaborators{/collaborator}', u'updated_at': u'2015-08-02T11:06:23Z', u'private': False, u'pulls_url': u'https://api.github.com/repos/odeke-em/cache/pulls{/number}', u'issue_comment_url': u'https://api.github.com/repos/odeke-em/cache/issues/comments{/number}', u'labels_url': u'https://api.github.com/repos/odeke-em/cache/labels{/name}', u'has_wiki': True, u'full_name': u'odeke-em/cache', u'owner': {u'following_url': u'https://api.github.com/users/odeke-em/following{/other_user}', u'events_url': u'https://api.github.com/users/odeke-em/events{/privacy}', u'organizations_url': u'https://api.github.com/users/odeke-em/orgs', u'url': u'https://api.github.com/users/odeke-em', u'gists_url': u'https://api.github.com/users/odeke-em/gists{/gist_id}', u'html_url': u'https://github.com/odeke-em', u'subscriptions_url': u'https://api.github.com/users/odeke-em/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/4898263?v=3', u'repos_url': u'https://api.github.com/users/odeke-em/repos', u'received_events_url': u'https://api.github.com/users/odeke-em/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/odeke-em/starred{/owner}{/repo}', u'site_admin': False, u'login': u'odeke-em', u'type': u'User', u'id': 4898263, u'followers_url': u'https://api.github.com/users/odeke-em/followers'}, u'statuses_url': u'https://api.github.com/repos/odeke-em/cache/statuses/{sha}', u'id': 40045090, u'keys_url': u'https://api.github.com/repos/odeke-em/cache/keys{/key_id}', u'description': u'Simple cache with expirable values', u'tags_url': u'https://api.github.com/repos/odeke-em/cache/tags', u'downloads_url': u'https://api.github.com/repos/odeke-em/cache/downloads', u'assignees_url': u'https://api.github.com/repos/odeke-em/cache/assignees{/user}', u'contents_url': u'https://api.github.com/repos/odeke-em/cache/contents/{+path}', u'has_pages': False, u'git_refs_url': u'https://api.github.com/repos/odeke-em/cache/git/refs{/sha}', u'open_issues_count': 1, u'clone_url': u'https://github.com/odeke-em/cache.git', u'watchers_count': 0, u'git_tags_url': u'https://api.github.com/repos/odeke-em/cache/git/tags{/sha}', u'milestones_url': u'https://api.github.com/repos/odeke-em/cache/milestones{/number}', u'languages_url': u'https://api.github.com/repos/odeke-em/cache/languages', u'size': 0, u'homepage': None, u'fork': False, u'commits_url': u'https://api.github.com/repos/odeke-em/cache/commits{/sha}', u'releases_url': u'https://api.github.com/repos/odeke-em/cache/releases{/id}', u'issue_events_url': u'https://api.github.com/repos/odeke-em/cache/issues/events{/number}', u'archive_url': u'https://api.github.com/repos/odeke-em/cache/{archive_format}{/ref}', u'comments_url': u'https://api.github.com/repos/odeke-em/cache/comments{/number}', u'events_url': u'https://api.github.com/repos/odeke-em/cache/events', u'contributors_url': u'https://api.github.com/repos/odeke-em/cache/contributors', u'html_url': u'https://github.com/odeke-em/cache', u'forks': 1, u'compare_url': u'https://api.github.com/repos/odeke-em/cache/compare/{base}...{head}', u'open_issues': 1, u'git_url': u'git://github.com/odeke-em/cache.git', u'svn_url': u'https://github.com/odeke-em/cache', u'merges_url': u'https://api.github.com/repos/odeke-em/cache/merges', u'has_issues': True, u'ssh_url': u'git@github.com:odeke-em/cache.git', u'blobs_url': u'https://api.github.com/repos/odeke-em/cache/git/blobs{/sha}', u'git_commits_url': u'https://api.github.com/repos/odeke-em/cache/git/commits{/sha}', u'hooks_url': u'https://api.github.com/repos/odeke-em/cache/hooks', u'has_downloads': True, u'watchers': 0, u'name': u'cache', u'language': u'Go', u'url': u'https://api.github.com/repos/odeke-em/cache', u'created_at': u'2015-08-01T11:53:36Z', u'pushed_at': u'2015-08-02T11:07:42Z', u'forks_count': 1, u'default_branch': u'master', u'teams_url': u'https://api.github.com/repos/odeke-em/cache/teams', u'trees_url': u'https://api.github.com/repos/odeke-em/cache/git/trees{/sha}', u'branches_url': u'https://api.github.com/repos/odeke-em/cache/branches{/branch}', u'subscribers_url': u'https://api.github.com/repos/odeke-em/cache/subscribers', u'stargazers_url': u'https://api.github.com/repos/odeke-em/cache/stargazers'}, u'sha': u'a3d3642de728835b7da7483483ed8cff0cb2796a', u'ref': u'master', u'user': {u'following_url': u'https://api.github.com/users/odeke-em/following{/other_user}', u'events_url': u'https://api.github.com/users/odeke-em/events{/privacy}', u'organizations_url': u'https://api.github.com/users/odeke-em/orgs', u'url': u'https://api.github.com/users/odeke-em', u'gists_url': u'https://api.github.com/users/odeke-em/gists{/gist_id}', u'html_url': u'https://github.com/odeke-em', u'subscriptions_url': u'https://api.github.com/users/odeke-em/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/4898263?v=3', u'repos_url': u'https://api.github.com/users/odeke-em/repos', u'received_events_url': u'https://api.github.com/users/odeke-em/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/odeke-em/starred{/owner}{/repo}', u'site_admin': False, u'login': u'odeke-em', u'type': u'User', u'id': 4898263, u'followers_url': u'https://api.github.com/users/odeke-em/followers'}, u'label': u'odeke-em:master'}, u'user': {u'following_url': u'https://api.github.com/users/indragiek/following{/other_user}', u'events_url': u'https://api.github.com/users/indragiek/events{/privacy}', u'organizations_url': u'https://api.github.com/users/indragiek/orgs', u'url': u'https://api.github.com/users/indragiek', u'gists_url': u'https://api.github.com/users/indragiek/gists{/gist_id}', u'html_url': u'https://github.com/indragiek', u'subscriptions_url': u'https://api.github.com/users/indragiek/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/353158?v=3', u'repos_url': u'https://api.github.com/users/indragiek/repos', u'received_events_url': u'https://api.github.com/users/indragiek/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/indragiek/starred{/owner}{/repo}', u'site_admin': False, u'login': u'indragiek', u'type': u'User', u'id': 353158, u'followers_url': u'https://api.github.com/users/indragiek/followers'}, u'milestone': None, u'locked': False, u'merged_by': None, u'url': u'https://api.github.com/repos/odeke-em/cache/pulls/1', u'mergeable_state': u'unknown', u'created_at': u'2015-08-04T00:35:09Z', u'merged': False, u'review_comments_url': u'https://api.github.com/repos/odeke-em/cache/pulls/1/comments', u'review_comments': 0, u'review_comment_url': u'https://api.github.com/repos/odeke-em/cache/pulls/comments{/number}', u'patch_url': u'https://github.com/odeke-em/cache/pull/1.patch'}}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/indragiek', u'login': u'indragiek', u'avatar_url': u'https://avatars.githubusercontent.com/u/353158?', u'id': 353158, u'gravatar_id': u''}, u'id': u'3028025662', u'repo': {u'url': u'https://api.github.com/repos/odeke-em/cache', u'id': 40045090, u'name': u'odeke-em/cache'}, u'type': u'PullRequestEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'7b45c8c0583b1bd5b1a49c89a8c7443231544fba', u'commits': [{u'distinct': True, u'sha': u'7b45c8c0583b1bd5b1a49c89a8c7443231544fba', u'message': u'update', u'url': u'https://api.github.com/repos/sonofgodot/waitingforgodot/commits/7b45c8c0583b1bd5b1a49c89a8c7443231544fba', u'author': {u'email': u'ozgurfiratcinar@gmail.com', u'name': u'Ozgur Firat Cinar'}}], u'distinct_size': 1, u'push_id': 746567746, u'ref': u'refs/heads/master', u'before': u'e52877ba02b3d5ec1767de07ec557777f783a484'}, u'created_at': u'2015-08-04T00:35:10Z', u'actor': {u'url': u'https://api.github.com/users/sonofgodot', u'login': u'sonofgodot', u'avatar_url': u'https://avatars.githubusercontent.com/u/13632609?', u'id': 13632609, u'gravatar_id': u''}, u'id': u'3028025660', u'repo': {u'url': u'https://api.github.com/repos/sonofgodot/waitingforgodot', u'id': 40152270, u'name': u'sonofgodot/waitingforgodot'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'a0a871ef2e6b2791e90566d4d34fe0d5d8291359', u'commits': [{u'distinct': True, u'sha': u'a0a871ef2e6b2791e90566d4d34fe0d5d8291359', u'message': u'Test - Clear repository branch', u'url': u'https://api.github.com/repos/pbaffiliate1/repoForPurge/commits/a0a871ef2e6b2791e90566d4d34fe0d5d8291359', u'author': {u'email': u'pbaffiliate1@gmail.com', u'name': u'pbaffiliate1'}}], u'distinct_size': 1, u'push_id': 746567744, u'ref': u'refs/heads/branchForPurge', u'before': u'e08b78566fde2c14b27257b2b72a59613ce00525'}, u'created_at': u'2015-08-04T00:35:09Z', u'actor': {u'url': u'https://api.github.com/users/pbaffiliate1', u'login': u'pbaffiliate1', u'avatar_url': u'https://avatars.githubusercontent.com/u/10029825?', u'id': 10029825, u'gravatar_id': u''}, u'id': u'3028025657', u'repo': {u'url': u'https://api.github.com/repos/pbaffiliate1/repoForPurge', u'id': 30405136, u'name': u'pbaffiliate1/repoForPurge'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'action': u'created', u'comment': {u'body': u"As for the parsed time being slower, that's probably ok as long as we no longer need to parse the whole file each time we add an entry, unlike with xml. Or maybe these were reversed too?", u'url': u'https://api.github.com/repos/projectkudu/kudu/issues/comments/127441559', u'created_at': u'2015-08-04T00:35:09Z', u'html_url': u'https://github.com/projectkudu/kudu/pull/1643#issuecomment-127441559', u'updated_at': u'2015-08-04T00:35:09Z', u'user': {u'following_url': u'https://api.github.com/users/davidebbo/following{/other_user}', u'events_url': u'https://api.github.com/users/davidebbo/events{/privacy}', u'organizations_url': u'https://api.github.com/users/davidebbo/orgs', u'url': u'https://api.github.com/users/davidebbo', u'gists_url': u'https://api.github.com/users/davidebbo/gists{/gist_id}', u'html_url': u'https://github.com/davidebbo', u'subscriptions_url': u'https://api.github.com/users/davidebbo/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/556238?v=3', u'repos_url': u'https://api.github.com/users/davidebbo/repos', u'received_events_url': u'https://api.github.com/users/davidebbo/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/davidebbo/starred{/owner}{/repo}', u'site_admin': False, u'login': u'davidebbo', u'type': u'User', u'id': 556238, u'followers_url': u'https://api.github.com/users/davidebbo/followers'}, u'id': 127441559, u'issue_url': u'https://api.github.com/repos/projectkudu/kudu/issues/1643'}, u'issue': {u'body': u'Fixes #1622\r\nWith the following `deploy.cmd`\r\n\r\n``` batch\r\n@ECHO OFF\r\nREM this prints 5,000 lines\r\nFOR /L %%i in (1,1,5000) do echo "Iteration %%i"\r\n```\r\n\r\n_| XmlLogger | StructuredTextLogger\r\n--- | --- | ---\r\nTime | 00:**10:26** | 00:00:**55**\r\nFile Name | `log.xml` | `log.log`\r\nFile Size | `768 KB` | `572 KB`\r\nParsing Time | ~`25 msec` for `XDocument.Load()` | ~`240 msec`\r\n\r\nLog format looks like\r\n\r\n```\r\nmessage="Updating branch \'master\'." time="8/3/2015 9:43:09 PM" id="0884ef1a-d1f9-40a1-80af-43d27dbbb988" type="0"\r\nmessage="Updating submodules." time="8/3/2015 9:43:09 PM" id="72566408-30a1-4e13-a15d-0734ab5c7e6e" type="0"\r\nmessage="Preparing deployment for commit id \'7fefd88f08\'." time="8/3/2015 9:43:09 PM" id="c71756ba-729d-49f5-90cf-cf958a71ba24" type="0"\r\nmessage="Running custom deployment command..." time="8/3/2015 9:43:10 PM" id="c4c96196-32eb-4b90-a82a-fecc161f8be5" type="0"\r\nmessage="Running deployment command..." time="8/3/2015 9:43:10 PM" id="fbd0ebf5-2587-47e9-afd5-70db8242d163" type="0"\r\n\tmessage="Command: deploy.cmd" time="8/3/2015 9:43:10 PM" id="b0aff723-2a12-4df2-99b7-c0fdff5d360f" type="0"\r\n\tmessage="&quot;Iteration 1&quot;" time="8/3/2015 9:43:11 PM" id="1cb3dd5e-37b7-4652-b849-0d86bce1c83c" type="0"\r\n\tmessage="&quot;Iteration 2&quot;" time="8/3/2015 9:43:11 PM" id="577e0fdb-9070-4bc0-9093-c4532fb2c131" type="0"\r\n\tmessage="&quot;Iteration 3&quot;" time="8/3/2015 9:43:11 PM" id="4c7c460f-c111-4669-a73a-a73a4ca4b1d7" type="0"\r\n\tmessage="&quot;Iteration 4&quot;" time="8/3/2015 9:43:11 PM" id="aa17724c-e1df-459c-8e0d-b93a02bef249" type="0"\r\n...\r\nmessage="Deployment successful." time="8/3/2015 9:43:53 PM" id="234e947a-4d78-4c76-a53d-2b3d6e619c8a" type="0"\r\n```\r\n\r\n**Unlike** the `XmlLogger`, this logger doesn\'t support out-of-order logging.', u'labels': [{u'url': u'https://api.github.com/repos/projectkudu/kudu/labels/cla-already-signed', u'color': u'009800', u'name': u'cla-already-signed'}], u'locked': False, u'title': u'Replacing XmlLogger with StructuredTextLogger for deployment logs to improve performance', u'url': u'https://api.github.com/repos/projectkudu/kudu/issues/1643', u'labels_url': u'https://api.github.com/repos/projectkudu/kudu/issues/1643/labels{/name}', u'created_at': u'2015-08-03T23:55:02Z', u'events_url': u'https://api.github.com/repos/projectkudu/kudu/issues/1643/events', u'comments_url': u'https://api.github.com/repos/projectkudu/kudu/issues/1643/comments', u'html_url': u'https://github.com/projectkudu/kudu/pull/1643', u'comments': 4, u'number': 1643, u'updated_at': u'2015-08-04T00:35:09Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/ahmelsayed/following{/other_user}', u'events_url': u'https://api.github.com/users/ahmelsayed/events{/privacy}', u'organizations_url': u'https://api.github.com/users/ahmelsayed/orgs', u'url': u'https://api.github.com/users/ahmelsayed', u'gists_url': u'https://api.github.com/users/ahmelsayed/gists{/gist_id}', u'html_url': u'https://github.com/ahmelsayed', u'subscriptions_url': u'https://api.github.com/users/ahmelsayed/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/645740?v=3', u'repos_url': u'https://api.github.com/users/ahmelsayed/repos', u'received_events_url': u'https://api.github.com/users/ahmelsayed/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/ahmelsayed/starred{/owner}{/repo}', u'site_admin': False, u'login': u'ahmelsayed', u'type': u'User', u'id': 645740, u'followers_url': u'https://api.github.com/users/ahmelsayed/followers'}, u'milestone': None, u'closed_at': None, u'pull_request': {u'url': u'https://api.github.com/repos/projectkudu/kudu/pulls/1643', u'diff_url': u'https://github.com/projectkudu/kudu/pull/1643.diff', u'html_url': u'https://github.com/projectkudu/kudu/pull/1643', u'patch_url': u'https://github.com/projectkudu/kudu/pull/1643.patch'}, u'id': 98860530}}, u'created_at': u'2015-08-04T00:35:09Z', u'actor': {u'url': u'https://api.github.com/users/davidebbo', u'login': u'davidebbo', u'avatar_url': u'https://avatars.githubusercontent.com/u/556238?', u'id': 556238, u'gravatar_id': u''}, u'id': u'3028025654', u'repo': {u'url': u'https://api.github.com/repos/projectkudu/kudu', u'id': 1939769, u'name': u'projectkudu/kudu'}, u'org': {u'url': u'https://api.github.com/orgs/projectkudu', u'login': u'projectkudu', u'avatar_url': u'https://avatars.githubusercontent.com/u/927131?', u'id': 927131, u'gravatar_id': u''}, u'type': u'IssueCommentEvent', u'public': True}, {u'payload': {u'master_branch': u'master', u'ref_type': u'branch', u'ref': u'master', u'description': u'openGL-playground-gear-theme', u'pusher_type': u'user'}, u'created_at': u'2015-08-04T00:35:08Z', u'actor': {u'url': u'https://api.github.com/users/melsov', u'login': u'melsov', u'avatar_url': u'https://avatars.githubusercontent.com/u/448308?', u'id': 448308, u'gravatar_id': u''}, u'id': u'3028025643', u'repo': {u'url': u'https://api.github.com/repos/melsov/tut6Gears', u'id': 40154764, u'name': u'melsov/tut6Gears'}, u'type': u'CreateEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'066c41b6e3977d932d60e038aa0e0c39a5359586', u'commits': [{u'distinct': True, u'sha': u'066c41b6e3977d932d60e038aa0e0c39a5359586', u'message': u'bug fix and data file added', u'url': u'https://api.github.com/repos/skytthe/VGAtestbench/commits/066c41b6e3977d932d60e038aa0e0c39a5359586', u'author': {u'email': u'skytthe@Stefans-MacBook-Pro.local', u'name': u'skytthe'}}], u'distinct_size': 1, u'push_id': 746567735, u'ref': u'refs/heads/master', u'before': u'5c0257a4c69490c9c4213c8ab613f872d6433169'}, u'created_at': u'2015-08-04T00:35:08Z', u'actor': {u'url': u'https://api.github.com/users/skytthe', u'login': u'skytthe', u'avatar_url': u'https://avatars.githubusercontent.com/u/272310?', u'id': 272310, u'gravatar_id': u''}, u'id': u'3028025628', u'repo': {u'url': u'https://api.github.com/repos/skytthe/VGAtestbench', u'id': 36694408, u'name': u'skytthe/VGAtestbench'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'action': u'opened', u'issue': {u'body': u'Would it be possible to show the center line to help line up variants with reads?', u'labels': [], u'locked': False, u'title': u'show center line', u'url': u'https://api.github.com/repos/igvteam/igv.js/issues/137', u'labels_url': u'https://api.github.com/repos/igvteam/igv.js/issues/137/labels{/name}', u'created_at': u'2015-08-04T00:35:08Z', u'events_url': u'https://api.github.com/repos/igvteam/igv.js/issues/137/events', u'comments_url': u'https://api.github.com/repos/igvteam/igv.js/issues/137/comments', u'html_url': u'https://github.com/igvteam/igv.js/issues/137', u'comments': 0, u'number': 137, u'updated_at': u'2015-08-04T00:35:08Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/bw2/following{/other_user}', u'events_url': u'https://api.github.com/users/bw2/events{/privacy}', u'organizations_url': u'https://api.github.com/users/bw2/orgs', u'url': u'https://api.github.com/users/bw2', u'gists_url': u'https://api.github.com/users/bw2/gists{/gist_id}', u'html_url': u'https://github.com/bw2', u'subscriptions_url': u'https://api.github.com/users/bw2/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/6240170?v=3', u'repos_url': u'https://api.github.com/users/bw2/repos', u'received_events_url': u'https://api.github.com/users/bw2/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/bw2/starred{/owner}{/repo}', u'site_admin': False, u'login': u'bw2', u'type': u'User', u'id': 6240170, u'followers_url': u'https://api.github.com/users/bw2/followers'}, u'milestone': None, u'closed_at': None, u'id': 98864110}}, u'created_at': u'2015-08-04T00:35:08Z', u'actor': {u'url': u'https://api.github.com/users/bw2', u'login': u'bw2', u'avatar_url': u'https://avatars.githubusercontent.com/u/6240170?', u'id': 6240170, u'gravatar_id': u''}, u'id': u'3028025624', u'repo': {u'url': u'https://api.github.com/repos/igvteam/igv.js', u'id': 23367077, u'name': u'igvteam/igv.js'}, u'org': {u'url': u'https://api.github.com/orgs/igvteam', u'login': u'igvteam', u'avatar_url': u'https://avatars.githubusercontent.com/u/11527111?', u'id': 11527111, u'gravatar_id': u''}, u'type': u'IssuesEvent', u'public': True}, {u'payload': {u'action': u'created', u'comment': {u'body': u"@outoftime Having troubles with this integration, I'm not too experienced with node and react. Mind taking a look?\r\n\r\n![screenshot2](https://cloud.githubusercontent.com/assets/1270156/9050714/ba084f0c-3a16-11e5-8de3-72dd39ab7251.png)\r\n", u'url': u'https://api.github.com/repos/outoftime/learnpad/issues/comments/127441556', u'created_at': u'2015-08-04T00:35:07Z', u'html_url': u'https://github.com/outoftime/learnpad/pull/23#issuecomment-127441556', u'updated_at': u'2015-08-04T00:35:07Z', u'user': {u'following_url': u'https://api.github.com/users/kinduff/following{/other_user}', u'events_url': u'https://api.github.com/users/kinduff/events{/privacy}', u'organizations_url': u'https://api.github.com/users/kinduff/orgs', u'url': u'https://api.github.com/users/kinduff', u'gists_url': u'https://api.github.com/users/kinduff/gists{/gist_id}', u'html_url': u'https://github.com/kinduff', u'subscriptions_url': u'https://api.github.com/users/kinduff/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/1270156?v=3', u'repos_url': u'https://api.github.com/users/kinduff/repos', u'received_events_url': u'https://api.github.com/users/kinduff/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/kinduff/starred{/owner}{/repo}', u'site_admin': False, u'login': u'kinduff', u'type': u'User', u'id': 1270156, u'followers_url': u'https://api.github.com/users/kinduff/followers'}, u'id': 127441556, u'issue_url': u'https://api.github.com/repos/outoftime/learnpad/issues/23'}, u'issue': {u'body': u"#### What's this PR do?\r\n- [x] Integrates [i18next](https://github.com/i18next/i18next) as internationalization support\r\n- [x] Generates english locale with HTML, CSS and JS errors\r\n- [x] Integrate locale errors to validations\r\n\r\n#### Issues\r\n- [ ] i18next doesn't load `json` translation file even though it's inside the directory\r\n- [ ] `i18n` method undefined when calling it from translation files\r\n\r\n#### Related Issues\r\n#22 ", u'labels': [], u'locked': False, u'title': u'[WIP] Support internationalization', u'url': u'https://api.github.com/repos/outoftime/learnpad/issues/23', u'labels_url': u'https://api.github.com/repos/outoftime/learnpad/issues/23/labels{/name}', u'created_at': u'2015-08-04T00:32:31Z', u'events_url': u'https://api.github.com/repos/outoftime/learnpad/issues/23/events', u'comments_url': u'https://api.github.com/repos/outoftime/learnpad/issues/23/comments', u'html_url': u'https://github.com/outoftime/learnpad/pull/23', u'comments': 1, u'number': 23, u'updated_at': u'2015-08-04T00:35:07Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/kinduff/following{/other_user}', u'events_url': u'https://api.github.com/users/kinduff/events{/privacy}', u'organizations_url': u'https://api.github.com/users/kinduff/orgs', u'url': u'https://api.github.com/users/kinduff', u'gists_url': u'https://api.github.com/users/kinduff/gists{/gist_id}', u'html_url': u'https://github.com/kinduff', u'subscriptions_url': u'https://api.github.com/users/kinduff/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/1270156?v=3', u'repos_url': u'https://api.github.com/users/kinduff/repos', u'received_events_url': u'https://api.github.com/users/kinduff/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/kinduff/starred{/owner}{/repo}', u'site_admin': False, u'login': u'kinduff', u'type': u'User', u'id': 1270156, u'followers_url': u'https://api.github.com/users/kinduff/followers'}, u'milestone': None, u'closed_at': None, u'pull_request': {u'url': u'https://api.github.com/repos/outoftime/learnpad/pulls/23', u'diff_url': u'https://github.com/outoftime/learnpad/pull/23.diff', u'html_url': u'https://github.com/outoftime/learnpad/pull/23', u'patch_url': u'https://github.com/outoftime/learnpad/pull/23.patch'}, u'id': 98863881}}, u'created_at': u'2015-08-04T00:35:07Z', u'actor': {u'url': u'https://api.github.com/users/kinduff', u'login': u'kinduff', u'avatar_url': u'https://avatars.githubusercontent.com/u/1270156?', u'id': 1270156, u'gravatar_id': u''}, u'id': u'3028025612', u'repo': {u'url': u'https://api.github.com/repos/outoftime/learnpad', u'id': 39417599, u'name': u'outoftime/learnpad'}, u'type': u'IssueCommentEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'cc83bb54f292b43ff7e2998330f501fa1e89de0c', u'commits': [{u'distinct': True, u'sha': u'cc83bb54f292b43ff7e2998330f501fa1e89de0c', u'message': u'Update HelloWorld.md', u'url': u'https://api.github.com/repos/Fabbiologia/datasciencecoursera/commits/cc83bb54f292b43ff7e2998330f501fa1e89de0c', u'author': {u'email': u'Favoretto.fabio@gmail.com', u'name': u'Fabbiologia'}}], u'distinct_size': 1, u'push_id': 746567728, u'ref': u'refs/heads/assignment', u'before': u'eadda8227eb8394b2e7265776dddf16106bdd7a6'}, u'created_at': u'2015-08-04T00:35:07Z', u'actor': {u'url': u'https://api.github.com/users/Fabbiologia', u'login': u'Fabbiologia', u'avatar_url': u'https://avatars.githubusercontent.com/u/13567334?', u'id': 13567334, u'gravatar_id': u''}, u'id': u'3028025605', u'repo': {u'url': u'https://api.github.com/repos/Fabbiologia/datasciencecoursera', u'id': 40152942, u'name': u'Fabbiologia/datasciencecoursera'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'8efbb6f7e52bf867047c055c27b50c70135b8192', u'commits': [{u'distinct': True, u'sha': u'8efbb6f7e52bf867047c055c27b50c70135b8192', u'message': u'Created README.MD', u'url': u'https://api.github.com/repos/TimVosch/NBeeT/commits/8efbb6f7e52bf867047c055c27b50c70135b8192', u'author': {u'email': u'timbox@live.nl', u'name': u'Tim van Osch'}}], u'distinct_size': 1, u'push_id': 746567722, u'ref': u'refs/heads/master', u'before': u'4cc4554edb6d685aafc95a11be255a652454fcc8'}, u'created_at': u'2015-08-04T00:35:07Z', u'actor': {u'url': u'https://api.github.com/users/TimVosch', u'login': u'TimVosch', u'avatar_url': u'https://avatars.githubusercontent.com/u/2981426?', u'id': 2981426, u'gravatar_id': u''}, u'id': u'3028025594', u'repo': {u'url': u'https://api.github.com/repos/TimVosch/NBeeT', u'id': 40154272, u'name': u'TimVosch/NBeeT'}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'size': 1, u'head': u'a4e97afe08fb3b3a668beeead58c0927c3021719', u'commits': [{u'distinct': True, u'sha': u'a4e97afe08fb3b3a668beeead58c0927c3021719', u'message': u'publish: Hacking around stupid deploy\n\ngenerated from commit a37582eb1cabdfaf272e323d3d3ba28ab0a1247b', u'url': u'https://api.github.com/repos/optimizely/developers.optimizely.com/commits/a4e97afe08fb3b3a668beeead58c0927c3021719', u'author': {u'email': u'lucas@optimizely.com', u'name': u'Lucas Swartsenburg'}}], u'distinct_size': 1, u'push_id': 746567721, u'ref': u'refs/heads/gh-pages', u'before': u'09d95eca5443e5b270022d37455a9615e53f2bfe'}, u'created_at': u'2015-08-04T00:35:07Z', u'actor': {u'url': u'https://api.github.com/users/lucasoptimizely', u'login': u'lucasoptimizely', u'avatar_url': u'https://avatars.githubusercontent.com/u/3931569?', u'id': 3931569, u'gravatar_id': u''}, u'id': u'3028025591', u'repo': {u'url': u'https://api.github.com/repos/optimizely/developers.optimizely.com', u'id': 34077573, u'name': u'optimizely/developers.optimizely.com'}, u'org': {u'url': u'https://api.github.com/orgs/optimizely', u'login': u'optimizely', u'avatar_url': u'https://avatars.githubusercontent.com/u/1274132?', u'id': 1274132, u'gravatar_id': u''}, u'type': u'PushEvent', u'public': True}, {u'payload': {u'pages': [{u'title': u'Part 2', u'html_url': u'/cherydactyl/BookService/wiki/Part-2', u'summary': None, u'sha': u'a59bb2b0ff04e731a79a84dc2a7d730553f6f022', u'page_name': u'Part-2', u'action': u'created'}]}, u'created_at': u'2015-08-04T00:35:07Z', u'actor': {u'url': u'https://api.github.com/users/cherydactyl', u'login': u'cherydactyl', u'avatar_url': u'https://avatars.githubusercontent.com/u/12126600?', u'id': 12126600, u'gravatar_id': u''}, u'id': u'3028025590', u'repo': {u'url': u'https://api.github.com/repos/cherydactyl/BookService', u'id': 40143685, u'name': u'cherydactyl/BookService'}, u'type': u'GollumEvent', u'public': True}, {u'payload': {u'master_branch': u'master', u'ref_type': u'branch', u'ref': u'master', u'description': u'Automatically exported from code.google.com/p/aiml-en-us-pandorabots-callmom.v1-0', u'pusher_type': u'user'}, u'created_at': u'2015-08-04T00:35:07Z', u'actor': {u'url': u'https://api.github.com/users/GoogleCodeExporter', u'login': u'GoogleCodeExporter', u'avatar_url': u'https://avatars.githubusercontent.com/u/9614759?', u'id': 9614759, u'gravatar_id': u''}, u'id': u'3028025589', u'repo': {u'url': u'https://api.github.com/repos/isural/aiml-en-us-pandorabots-callmom.v1-0', u'id': 40154726, u'name': u'isural/aiml-en-us-pandorabots-callmom.v1-0'}, u'type': u'CreateEvent', u'public': True}, {u'payload': {u'action': u'started'}, u'created_at': u'2015-08-04T00:35:07Z', u'actor': {u'url': u'https://api.github.com/users/qiulin', u'login': u'qiulin', u'avatar_url': u'https://avatars.githubusercontent.com/u/1104806?', u'id': 1104806, u'gravatar_id': u''}, u'id': u'3028025584', u'repo': {u'url': u'https://api.github.com/repos/callemall/material-ui', u'id': 23083156, u'name': u'callemall/material-ui'}, u'org': {u'url': u'https://api.github.com/orgs/callemall', u'login': u'callemall', u'avatar_url': u'https://avatars.githubusercontent.com/u/1262264?', u'id': 1262264, u'gravatar_id': u''}, u'type': u'WatchEvent', u'public': True}, {u'payload': {u'action': u'opened', u'issue': {u'body': u'<p><strong><b>Aerobic exercise</b> helpful for asthma</strong><br>\nWhile it\'s not surprising that asthma patients may benefit from aerobic exercise, the findings offer new evidence that physical activity can help even in patients who are already controlling symptoms with medication, said lead author Dr. Celso Carvalho &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1SEEIps">Reuters</a><br><br></i></p>\n<p><strong>New study finds <b>aerobic exercise</b> helps to control asthma</strong><br>\nST. LOUIS, MO (KTVI) &ndash; Drugs and medication may not be the only way to control moderate to severe asthma. According to a new Thorax study, people who do regular aerobic exercise have an easier time controlling common asthma symptoms than people&nbsp;&hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1flVQON">fox2now.com</a><br><br></i></p>\n<p><strong>Aquatic <b>Aerobic Exercise</b> Offers Therapeutic Benefits to Fibromyalgia Patients</strong><br>\nFMS, or simply fibromyalgia, is a medical disorder characterized by a set of symptoms that includes widespread chronic musculoskeletal pain, incapacitating fatigue, stiffness and numbness in certain parts of the body, painful response to pressure &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1SEEJd3">Fibromyalgia News Today</a><br><br></i></p>\n<p><strong><b>Aerobic Exercise</b> May Curb Severity of Asthma Symptoms</strong><br>\nThey found that the quality of life score rose significantly in those in the aerobic exercise group, while maximum oxygen intake and aerobic power increased. The effects were most noticeable in those with higher levels of systemic inflammation and &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1N5PEFV">University Herald</a><br><br></i></p>\n<p><strong>Postmenopausal adiposity benefits with increasing <b>aerobic exercise</b></strong><br>\nAn aerobic exercise regimen of 300 min/week versus 150 min/week significantly improves adiposity outcomes among postmenopausal women, shows research published in JAMA Oncology. Additionally, the benefits of higher-volume exercise could include&nbsp;&hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1Jt8DXn">News-Medical.net</a><br><br></i></p>\n<p><strong>To fend off dementia, run &mdash; or dance, bike, power-walk or step</strong><br>\nIn older adults with mild cognitive impairment &mdash; a condition that frequently precedes an Alzheimer\'s diagnosis &mdash; one study found that a program of regular intensive aerobic exercise reduced the quantity of tau protein found in cerebrospinal fluid &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1N5PEW8">Los Angeles Times</a><br><br></i></p>\n<p><strong><b>Aerobic exercise</b> is as good for the older brain as it is for the body</strong><br>\nBreak out the sweatbands and the oldies &ndash; 60 minutes of good old-fashioned aerobic exercise may be more potent than any pill to reduce older adults\' risk of cognitive decline due to mini-strokes, according to research by Vancouver Coastal Health &hellip;<br><i>Read more on <a target="_blank" rel="nofollow" href="http://ift.tt/1Dc5zSU">University of British Columbia</a><br><br></i></p>\n<p>The post <a rel="nofollow" href="http://ift.tt/1IBTAdm"><b>Aerobic exercise</b> helpful for asthma</a> appeared first on <a rel="nofollow" href="http://ift.tt/1zeJY9S">Bigger Muscles Now</a>.</p>\n<br><br>\nvia WordPress http://ift.tt/1IBTAdm', u'labels': [], u'locked': False, u'title': u'Aerobic exercise helpful for asthma', u'url': u'https://api.github.com/repos/juanitaso12/juanitas/issues/27813', u'labels_url': u'https://api.github.com/repos/juanitaso12/juanitas/issues/27813/labels{/name}', u'created_at': u'2015-08-04T00:35:06Z', u'events_url': u'https://api.github.com/repos/juanitaso12/juanitas/issues/27813/events', u'comments_url': u'https://api.github.com/repos/juanitaso12/juanitas/issues/27813/comments', u'html_url': u'https://github.com/juanitaso12/juanitas/issues/27813', u'comments': 0, u'number': 27813, u'updated_at': u'2015-08-04T00:35:06Z', u'assignee': None, u'state': u'open', u'user': {u'following_url': u'https://api.github.com/users/juanitaso12/following{/other_user}', u'events_url': u'https://api.github.com/users/juanitaso12/events{/privacy}', u'organizations_url': u'https://api.github.com/users/juanitaso12/orgs', u'url': u'https://api.github.com/users/juanitaso12', u'gists_url': u'https://api.github.com/users/juanitaso12/gists{/gist_id}', u'html_url': u'https://github.com/juanitaso12', u'subscriptions_url': u'https://api.github.com/users/juanitaso12/subscriptions', u'avatar_url': u'https://avatars.githubusercontent.com/u/11931475?v=3', u'repos_url': u'https://api.github.com/users/juanitaso12/repos', u'received_events_url': u'https://api.github.com/users/juanitaso12/received_events', u'gravatar_id': u'', u'starred_url': u'https://api.github.com/users/juanitaso12/starred{/owner}{/repo}', u'site_admin': False, u'login': u'juanitaso12', u'type': u'User', u'id': 11931475, u'followers_url': u'https://api.github.com/users/juanitaso12/followers'}, u'milestone': None, u'closed_at': None, u'id': 98864106}}, u'created_at': u'2015-08-04T00:35:06Z', u'actor': {u'url': u'https://api.github.com/users/juanitaso12', u'login': u'juanitaso12', u'avatar_url': u'https://avatars.githubusercontent.com/u/11931475?', u'id': 11931475, u'gravatar_id': u''}, u'id': u'3028025571', u'repo': {u'url': u'https://api.github.com/repos/juanitaso12/juanitas', u'id': 33891355, u'name': u'juanitaso12/juanitas'}, u'type': u'IssuesEvent', u'public': True}]
+>>> ^D
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ clear
+
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> r = requests.get('https://developers.google.com/resources/api-libraries/documentation/qpxExpress/v1/python/latest/qpxExpress_v1.trips.html')
+>>> r.json()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Library/Python/2.7/site-packages/requests/models.py", line 819, in json
+    return json.loads(self.text, **kwargs)
+  File "/Library/Python/2.7/site-packages/simplejson/__init__.py", line 516, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Python/2.7/site-packages/simplejson/decoder.py", line 370, in decode
+    obj, end = self.raw_decode(s)
+  File "/Library/Python/2.7/site-packages/simplejson/decoder.py", line 400, in raw_decode
+    return self.scan_once(s, idx=_w(s, idx).end())
+simplejson.scanner.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+>>> r = requests.get('https://developers.google.com/resources/api-libraries/documentation/qpxExpress/v1/python/latest/qpxExpress_v1.trips.html')
+
+
+>>> 
+>>> 
+>>> ^D
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ clear
+
+
+
+
+
+
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> import json
+>>> url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc"
+>>> payload = {
+...     "request": {
+...         "passengers": {
+...             "kind": "qpxexpress#passengerCounts",
+...             "adultCount": 1,
+...         },
+...         "slice": [
+...             {
+...                 "kind": "qpxexpress#sliceInput",
+...                 "origin": "SFO",
+...                 "destination": "NYC",
+...                 "date": "2015-11-20",
+...             }
+...         ],
+...         "refundable": "false",
+...         "solutions": 5
+...     }
+... }
+>>> r = requests.post(url, data=json.dumps(payload))
+>>> 
+>>> 
+>>> 
+>>> r = requests.post(url, data=json.dumps(payload, encoding='utf-8'), {'Content-Type': 'application/json'})
+  File "<stdin>", line 1
+SyntaxError: non-keyword arg after keyword arg
+>>> r = requests.post(url, data=json.dumps(payload, encoding='utf-8'), {'Content-Type': 'application/json'})
+  File "<stdin>", line 1
+SyntaxError: non-keyword arg after keyword arg
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> r = requests.post(url, data=json.dumps(payload), {'Content-Type': 'application/json'})
+  File "<stdin>", line 1
+SyntaxError: non-keyword arg after keyword arg
+>>> r = requests.post(url, data=json.dumps(payload, encoding='utf-8'), {'Content-Type': 'application/json'})
+  File "<stdin>", line 1
+SyntaxError: non-keyword arg after keyword arg
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc"
+>>> 
+>>> 
+>>> code = {
+...     "request": {
+...         "passengers": {
+...             "kind": "qpxexpress#passengerCounts",
+...             "adultCount": 1,
+...         },
+...         "slice": [
+...             {
+...                 "kind": "qpxexpress#sliceInput",
+...                 "origin": "SFO",
+...                 "destination": "NYC",
+...                 "date": "2015-11-20",
+...             }
+...         ],
+...         "refundable": "false",
+...         "solutions": 5
+...     }
+... }
+>>> 
+>>> 
+>>> 
+>>> jsonreq = json.dumps(code, encoding='utf-8')
+>>> 
+>>> 
+>>> 
+>>> 
+>>> r = requests.post(url, jsonreq, {'Content-Type': 'application/json'})
+>>> 
+>>> 
+>>> 
+>>> 
+>>> print r
+<Response [400]>
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> ^D
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ clear
+
+Ashleys-MacBook-Air:Hackbright_Project missjelks$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> import urllib2
+>>> import json
+>>> 
+>>> url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc"
+>>> code = {
+...     "request": {
+...         "passengers": {
+...             "kind": "qpxexpress#passengerCounts",
+...             "adultCount": 1,
+...         },
+...         "slice": [
+...             {
+...                 "kind": "qpxexpress#sliceInput",
+...                 "origin": "SFO",
+...                 "destination": "NYC",
+...                 "date": "2015-11-20",
+...             }
+...         ],
+...         "refundable": "false",
+...         "solutions": 5
+...     }
+... }
+>>> jsonreq = json.dumps(code, encoding='utf-8')
+>>> print jsonreq
+{"request": {"refundable": "false", "passengers": {"kind": "qpxexpress#passengerCounts", "adultCount": 1}, "slice": [{"origin": "SFO", "date": "2015-11-20", "kind": "qpxexpress#sliceInput", "destination": "NYC"}], "solutions": 5}}
+>>> req = urllib2.Request(url, jsonreq, {'Content-Type': 'application/json'})
+>>> flight = urllib2.urlopen(req)
+response = flight.read()
+flight.close()
+>>> response = flight.read()
+>>> flight.close()
+>>> 
+>>> print response
+{
+ "kind": "qpxExpress#tripsSearch",
+ "trips": {
+  "kind": "qpxexpress#tripOptions",
+  "requestId": "gockTO9xNOiDMVFu40Mc7Z",
+  "data": {
+   "kind": "qpxexpress#data",
+   "airport": [
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "EWR",
+     "city": "EWR",
+     "name": "Newark Liberty International"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "JFK",
+     "city": "NYC",
+     "name": "New York John F Kennedy International"
+    },
+    {
+     "kind": "qpxexpress#airportData",
+     "code": "SFO",
+     "city": "SFO",
+     "name": "San Francisco International"
+    }
+   ],
+   "city": [
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "EWR",
+     "name": "Newark"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "NYC",
+     "name": "New York"
+    },
+    {
+     "kind": "qpxexpress#cityData",
+     "code": "SFO",
+     "name": "San Francisco"
+    }
+   ],
+   "aircraft": [
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "32S",
+     "name": "Airbus A320"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "752",
+     "name": "Boeing 757"
+    },
+    {
+     "kind": "qpxexpress#aircraftData",
+     "code": "757",
+     "name": "Boeing 757"
+    }
+   ],
+   "tax": [
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "ZP",
+     "name": "US Flight Segment Tax"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "AY_001",
+     "name": "US September 11th Security Fee"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "US_001",
+     "name": "US Transportation Tax"
+    },
+    {
+     "kind": "qpxexpress#taxData",
+     "id": "XF",
+     "name": "US Passenger Facility Charge"
+    }
+   ],
+   "carrier": [
+    {
+     "kind": "qpxexpress#carrierData",
+     "code": "B6",
+     "name": "Jetblue Airways Corporation"
+    },
+    {
+     "kind": "qpxexpress#carrierData",
+     "code": "UA",
+     "name": "United Airlines, Inc."
+    }
+   ]
+  },
+  "tripOption": [
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD213.10",
+    "id": "KajL3KfCqOVMRp9YDX2Oj6001",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 323,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 323,
+        "flight": {
+         "carrier": "UA",
+         "number": "72"
+        },
+        "id": "GqN0oWyvGPbjHujK",
+        "cabin": "COACH",
+        "bookingCode": "T",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LbQFqcsUUzZWdB3S",
+          "aircraft": "752",
+          "arrivalTime": "2015-11-21T00:23-05:00",
+          "departureTime": "2015-11-20T16:00-08:00",
+          "origin": "SFO",
+          "destination": "EWR",
+          "originTerminal": "3",
+          "destinationTerminal": "C",
+          "duration": 323,
+          "onTimePerformance": 60,
+          "mileage": 2558,
+          "meal": "Food for Purchase",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AAk9n881xU2k1PJ3PB3A+KVBBjJ678cDA//DEB7N9H4/",
+        "carrier": "UA",
+        "origin": "SFO",
+        "destination": "EWR",
+        "basisCode": "TAA14AXS"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AAk9n881xU2k1PJ3PB3A+KVBBjJ678cDA//DEB7N9H4/",
+        "segmentId": "GqN0oWyvGPbjHujK",
+        "freeBaggageOption": [
+         {
+          "kind": "qpxexpress#freeBaggageAllowance",
+          "bagDescriptor": [
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "UPTO50LB 23KG AND62LI 158LCM",
+            "count": 0,
+            "description": [
+             "Up to 50 lb/23 kg",
+             "Up to 62 li/158 lcm"
+            ],
+            "subcode": "0GO"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "MUSICAL INSTRUMENTS",
+            "count": 0,
+            "subcode": "0F2"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "ARCHERY EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Archery Equipment"
+            ],
+            "subcode": "0FO"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "BOWLING EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Bowling Equipment"
+            ],
+            "subcode": "0FS"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "FISHING EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Fishing Equipment"
+            ],
+            "subcode": "0D6"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "GOLF EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Golf Equipment"
+            ],
+            "subcode": "0DC"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "HOCKEY EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Hockey Equipment"
+            ],
+            "subcode": "0F0"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "SKATEBOARD",
+            "count": 0,
+            "description": [
+             "Skateboard"
+            ],
+            "subcode": "0IS"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "SKI EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Ski Equipment"
+            ],
+            "subcode": "0DD"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "WATER SKI EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Water Ski Equipment"
+            ],
+            "subcode": "0G2"
+           }
+          ],
+          "pieces": 0
+         }
+        ]
+       }
+      ],
+      "baseFareTotal": "USD185.12",
+      "saleFareTotal": "USD185.12",
+      "saleTaxTotal": "USD27.98",
+      "saleTotal": "USD213.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD13.88"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "SFO UA EWR 185.12TAA14AXS USD 185.12 END ZP SFO XT 13.88US 4.00ZP 5.60AY 4.50XF SFO4.50",
+      "latestTicketingTime": "2015-08-04T23:59-04:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD259.10",
+    "id": "KajL3KfCqOVMRp9YDX2Oj6002",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 322,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 322,
+        "flight": {
+         "carrier": "B6",
+         "number": "916"
+        },
+        "id": "G-zM+tqujpCMncSg",
+        "cabin": "COACH",
+        "bookingCode": "Z",
+        "bookingCodeCount": 1,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LvJQBgySnrzbFGvW",
+          "aircraft": "32S",
+          "arrivalTime": "2015-11-21T00:07-05:00",
+          "departureTime": "2015-11-20T15:45-08:00",
+          "origin": "SFO",
+          "destination": "JFK",
+          "originTerminal": "I",
+          "destinationTerminal": "5",
+          "duration": 322,
+          "onTimePerformance": 90,
+          "mileage": 2579,
+          "meal": "Meal",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "A0J5dIwo90lFxYybK/cx1TGDdHyrtAvWUCf5bTs6g5SSQbGxEKlXNlUhqvCsXeGXX5vdgz63XPur2YqgcvR/wjOsINEP97sAZj7b2WGMbri+Nlmj8heCu59G1R//l5Y/cZo6a/aBvLPf9m/",
+        "carrier": "B6",
+        "origin": "SFO",
+        "destination": "NYC",
+        "basisCode": "ZH4AUEN5",
+        "private": true
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "A0J5dIwo90lFxYybK/cx1TGDdHyrtAvWUCf5bTs6g5SSQbGxEKlXNlUhqvCsXeGXX5vdgz63XPur2YqgcvR/wjOsINEP97sAZj7b2WGMbri+Nlmj8heCu59G1R//l5Y/cZo6a/aBvLPf9m/",
+        "segmentId": "G-zM+tqujpCMncSg",
+        "freeBaggageOption": [
+         {
+          "kind": "qpxexpress#freeBaggageAllowance",
+          "bagDescriptor": [
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "UPTO50LB 23KG AND62LI 158LCM",
+            "count": 1,
+            "description": [
+             "Up to 50 lb/23 kg",
+             "Up to 62 li/158 lcm"
+            ],
+            "subcode": "0GO"
+           }
+          ],
+          "pieces": 0
+         }
+        ]
+       }
+      ],
+      "baseFareTotal": "USD227.91",
+      "saleFareTotal": "USD227.91",
+      "saleTaxTotal": "USD31.19",
+      "saleTotal": "USD259.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD17.09"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "SFO B6 NYC 227.91ZH4AUEN5 USD 227.91 END ZP SFO XT 17.09US 4.00ZP 5.60AY 4.50XF SFO4.50",
+      "latestTicketingTime": "2015-08-04T23:59-04:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD289.10",
+    "id": "KajL3KfCqOVMRp9YDX2Oj6003",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 328,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 328,
+        "flight": {
+         "carrier": "B6",
+         "number": "416"
+        },
+        "id": "G47R6ie4JqKCSque",
+        "cabin": "COACH",
+        "bookingCode": "M",
+        "bookingCodeCount": 1,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LsWH4dRSSsfyoNdF",
+          "aircraft": "32S",
+          "arrivalTime": "2015-11-20T20:18-05:00",
+          "departureTime": "2015-11-20T11:50-08:00",
+          "origin": "SFO",
+          "destination": "JFK",
+          "originTerminal": "I",
+          "destinationTerminal": "5",
+          "duration": 328,
+          "onTimePerformance": 70,
+          "mileage": 2579,
+          "meal": "Meal",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AkXzpjXNE5kPl4s+JmPS1ybWFltBSdJibPfAArCJ/OrB27inTjifminGZH17fVN3INHbhygW40Xu0bgUI521tPSc/cJZL/yq/1X3EgsW6vHqfnRBjbOf46fn/MVe4vVQ15DsgXTRwFsXkVE",
+        "carrier": "B6",
+        "origin": "SFO",
+        "destination": "NYC",
+        "basisCode": "MH4AUEN5",
+        "private": true
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AkXzpjXNE5kPl4s+JmPS1ybWFltBSdJibPfAArCJ/OrB27inTjifminGZH17fVN3INHbhygW40Xu0bgUI521tPSc/cJZL/yq/1X3EgsW6vHqfnRBjbOf46fn/MVe4vVQ15DsgXTRwFsXkVE",
+        "segmentId": "G47R6ie4JqKCSque",
+        "freeBaggageOption": [
+         {
+          "kind": "qpxexpress#freeBaggageAllowance",
+          "bagDescriptor": [
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "UPTO50LB 23KG AND62LI 158LCM",
+            "count": 1,
+            "description": [
+             "Up to 50 lb/23 kg",
+             "Up to 62 li/158 lcm"
+            ],
+            "subcode": "0GO"
+           }
+          ],
+          "pieces": 0
+         }
+        ]
+       }
+      ],
+      "baseFareTotal": "USD255.81",
+      "saleFareTotal": "USD255.81",
+      "saleTaxTotal": "USD33.29",
+      "saleTotal": "USD289.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD19.19"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "SFO B6 NYC 255.81MH4AUEN5 USD 255.81 END ZP SFO XT 19.19US 4.00ZP 5.60AY 4.50XF SFO4.50",
+      "latestTicketingTime": "2015-08-04T23:59-04:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD329.10",
+    "id": "KajL3KfCqOVMRp9YDX2Oj6004",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 320,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 320,
+        "flight": {
+         "carrier": "B6",
+         "number": "616"
+        },
+        "id": "GHQYFpnmgzhK9rtg",
+        "cabin": "COACH",
+        "bookingCode": "W",
+        "bookingCodeCount": 7,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LwTD+Z6e-MGKPDMw",
+          "aircraft": "32S",
+          "arrivalTime": "2015-11-20T22:20-05:00",
+          "departureTime": "2015-11-20T14:00-08:00",
+          "origin": "SFO",
+          "destination": "JFK",
+          "originTerminal": "I",
+          "destinationTerminal": "5",
+          "duration": 320,
+          "onTimePerformance": 70,
+          "mileage": 2579,
+          "meal": "Meal",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AjaAtsspqWnuVKDzXLJ15h3OA/Su973tQ/DhxwaTmFfkum7Iu/A4zWSRNUbgWyzG98liM7PcXSbGheWhIK4WxMRvEJ/fSZ7yCWX/qlwWIZD9A5n+yWCtIQx20tWgeAJSUErFNczk+tfHHto",
+        "carrier": "B6",
+        "origin": "SFO",
+        "destination": "NYC",
+        "basisCode": "WH7AUEN5",
+        "private": true
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AjaAtsspqWnuVKDzXLJ15h3OA/Su973tQ/DhxwaTmFfkum7Iu/A4zWSRNUbgWyzG98liM7PcXSbGheWhIK4WxMRvEJ/fSZ7yCWX/qlwWIZD9A5n+yWCtIQx20tWgeAJSUErFNczk+tfHHto",
+        "segmentId": "GHQYFpnmgzhK9rtg",
+        "freeBaggageOption": [
+         {
+          "kind": "qpxexpress#freeBaggageAllowance",
+          "bagDescriptor": [
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "UPTO50LB 23KG AND62LI 158LCM",
+            "count": 1,
+            "description": [
+             "Up to 50 lb/23 kg",
+             "Up to 62 li/158 lcm"
+            ],
+            "subcode": "0GO"
+           }
+          ],
+          "pieces": 0
+         }
+        ]
+       }
+      ],
+      "baseFareTotal": "USD293.02",
+      "saleFareTotal": "USD293.02",
+      "saleTaxTotal": "USD36.08",
+      "saleTotal": "USD329.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD21.98"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "SFO B6 NYC 293.02WH7AUEN5 USD 293.02 END ZP SFO XT 21.98US 4.00ZP 5.60AY 4.50XF SFO4.50",
+      "latestTicketingTime": "2015-08-04T23:59-04:00",
+      "ptc": "ADT"
+     }
+    ]
+   },
+   {
+    "kind": "qpxexpress#tripOption",
+    "saleTotal": "USD346.10",
+    "id": "KajL3KfCqOVMRp9YDX2Oj6005",
+    "slice": [
+     {
+      "kind": "qpxexpress#sliceInfo",
+      "duration": 312,
+      "segment": [
+       {
+        "kind": "qpxexpress#segmentInfo",
+        "duration": 312,
+        "flight": {
+         "carrier": "UA",
+         "number": "441"
+        },
+        "id": "GCnt6yU-ri80sye2",
+        "cabin": "COACH",
+        "bookingCode": "W",
+        "bookingCodeCount": 9,
+        "marriedSegmentGroup": "0",
+        "leg": [
+         {
+          "kind": "qpxexpress#legInfo",
+          "id": "LUYfxs54san0azb6",
+          "aircraft": "757",
+          "arrivalTime": "2015-11-21T01:12-05:00",
+          "departureTime": "2015-11-20T17:00-08:00",
+          "origin": "SFO",
+          "destination": "EWR",
+          "originTerminal": "3",
+          "destinationTerminal": "C",
+          "duration": 312,
+          "onTimePerformance": 60,
+          "mileage": 2558,
+          "meal": "Food for Purchase",
+          "secure": true
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pricing": [
+     {
+      "kind": "qpxexpress#pricingInfo",
+      "fare": [
+       {
+        "kind": "qpxexpress#fareInfo",
+        "id": "AM4ADXBQqWgCqu9xupHvsKh1+mw9NoEXMZLAtTck7zCA",
+        "carrier": "UA",
+        "origin": "SFO",
+        "destination": "EWR",
+        "basisCode": "WAA14AGN"
+       }
+      ],
+      "segmentPricing": [
+       {
+        "kind": "qpxexpress#segmentPricing",
+        "fareId": "AM4ADXBQqWgCqu9xupHvsKh1+mw9NoEXMZLAtTck7zCA",
+        "segmentId": "GCnt6yU-ri80sye2",
+        "freeBaggageOption": [
+         {
+          "kind": "qpxexpress#freeBaggageAllowance",
+          "bagDescriptor": [
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "UPTO50LB 23KG AND62LI 158LCM",
+            "count": 0,
+            "description": [
+             "Up to 50 lb/23 kg",
+             "Up to 62 li/158 lcm"
+            ],
+            "subcode": "0GO"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "MUSICAL INSTRUMENTS",
+            "count": 0,
+            "subcode": "0F2"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "ARCHERY EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Archery Equipment"
+            ],
+            "subcode": "0FO"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "BOWLING EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Bowling Equipment"
+            ],
+            "subcode": "0FS"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "FISHING EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Fishing Equipment"
+            ],
+            "subcode": "0D6"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "GOLF EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Golf Equipment"
+            ],
+            "subcode": "0DC"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "HOCKEY EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Hockey Equipment"
+            ],
+            "subcode": "0F0"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "SKATEBOARD",
+            "count": 0,
+            "description": [
+             "Skateboard"
+            ],
+            "subcode": "0IS"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "SKI EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Ski Equipment"
+            ],
+            "subcode": "0DD"
+           },
+           {
+            "kind": "qpxexpress#bagDescriptor",
+            "commercialName": "WATER SKI EQUIPMENT",
+            "count": 0,
+            "description": [
+             "Water Ski Equipment"
+            ],
+            "subcode": "0G2"
+           }
+          ],
+          "pieces": 0
+         }
+        ]
+       }
+      ],
+      "baseFareTotal": "USD308.83",
+      "saleFareTotal": "USD308.83",
+      "saleTaxTotal": "USD37.27",
+      "saleTotal": "USD346.10",
+      "passengers": {
+       "kind": "qpxexpress#passengerCounts",
+       "adultCount": 1
+      },
+      "tax": [
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "US_001",
+        "chargeType": "GOVERNMENT",
+        "code": "US",
+        "country": "US",
+        "salePrice": "USD23.17"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "AY_001",
+        "chargeType": "GOVERNMENT",
+        "code": "AY",
+        "country": "US",
+        "salePrice": "USD5.60"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "XF",
+        "chargeType": "GOVERNMENT",
+        "code": "XF",
+        "country": "US",
+        "salePrice": "USD4.50"
+       },
+       {
+        "kind": "qpxexpress#taxInfo",
+        "id": "ZP",
+        "chargeType": "GOVERNMENT",
+        "code": "ZP",
+        "country": "US",
+        "salePrice": "USD4.00"
+       }
+      ],
+      "fareCalculation": "SFO UA EWR Q18.60 290.23WAA14AGN USD 308.83 END ZP SFO XT 23.17US 4.00ZP 5.60AY 4.50XF SFO4.50",
+      "latestTicketingTime": "2015-08-04T23:59-04:00",
+      "ptc": "ADT"
+     }
+    ]
+   }
+  ]
+ }
+}
+
+>>> 
