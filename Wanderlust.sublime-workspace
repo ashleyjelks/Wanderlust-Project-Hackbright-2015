@@ -1,0 +1,459 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Flight",
+				"Flight1"
+			],
+			[
+				"F",
+				"ForeignKey"
+			],
+			[
+				"fl",
+				"flight_id"
+			],
+			[
+				"p",
+				"primary_key"
+			],
+			[
+				"tab",
+				"__tablename__"
+			],
+			[
+				"a",
+				"association"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"dat",
+				"date_time_return_flight_arrives"
+			],
+			[
+				"date",
+				"date_time_departing_flight_arrives"
+			],
+			[
+				"flight",
+				"flight_duration"
+			],
+			[
+				"origin",
+				"origin_airport_code"
+			],
+			[
+				"fliht",
+				"flight_request"
+			],
+			[
+				"f",
+				"flight"
+			],
+			[
+				"ur",
+				"urlopen"
+			],
+			[
+				"json",
+				"jsonreq"
+			],
+			[
+				"re",
+				"refundable"
+			],
+			[
+				"d",
+				"destination"
+			],
+			[
+				"all",
+				"all_hb_emps"
+			],
+			[
+				"bra",
+				"brands"
+			],
+			[
+				"mod",
+				"models"
+			],
+			[
+				"Ou",
+				"OUTER"
+			],
+			[
+				"yea",
+				"years_until_brand_discontinued"
+			],
+			[
+				"cou",
+				"column"
+			],
+			[
+				"di",
+				"discontinued"
+			],
+			[
+				"na",
+				"brand_name"
+			],
+			[
+				"Ms",
+				"Mustang"
+			],
+			[
+				"L",
+				"LIMIT"
+			],
+			[
+				"NULL",
+				"null"
+			],
+			[
+				"Di",
+				"discontinued"
+			],
+			[
+				"SL",
+				"SELECT"
+			],
+			[
+				"M",
+				"Mustang"
+			],
+			[
+				"bran",
+				"brand_name"
+			],
+			[
+				"ale",
+				"alertButton"
+			],
+			[
+				"tri",
+				"tricky-to-find"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"input",
+				"input_string"
+			],
+			[
+				"list",
+				"list1"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "model.py",
+			"settings":
+			{
+				"buffer_size": 8634,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 87.0,
+		"selected_items":
+		[
+			[
+				"unins",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/missjelks/src/Hackbright_Project/api_test1.json",
+		"/Users/missjelks/src/Hackbright_Project/Wanderlust.sublime-workspace",
+		"/Users/missjelks/src/Hackbright_Project/Wanderlust.sublime-project",
+		"/Users/missjelks/src/Hackbright_Project/model.py",
+		"/Users/missjelks/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/missjelks/src/SQLAlchemy_Assessment_Week_5/SQL-Alchemy-Assessment/query.py",
+		"/Users/missjelks/src/SQLAlchemy_Assessment_Week_5/SQL-Alchemy-Assessment/model.py",
+		"/Users/missjelks/src/Hackbright_Project/.gitignore",
+		"/Users/missjelks/src/sqlalchemy-hmwk/model.py",
+		"/Users/missjelks/src/API_Tests/FlightXML_API_test.py",
+		"/Users/missjelks/src/Web-Skills-Assessment-Week-3/js-skills.html",
+		"/Users/missjelks/src/repeat-assessment/dict-skills.py",
+		"/Users/missjelks/src/api_test.py",
+		"/Users/missjelks/src/SQLAlchemy_Assessment_Week_5/query.py",
+		"/Users/missjelks/src/SQLAlchemy_Assessment_Week_5/model.py",
+		"/Users/missjelks/src/SQLAlchemy_Assessment_Week_5/requirements.txt",
+		"/Users/missjelks/src/sqlalchemy-hmwk/.gitignore",
+		"/Users/missjelks/src/SQLAlchemy_Assessment_Week_5/.gitignore",
+		"/Users/missjelks/src/sqlalchemy-hmwk/index.html",
+		"/Users/missjelks/src/sqlalchemy-hmwk/solution/index.html",
+		"/Users/missjelks/src/skills-sql/skills.sql",
+		"/Users/missjelks/Downloads/auto.db",
+		"/Users/missjelks/src/skills-sql/auto.db",
+		"/Users/missjelks/Desktop/test.py",
+		"/Users/missjelks/Library/Application Support/Sublime Text 2/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/missjelks/test.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			")\n",
+			"u'",
+			"u",
+			"        \n",
+			"u",
+			"]",
+			"gds"
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			" first_connection_city_name = db.Column(db.String(75), nullable=True)\n    first_connection_airport_name = db.Column(db.String(200), nullable=False)\n    first_connection_airport_code = db.Column(db.String(3), nullable=False)\n    first_connection_date_time_departs = db.Column(db.String(22), nullable=False)\n    first_connection_date_time_arrives = db.Column(db.String(22), nullable=False)\n    second_connection_city_name = db.Column(db.String(75), nullable=False)\n    second_connection_airport_name = db.Column(db.String(200), nullable=False)\n    second_connection_airport_code = db.Column(db.String(3), nullable=False)\n    second_connection_date_time_departs = db.Column(db.String(22), nullable=False)\n    second_connection_date_time_arrives = db.Column(db.String(22), nullable=False)",
+			" '",
+			"",
+			"u"
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "model.py",
+					"settings":
+					{
+						"buffer_size": 8634,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8286,
+								8286
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2388.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 124.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/missjelks/src/Hackbright_Project/Sample_Python_JSON_API_Call_Code.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 301.0,
+	"status_bar_visible": true
+}
