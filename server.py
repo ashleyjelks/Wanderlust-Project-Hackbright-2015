@@ -21,6 +21,7 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 
+
 @app.route('/')
 def index():
     """Homepage."""
