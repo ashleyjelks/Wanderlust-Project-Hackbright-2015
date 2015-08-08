@@ -26,6 +26,23 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
 
 
+class FlightLeg(db.Model):
+
+    """ Flight database info for travelers"""
+
+    __tablename__ = "flight_legs"
+
+    
+    leg_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
+    city_name = db.Column(db.String(75), nullable=False)
+    airport_name = db.Column(db.String(200), nullable=False)
+    airport_code = db.Column(db.String(3), nullable=False)
+    airline = db.Column(db.String(75), nullable=False)       
+    flight_number = db.Column(db.Integer, nullable=False)
+    datetime_departure = db.Column(db.DateTime, nullable=False)
+    datetime_arrival = db.Column(db.DateTime, nullable=False)
+
+
 class Flight(db.Model):
 
     """ Flight database info for travelers"""
@@ -33,41 +50,33 @@ class Flight(db.Model):
     __tablename__ = "flights"
 
     flight_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
+
+    origin_leg_id = db.Column(db.Integer, db.ForeignKey('flight_legs.leg_id'))
+    origin_connection_leg_id = db.Column(db.Integer, db.ForeignKey('flight_legs.leg_id'), nullable=True)
+    return_leg_id = db.Column(db.Integer, db.ForeignKey('flight_legs.leg_id'))
+    return_connection_leg_id = db.Column(db.Integer, db.ForeignKey('flight_legs.leg_id'), nullable=True)
     
-    origin_city_name = db.Column(db.String(75), nullable=False)
-    origin_airport_name = db.Column(db.String(200), nullable=False)
-    origin_airport_code = db.Column(db.String(3), nullable=False)
-    origin_airline = db.Column(db.String(75), nullable=False)       
-    origin_flight_number = db.Column(db.Integer, nullable=False)
-    origin_datetime_departure = db.Column(db.DateTime, nullable=False)
-    origin_datetime_arrival = db.Column(db.DateTime, nullable=False)
-    origin_connection_city_name = db.Column(db.String(75), nullable=True)
-    origin_connection_airport_name = db.Column(db.String(200), nullable=True)
-    origin_connection_airport_code = db.Column(db.String(3), nullable=True)
-    origin_connection_airline = db.Column(db.String(75), nullable=True)
-    origin_connection_flight_number = db.Column(db.Integer, nullable=True)
-    origin_connection_datetime_departure = db.Column(db.DateTime, nullable=True)
-    origin_connection_datetime_arrival = db.Column(db.DateTime, nullable=True)
-    return_city_name = db.Column(db.String(75), nullable=False)
-    return_airport_name = db.Column(db.String(200), nullable=False)
-    return_airport_code = db.Column(db.String(3), nullable=False)
-    return_airline = db.Column(db.String(75), nullable=False)
-    return_flight_number = db.Column(db.Integer, nullable=False)  
-    return_datetime_departure = db.Column(db.DateTime, nullable=False)
-    return_datetime_arrival =  db.Column(db.DateTime, nullable=False)
-    return_connection_city_name = db.Column(db.String(75), nullable=True)
-    return_connection_airport_name = db.Column(db.String(200), nullable=True)
-    return_connection_airport_code = db.Column(db.String(3), nullable=True)
-    return_connection_airline = db.Column(db.String(75), nullable=True)
-    return_connection_flight_number = db.Column(db.Integer, nullable=True)
-    return_connection_datetime_departure = db.Column(db.DateTime, nullable=True)
-    return_connection_datetime_arrival = db.Column(db.DateTime, nullable=True)  
+    origin_leg = db.Relationship('FlightLeg',
+        backref=db.backref('origin_legs'), 
+        db.foreign_keys='Flight.origin_leg_id')
+
+    origin_connection_leg = db.Relationship('FlightLeg',
+        backref=db.backref('origin_connection_legs'),
+        db.foreign_keys='Flight.origin_connection_leg_id')
+
+    return_leg = db.Relationship('FlightLeg',
+        backref=db.backref('return_legs'),
+        db.foreign_keys='Flight.return_leg_id'))
+
+    reutun_connection_leg = db.Relationship('FlightLeg',
+        backref=db.backref('return_connection_legs'),
+        db.foreign_keys='Flight.return_connection_leg_id'))
+
+
     base_fare = db.Column(db.Integer, nullable=False)
     taxes = db.Column(db.Integer, nullable=False)
     total_fare = db.Column(db.Integer, nullable=False)
     destination_region = db.Column(db.String(30), nullable=True)
-    next_connection = db.Column(db.Integer, db.ForeignKey="flights.flight_id", nullable=True)
-    #STILL NOT CLEAR ON HOW TO USE THIS ATTRIBUTES INSTEAD OF HAVING CONNECTION ATTRIBUTES
 
 
 class SavedSearch(db.Model):
