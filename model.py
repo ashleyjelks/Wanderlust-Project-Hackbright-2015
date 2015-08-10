@@ -32,12 +32,11 @@ class FlightLeg(db.Model):
 
     __tablename__ = "flight_legs"
 
-    
     leg_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     city_name = db.Column(db.String(75), nullable=False)
     airport_name = db.Column(db.String(200), nullable=False)
     airport_code = db.Column(db.String(3), nullable=False)
-    airline = db.Column(db.String(75), nullable=False)       
+    airline = db.Column(db.String(75), nullable=False)
     flight_number = db.Column(db.Integer, nullable=False)
     datetime_departure = db.Column(db.DateTime, nullable=False)
     datetime_arrival = db.Column(db.DateTime, nullable=False)
@@ -55,28 +54,42 @@ class Flight(db.Model):
     origin_connection_leg_id = db.Column(db.Integer, db.ForeignKey('flight_legs.leg_id'), nullable=True)
     return_leg_id = db.Column(db.Integer, db.ForeignKey('flight_legs.leg_id'))
     return_connection_leg_id = db.Column(db.Integer, db.ForeignKey('flight_legs.leg_id'), nullable=True)
-    
-    origin_leg = db.Relationship('FlightLeg',
-        backref=db.backref('origin_legs'), 
-        db.foreign_keys='Flight.origin_leg_id')
-
-    origin_connection_leg = db.Relationship('FlightLeg',
-        backref=db.backref('origin_connection_legs'),
-        db.foreign_keys='Flight.origin_connection_leg_id')
-
-    return_leg = db.Relationship('FlightLeg',
-        backref=db.backref('return_legs'),
-        db.foreign_keys='Flight.return_leg_id'))
-
-    reutun_connection_leg = db.Relationship('FlightLeg',
-        backref=db.backref('return_connection_legs'),
-        db.foreign_keys='Flight.return_connection_leg_id'))
-
-
     base_fare = db.Column(db.Integer, nullable=False)
     taxes = db.Column(db.Integer, nullable=False)
     total_fare = db.Column(db.Integer, nullable=False)
-    destination_region = db.Column(db.String(30), nullable=True)
+    destination_region = db.Column(db.String(30), nullable=False)
+
+    # origin_leg = db.Relationship('FlightLeg',
+    #                              backref=db.backref('origin_legs'),
+    #                              db.foreign_keys='Flight.origin_leg_id')
+
+    origin_leg = db.relationship('FlightLeg',
+                                 backref=('origin_legs'),
+                                 foreign_keys=['Flight.origin_leg_id'])
+
+    # origin_connection_leg = db.Relationship('FlightLeg',
+    #                                         backref=db.backref('origin_connection_legs'),
+    #                                         db.foreign_keys='Flight.origin_connection_leg_id')
+
+    origin_connection_leg = db.relationship('FlightLeg',
+                                            backref=('origin_connection_legs'),
+                                            foreign_keys=['Flight.origin_connection_leg_id'])
+
+    # return_leg = db.Relationship('FlightLeg',
+    #                              backref=db.backref('return_legs'),
+    #                              db.foreign_keys='Flight.return_leg_id')
+
+    return_leg = db.relationship('FlightLeg',
+                                 backref=('return_legs'),
+                                 foreign_keys=['Flight.return_leg_id'])
+
+    # reutun_connection_leg = db.Relationship('FlightLeg',
+    #                                         backref=db.backref('return_connection_legs'),
+    #                                         db.foreign_keys='Flight.return_connection_leg_id')
+
+    return_connection_leg = db.relationship('FlightLeg',
+                                            backref=('return_connection_legs'),
+                                            foreign_keys=['Flight.return_connection_leg_id'])
 
 
 class SavedSearch(db.Model):
