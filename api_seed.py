@@ -20,7 +20,7 @@ ASIAN_AIRPORT_CODES = ["BOM", "DEL", "CGK", "SIN", "KUL", "HKT", "BKK", "PEK", "
                        "PVG", "ICN", "SGN", "MNL"]
 MIDDLE_EASTERN_AIRPORT_CODES = ["RUH", "DXB", "IST", "TLV"]
 OCEANIAN_AIRPORT_CODES = ["SYD", "MEL", "AKL", "PPT", "POM"]
-CITY_COMBOS = [("SFO", "LAX"),("SFO", "PHX"),("SFO", "SEA"),("SFO", "DEN"),("SFO", "DFW"),("SFO", "IAH"),("SFO", "ORD"),("SFO", "ATL"),("SFO", "MIA")]
+CITY_COMBOS = [("SFO", "LAX"),("SFO", "PHX"),("SFO", "SEA"),("SFO", "DEN"),("SFO", "DFW"),("SFO", "IAH"),("SFO", "ORD"),("SFO", "ATL"),("SFO", "MIA")] 
                # ("SFO", "IAD"),("SFO", "PHL"),("SFO", "JFK"),("SFO", "BOS"),("SFO", "CLT"),("SFO", "LAS"),("SFO", "YUL"),("SFO", "YYZ"),("SFO", "YVR")
                # ("SFO", "HNL"),("SFO", "NAS"),("SFO", "MBJ"),("SFO", "HAV"),("SFO", "BGI"),("SFO", "POS"),("SFO", "SJU"),("SFO", "GCM"),("SFO", "MEX")
                # ("SFO", "CUN"),("SFO", "SJO"),("SFO", "PTY"),("SFO", "CTG"),("SFO", "BOG"),("SFO", "UIO"),("SFO", "LIM"),("SFO", "EZE"),("SFO", "GIG")
@@ -31,8 +31,18 @@ CITY_COMBOS = [("SFO", "LAX"),("SFO", "PHX"),("SFO", "SEA"),("SFO", "DEN"),("SFO
                # ("SFO", "HKT"),("SFO", "BKK"),("SFO", "PEK"),("SFO", "HND"),("SFO", "HKG"),("SFO", "PVG"),("SFO", "ICN"),("SFO", "SGN"),("SFO", "MNL")
                # ("SFO", "RUH"),("SFO", "DXB"),("SFO", "IST"),("SFO", "TLV"),("SFO", "SYD"),("SFO", "MEL"),("SFO", "AKL"),("SFO", "PPT"),("SFO", "POM")]
 
+def populate_code_region_table():
 
-def get_price(origin, destination, departure_date="2015-09-02", return_date="2015-09-16", max_price=2000):
+    for code in USA_AIRPORT_CODES:
+        new_code_region = CodeRegion(code, "USA")
+        db.session.add(new_code_region)
+
+
+
+    db.session.commit()
+
+
+def get_price(origin="SFO", destination="LHR", departure_date="2015-09-02", return_date="2015-09-16", max_price=2000):
 
     flight_request = {
         "request": {
@@ -76,133 +86,180 @@ def get_price(origin, destination, departure_date="2015-09-02", return_date="201
     return parsed_json
 
 
-# def seed_response(response):
+def seed_response(response):
 
-#     if len(response['trips']['data']['city']) == 2:
-#         origin_city_name = response['trips']['data']['city'][1]['name']
-#         origin_airport_name = response['trips']['data']['airport'][1]['name']
-#         origin_airport_code = response['trips']['data']['city'][1]['code']
-#         origin_airline = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['carrier']
-#         origin_flight_number = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['number']
-#         origin_datetime_departure = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['departureTime']
-#         origin_datetime_arrival = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['arrivalTime']
-#         return_city_name = response['trips']['data']['city'][0]['name']
-#         return_airport_name = response['trips']['data']['airport'][0]['name']
-#         return_airport_code = response['trips']['data']['city'][0]['code']
-#         return_airline = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['carrier']
-#         return_flight_number = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['number']
-#         return_datetime_departure = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['departureTime']
-#         return_datetime_arrival = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['arrivalTime']
-#         base_fare = response['trips']['tripOption'][0]['pricing'][0]['saleFareTotal']
-#         taxes = response['trips']['tripOption'][0]['pricing'][0]['saleTaxTotal']
-#         total_fare = response['trips']['tripOption'][0]['pricing'][0]['saleTotal']
+    outbound_flight_origin =
+    outbound_flight _destination =
+    outbound_airline =
+    outbound_flight_number =
+    outbound_datetime_departure =
+    outbound_datetime_arrival =
+    new_outbound_leg = FlightLeg(......)
+    db.session.add(new_outbound_leg)
+    db.session.commit()
 
-#     if len(response['trips']['data']['city']) == 3:
+    inbound_flight_origin =
+    inbound_flight_destination =
+    inbound_airline =
+    inbound_flight_number =
+    inbound_datetime_departure =
+    inbound_datetime_arrival =
+    new_inbound_leg = FlightLeg(......)
+    db.session.add(new_inbound_leg)
+    db.session.commit()
 
-        # origin_city_name = response['trips']['data']['city'][1]['name']
-        # origin_airport_name = response['trips']['data']['airport'][2]['name']
-        # origin_airport_code = response['trips']['data']['city'][1]['code']
-        # origin_airline = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['carrier']
-        # origin_flight_number = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['flight']['number']
-        # origin_datetime_departure = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['departureTime']
-        # origin_datetime_arrival = response['trips']['tripOption'][0]['slice'][0]['segment'][0]['leg'][0]['arrivalTime']
-        # origin_connection_city_name = response['trips']['data']['city'][2]['name']
-        # origin_connection_airport_name = response['trips']['data']['airport'][1]['name']
-        # origin_connection_airport_code = response['trips']['data']['city'][2]['code']
-        # origin_connection_airline = response['trips']['tripOption'][0]['slice'][0]['segment'][1]['flight']['carrier']
-        # origin_connection_flight_number = response['trips']['tripOption'][0]['slice'][0]['segment'][1]['flight']['number']
-        # origin_connection_datetime_departure = response['trips']['tripOption'][0]['slice'][0]['segment'][1]['leg'][0]['departureTime']
-        # origin_connection_datetime_arrival = response['trips']['tripOption'][0]['slice'][0]['segment'][1]['leg'][0]['arrivalTime']
-        # return_connection_city_name = response['trips']['data']['city'][0]['name']
-        # return_connection_airport_name = response['trips']['data']['airport'][0]['name']
-        # return_connection_airport_code = response['trips']['data']['city'][0]['code']
-        # return_connection_airline = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['carrier']
-        # return_connection_flight_number = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['flight']['number']
-        # return_connection_datetime_departure = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['departureTime']
-        # return_connection_datetime_arrival = response['trips']['tripOption'][0]['slice'][1]['segment'][0]['leg'][0]['arrivalTime']
-        # return_city_name = response['trips']['data']['city'][2]['name']
-        # return_airport_name = response['trips']['data']['airport'][1]['name']
-        # return_airport_code = response['trips']['data']['city'][2]['code']
-        # return_airline = response['trips']['tripOption'][0]['slice'][1]['segment'][1]['flight']['carrier']
-        # return_flight_number = response['trips']['tripOption'][0]['slice'][1]['segment'][1]['flight']['number']
-        # return_datetime_departure = response['trips']['tripOption'][0]['slice'][1]['segment'][1]['leg'][0]['departureTime']
-        # return_datetime_arrival = response['trips']['tripOption'][0]['slice'][1]['segment'][1]['leg'][0]['arrivalTime']
-        # base_fare = response['trips']['tripOption'][0]['pricing'][0]['saleFareTotal']
-        # taxes = response['trips']['tripOption'][0]['pricing'][0]['saleTaxTotal']
-        # total_fare = response['trips']['tripOption'][0]['pricing'][0]['saleTotal']
+    base_fare = response['trips']['tripOption'][0]['pricing'][0]['saleFareTotal']
+    taxes = response['trips']['tripOption'][0]['pricing'][0]['saleTaxTotal']
+    total_fare = response['trips']['tripOption'][0]['pricing'][0]['saleTotal']
 
+    if len(r['trips']['tripOption'][0]['slice'][0]['segment']) != 1:
+     #the first leg of the trip only has 1 flight--origin_flight
 
-#     if len(response['trips']['data']['city']) == 4:
+    #the first leg of the trip has 2 flights---origin_flight and origin_connecting_flight
 
+        outbound_connecting_flight_origin =
+        outbound_connecting_flight _destination =
+        outbound_connecting_airline =
+        outbound_connecting_flight_number =
+        outbound_connecting_datetime_departure =
+        outbound_connecting_datetime_arrival =   
+        new_outbound_connecting_leg = FlightLeg(......)
+        db.session.add(new_outbound_connecting_leg)
+        db.session.commit()
 
-#     if code in EUROPEAN_AIRPORT_CODES:
-#         destination_region = "EUROPE"
+    else:
+        new_outbound_connecting_leg = None
+  
+    
 
-#     if code in AFRICAN_AIRPORT_CODES:
-#         destination_region = "AFRICA"
+    if len(r['trips']['tripOption'][0]['slice'][1]['segment']) != 1:
+        #the return leg of the trip only has 1 flight--return_flight
+        #the return leg of the trip has 2 flights--return_flight and return_connecting_flight
+      
+        inbound_connecting_flight_origin =
+        inbound_connecting_flight _destination =
+        inbound_connecting_airline =
+        inbound_connecting_flight_number =
+        inbound_connecting_datetime_departure =
+        inbound_connecting_datetime_arrival =
+        new_inbound_connecting_leg = FlightLeg(......)
+        db.session.add(new_inbound_connecting_leg)
+        db.session.commit()
 
-#     if code in ASIAN_AIRPORT_CODES:
-#         destination_region = "ASIA"
+    else:
+        new_inbound_connecting_leg = None
 
-#     if code in MIDDLE_EASTERN_AIRPORT_CODES:
-#         destination_region = "MIDDLE EAST"
+    code_region = CodeRegion.get(outbound_flight_origin).one()
 
-#     if code in LATIN_AMERICAN_AIRPORT_CODES:
-#         destination_region = "LATIN AMERICA"
+    region = code_region.region
 
-#     if code in OCEANIAN_AIRPORT_CODES:
-#         destination_region = "AUSTRALIA/PACIFIC"
-
-#     if code in MEXICO_CARIBBEAN_AIRPORT_CODES:
-#         destination_region = "MEXICO/CARIBBEAN"
-
-#     if code in USA_AIRPORT_CODES:
-#         destination_region = "USA"
-
-#     if code in CANADIAN_AIRPORT_CODES:
-#         destination_region = "CANADA"
-
-#     new_origin_leg = FlightLeg(origin_city_name, origin_airport_name, origin_airport_code, origin_airline,
-#                                origin_flight_number, origin_datetime_arrival, origin_datetime_departure)
-#     db.session.add(new_origin_leg)
-#     db.session.commit()
-
-#     new_return_leg = FlightLeg(return_city_name, return_airport_name, return_airport_code, return_airline,
-#                                return_flight_number, return_datetime_arrival, return_datetime_departure)
-#     db.session.add(new_return_leg)
-#     db.session.commit()
-
-#     if origin_connection_city_name:
-#         new_origin_connection_leg = FlightLeg(origin_connection_city_name, origin_connection_airport_name,
-#                                               origin_connection_airport_code, origin_connection_airline,
-#                                               origin_connection_flight_number, origin_connection_datetime_departure,
-#                                               origin_connection_datetime_arrival)
-#         db.session.add(new_origin_connection_leg)
-#         db.session.commit()
-#     else:
-#         new_origin_connection_leg = None
-
-#     if return_connection_city_name:
-#         new_return_connection_leg = FlightLeg(return_connection_city_name, return_connection_airport_name,
-#                                               return_connection_airport_code, return_connection_airline,
-#                                               return_connection_flight_number, return_connection_datetime_departure,
-#                                               return_connection_datetime_arrival)
-#         db.session.add(new_return_connection_leg)
-#         db.session.commit()
-#     else:
-#         new_return_connection_leg = None
-
-#     new_flight = Flight(new_origin_leg, new_origin_connection_leg, new_return_leg,
-#                         new_return_connection_leg, base_fare, taxes, total_fare, destination_region)
-#     db.session.add(new_flight)
-#     db.session.commit()
+    flight = Flight(new_outbound_leg, new_outbound_connecting_leg, new_inbound_leg, new_inbound_connecting_leg, 
+                    base_fare, taxes, total_fare)
 
 
-# if __name__ == "__main__":
-#     # As a convenience, if we run this module interactively, it will leave
-#     # you in a state of being able to work with the database directly.
-#     for city in CITY_COMBOS:
-#         data = get_price(city[0], city[1])
-#         seed_response(data)
+    
+    new_origin_leg = FlightLeg(origin_city_name, origin_airport_name, origin_airport_code, origin_airline,
+                               origin_flight_number, origin_datetime_arrival, origin_datetime_departure)
+    db.session.add(new_origin_leg)
+    db.session.commit()
+
+    new_return_leg = FlightLeg(return_city_name, return_airport_name, return_airport_code, return_airline,
+                               return_flight_number, return_datetime_arrival, return_datetime_departure)
+    db.session.add(new_return_leg)
+    db.session.commit()
+
+    if origin_connection_city_name:
+        new_origin_connection_leg = FlightLeg(origin_connection_city_name, origin_connection_airport_name,
+                                              origin_connection_airport_code, origin_connection_airline,
+                                              origin_connection_flight_number, origin_connection_datetime_departure,
+                                              origin_connection_datetime_arrival)
+        db.session.add(new_origin_connection_leg)
+        db.session.commit()
+    else:
+        new_origin_connection_leg = None
+
+    if return_connection_city_name:
+        new_return_connection_leg = FlightLeg(return_connection_city_name, return_connection_airport_name,
+                                              return_connection_airport_code, return_connection_airline,
+                                              return_connection_flight_number, return_connection_datetime_departure,
+                                              return_connection_datetime_arrival)
+        db.session.add(new_return_connection_leg)
+        db.session.commit()
+    else:
+        new_return_connection_leg = None
+
+    new_flight = Flight(new_origin_leg, new_origin_connection_leg, new_return_leg,
+                        new_return_connection_leg, base_fare, taxes, total_fare, destination_region)
+    db.session.add(new_flight)
+    db.session.commit()
+
+
+    for code in EUROPEAN_AIRPORT_CODES:  
+      if code in EUROPEAN_AIRPORT_CODES:
+        destination_region = "EUROPE"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in AFRICAN_AIRPORT_CODES:  
+      if code in AFRICAN_AIRPORT_CODES:
+        destination_region = "AFRICA"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in ASIAN_AIRPORT_CODES:
+      if code in ASIAN_AIRPORT_CODES:
+        destination_region = "ASIA"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in MIDDLE_EASTERN_AIRPORT_CODES:
+      if code in MIDDLE_EASTERN_AIRPORT_CODES:
+        destination_region = "MIDDLE EAST"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in LATIN_AMERICAN_AIRPORT_CODES: 
+      if code in LATIN_AMERICAN_AIRPORT_CODES:
+        destination_region = "LATIN AMERICA"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in OCEANIAN_AIRPORT_CODES: 
+      if code in OCEANIAN_AIRPORT_CODES:
+        destination_region = "AUSTRALIA/PACIFIC"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in MEXICO_CARIBBEAN_AIRPORT_CODES: 
+      if code in MEXICO_CARIBBEAN_AIRPORT_CODES:
+        destination_region = "MEXICO/CARIBBEAN"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in USA_AIRPORT_CODES:  
+      if code in USA_AIRPORT_CODES:
+        destination_region = "USA"
+    db.session.add(destination_region)
+    db.session.commit()
+
+    for code in CANADIAN_AIRPORT_CODES:  
+      if code in CANADIAN_AIRPORT_CODES:
+        destination_region = "CANADA"
+    db.session.add(destination_region)
+    db.session.commit()
+
+
+
+
+if __name__ == "__main__":
+  for city in CITY_COMBOS:
+    data = get_price(city[0], city[1])
+    seed_response(data)
+
+    populate_code_region_table()
+    get_price()
+
+
+
 
 

@@ -10,6 +10,15 @@ db = SQLAlchemy()
 
 # Defining all Models in this database
 
+class CodeRegion(db.Model):
+
+    """ Aiport codes by region"""
+
+    __tablename__ = "code_regions"
+
+    code = db.Column(db.String(3), primary_key=True, nullable=False)
+    region = db.Column(db.String(35), nullable=False)
+
 
 class User(db.Model):
     #User is a sublclass of db.Model
