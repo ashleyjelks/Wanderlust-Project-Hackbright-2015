@@ -1,78 +1,47 @@
 import urllib2
 import json
 import pprint
-# from time import sleep
-
-#PrettyPrint takes a dictionary and turns it into human readable  organization
-api_url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyCyyvZo3s217blnQ_fDVvnSKVILq98neFc"
+from model import connect_to_db, db, CodeRegion
+from server import app
 
 
-def get_price(origin, destination, departure_date, return_date, max_price=1500):
 
-    flight_request = {
-        "request": {
-            "passengers": {
-                "kind": "qpxexpress#passengerCounts",
-                "adultCount": 1,
-            },
-            "slice": [
-                {
-                    "kind": "qpxexpress#sliceInput",
-                    "origin": origin,
-                    "destination":  destination,
-                    "date": departure_date,
-                    "maxStops": 1,
-                    "maxPrice": max_price
-                },
-                {
-                    "kind": "qpxexpress#sliceInput",
-                    "origin": destination,
-                    "destination": origin,
-                    "date": return_date,
-                    "maxStops": 1,
-                    "maxPrice": max_price
-                }
-            ],
-            "refundable": "false",
-            "solutions": 1
-        }
-    }
+USA_AIRPORT_CODES = ['SFO', 'LAX', 'PHX', 'SEA', 'DEN', 'DFW', 'IAH', 'ORD',
+                     'ATL', 'MIA', 'IAD', 'PHL', 'JFK', 'BOS', 'CLT', 'LAS']
+CANADIAN_AIRPORT_CODES = ["YUL", "YYZ", "YVR", "HNL"]
+MEXICO_CARIBBEAN_AIRPORT_CODES = ["NAS", "MBJ", "HAV", "BGI", "POS", "SJU", "GCM", "MEX", "CUN"]
+LATIN_AMERICAN_AIRPORT_CODES = ["SJO", "PTY", "CTG", "BOG", "UIO", "LIM", "EZE", "GIG", "CCS", "GRU"]
+EUROPEAN_AIRPORT_CODES = ["LIS", "MAD", "CDG", "LHR", "DUB", "FCO", "ZRH", "GVA", "MXP",
+                          "AMS", "TXL", "BRU", "FRA", "ATH", "BUD", "WAW", "DME", "ARN", "CPH"]
+AFRICAN_AIRPORT_CODES = ["CAI", "TUN", "RAK", "CMN", "DKR", "LOS", "JNB", "CPT", "DAR", "NBO"]
+ASIAN_AIRPORT_CODES = ["BOM", "DEL", "CGK", "SIN", "KUL", "HKT", "BKK", "PEK", "HND", "HKG",
+                       "PVG", "ICN", "SGN", "MNL"]
+MIDDLE_EASTERN_AIRPORT_CODES = ["RUH", "DXB", "IST", "TLV"]
+OCEANIAN_AIRPORT_CODES = ["SYD", "MEL", "AKL", "PPT", "POM"]
+CITY_COMBOS = [("SFO", "LAX"), ("SFO", "PHX"), ("SFO", "SEA"), ("SFO", "DEN"), ("SFO", "DFW"), ("SFO", "IAH"), ("SFO", "ORD"), ("SFO", "ATL"), ("SFO", "MIA")]
+               # ("SFO", "IAD"),("SFO", "PHL"),("SFO", "JFK"),("SFO", "BOS"),("SFO", "CLT"),("SFO", "LAS"),("SFO", "YUL"),("SFO", "YYZ"),("SFO", "YVR")
+               # ("SFO", "HNL"),("SFO", "NAS"),("SFO", "MBJ"),("SFO", "HAV"),("SFO", "BGI"),("SFO", "POS"),("SFO", "SJU"),("SFO", "GCM"),("SFO", "MEX")
+               # ("SFO", "CUN"),("SFO", "SJO"),("SFO", "PTY"),("SFO", "CTG"),("SFO", "BOG"),("SFO", "UIO"),("SFO", "LIM"),("SFO", "EZE"),("SFO", "GIG")
+               # ("SFO", "CCS"),("SFO", "GRU"),("SFO", "LIS"),("SFO", "MAD"),("SFO", "CDG"),("SFO", "LHR"),("SFO", "DUB"),("SFO", "FCO"),("SFO", "ZRH")
+               # ("SFO", "GVA"),("SFO", "MXP"),("SFO", "AMS"),("SFO", "TXL"),("SFO", "BRU"),("SFO", "FRA"),("SFO", "ATH"),("SFO", "BUD"),("SFO", "WAW")
+               # ("SFO", "DME"),("SFO", "ARN"),("SFO", "CPH"),("SFO", "CAI"),("SFO", "TUN"),("SFO", "RAK"),("SFO", "CMN"),("SFO", "DKR"),("SFO", "LOS")
+               # ("SFO", "JNB"),("SFO", "CPT"),("SFO", "DAR"),("SFO", "NBO"),("SFO", "BOM"),("SFO", "DEL"),("SFO", "CGK"),("SFO", "SIN"),("SFO", "KUL")
+               # ("SFO", "HKT"),("SFO", "BKK"),("SFO", "PEK"),("SFO", "HND"),("SFO", "HKG"),("SFO", "PVG"),("SFO", "ICN"),("SFO", "SGN"),("SFO", "MNL")
+               # ("SFO", "RUH"),("SFO", "DXB"),("SFO", "IST"),("SFO", "TLV"),("SFO", "SYD"),("SFO", "MEL"),("SFO", "AKL"),("SFO", "PPT"),("SFO", "POM")]
 
-    jsonreq = json.dumps(flight_request, encoding='utf-8', indent=1)
-    req = urllib2.Request(api_url, jsonreq, {'Content-Type': 'application/json'})
-    flight = urllib2.urlopen(req)
-    response = flight.read()
-    flight.close()
-    parsed_json = json.loads(response)
 
-    printer = pprint.PrettyPrinter()
-    printer.pprint(parsed_json)
-    return parsed_json
+def populate_code_region_table():
 
-#len(s['trips']['tripOption'][0]['slice'])
+    for code in USA_AIRPORT_CODES:
+        print code
+        usa = 'USA'
+        print usa
+        new_code_region = CodeRegion(code=code, region=usa)
+        db.session.add(new_code_region)
+    # db.session.commit()
 
-# def seed_response(response):
 
-#     flight_id = pass
-#     origin_city_name = response['trips']['data']['city'][1]['name']
-#     origin_airport_name = response['trips']['data']['airport'][1]['name']
-#     origin_airport_code = response['trips']['data']['city'][1]['code']
-#     destination_city_name =  response['trips']['data']['city'][0]['name']
-#     destination_airport_name = response['trips']['data']['airport'][0]['name']
-#     destination_airport_code = response['trips']['data']['city'][0]['code']
-#     date_time_departing_flight_arrives = 
-#     date_time_departing_flight_departs = 
-#     date_time_return_flight_arrives = 
-#     date_time_return_flight_departs = 
-#     airline = 
-#     flight_number = 
-#     base_fare = 
-#     taxes = 
-#     total_fare = 
-#     destination_region = 
-#     first_connection_city_name = response['trips']['data']['city'][2]['name']
-#     first_connection_airport_name = response['trips']['data']['airport'][2]['name']
-#     first_connection_airport_code = response['trips']['data']['city'][2]['code']
-#     first_connection_date_time_departs = 
-#     first_connection_date_time_arrives =
 
+if __name__ == "__main__":
+    connect_to_db(app)
+    populate_code_region_table()
