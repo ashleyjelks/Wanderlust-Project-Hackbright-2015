@@ -61,32 +61,6 @@ class Flight(db.Model):
     user = db.relationship('User', backref=db.backref('flights', order_by=user_id))
 
 
-# class SavedSearch(db.Model):
-# #SavedSearch is a subclass of db.Model
-
-#     """Database of saved user searches in Wanderlust Application"""
-
-#     __tablename__ = "saved_searches"
-
-#     search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    
-
-
-# class FlightUserMap(db.Model):
-
-#     """ The association table for the many-to-many associations between users and flight tables"""
-
-#     __tablename__ = "flight_user_maps"
-
-#     mapping_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
-#     flight_id = db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable=True)
-#     # search_id = db.Column(db.Integer, db.ForeignKey('saved_searches.search_id'), nullable=True)
-#     user = db.relationship("User", backref=db.backref("flight_user_maps", order_by=mapping_id))
-#     flight = db.relationship("Flight", backref=db.backref("flight_user_maps", order_by=mapping_id))
-#     # search = db.relationship("SavedSearch", backref=("flight_user_maps"), order_by=mapping_id)
-
 #############################################################################
 # Helper functions
 
@@ -99,13 +73,14 @@ def connect_to_db(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flights.db'
     db.app = app
     db.init_app(app)
+    db.app.config["SQLALCHEMY_ECHO"] = True
 
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
 
-    from server import app
+    from runserver import app
     connect_to_db(app)
     print "Connected to DB."
 

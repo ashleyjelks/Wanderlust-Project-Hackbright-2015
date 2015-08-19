@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% block content %}
+
+ <h1>SEARCH RESULTS PAGE :)</h1>
+
+ <h2>{{t1}} {{t2}}</h2>
+
+<!-- 
+{% extends 'base.html' %}
+{% block content %}
+
+CREATE A CSS ATTRIBUTE ON THE FORM THAT GIVES THE FORM A Z AXIS TO MAKE THE FORM REQUEST APPEAR ON TOP OF THE MPA
+
+ <h1>Welcome to Wanderlust!</h1>
+ <h2>To begin searching for your next journey, please fill out the details below for you and your travel partner.</h2>
+ <form action = "/search_results" method="POST">
+    <div>
+    <label>Name <input type="text" name="name" ></label>
+    <label>Email <input type="email" name="email"></label>
+    <label>Password<input type="password" name="password"></label><br><br><br>
+    </div>
+    <div><span>
+    <label>Traveler #1 Name<input type="text" name="traveler1_name" ></label>
+    <label>Traveler #2 Name<input type="text" name="traveler2_name" ></label><br><br>
+    </span></div>
+    <div><span>
+    <label>Traveler #1 Origin City</label>
+    <select name="first_origin">
+        <option value="">Traveler #1's Departure City:</option>    
+        <option value="ATL">Atlanta, Georgia</option>    
+        <option value="BOS">Boston, Massachusetts</option>
+        <option value="CLT">Charlotte, North Carolina</option>  
+        <option value="ORD">Chicago, Illinois</option> 
+        <option value="DFW">Dallas, Texas</option>  
+        <option value="DEN">Denver, Colorado</option> 
+        <option value="IAH">Houston, Texas</option> 
+        <option value="LAS">Las Vegas, Nevada</option>   
+        <option value="LAX">Los Angeles, California</option>  
+        <option value="MIA">Miami, Florida</option>    
+        <option value="JFK">New York, New York</option> 
+        <option value="PHL">Philadelphia, Pennsylvania</option>   
+        <option value="PHX">Phoenix, Arizona</option>
+        <option value="SFO">San Francisco, California</option>
+        <option value="SEA">Seattle, Washington</option> 
+        <option value="IAD">Washington, DC</option>             
+    </select>
+    <label>Traveler #2 Origin City</label>
+    <select name="second_origin">
+        <option value="">Traveler #2's Departure City:</option>    
+        <option value="ATL">Atlanta, Georgia</option>    
+        <option value="BOS">Boston, Massachusetts</option>
+        <option value="CLT">Charlotte, North Carolina</option>  
+        <option value="ORD">Chicago, Illinois</option> 
+        <option value="DFW">Dallas, Texas</option>  
+        <option value="DEN">Denver, Colorado</option> 
+        <option value="IAH">Houston, Texas</option> 
+        <option value="LAS">Las Vegas, Nevada</option>   
+        <option value="LAX">Los Angeles, California</option>  
+        <option value="MIA">Miami, Florida</option>    
+        <option value="JFK">New York, New York</option> 
+        <option value="PHL">Philadelphia, Pennsylvania</option>   
+        <option value="PHX">Phoenix, Arizona</option>
+        <option value="SFO">San Francisco, California</option>
+        <option value="SEA">Seattle, Washington</option> 
+        <option value="IAD">Washington, DC</option>             
+    </select>
+    <br><br>
+    </span></div>
+    <div><span>
+    <label>Traveler #1 Max Budget<input type="number" name="first_max_price" ></label>
+    <label>Traveler #2 Max Budget<input type="number" name="second_max_price" ></label><br><br>
+    </span></div>
+    <div><span>
+    <label>Departure Date<input type="date" name="departure_date"></label>
+    <label>Return Date<input type="date" name="return_date"></label><br><br>
+    </span></div>
+    <div><span>
+        <label>Choose Your Next Adventure</label>
+            <select name="destination" required>
+                <option value=""></option>
+                <option value="">Destinations in the United States:</option>     
+                <option value="ATL">Atlanta, Georgia</option>    
+                <option value="BOS">Boston, Massachusetts</option>
+                <option value="CLT">Charlotte, North Carolina</option>  
+                <option value="ORD">Chicago, Illinois</option> 
+                <option value="DFW">Dallas, Texas</option>  
+                <option value="DEN">Denver, Colorado</option> 
+                <option value="HNL">Honolulu, Hawaii</option>       
+                <option value="IAH">Houston, Texas</option> 
+                <option value="LAS">Las Vegas, Nevada</option>   
+                <option value="LAX">Los Angeles, California</option>  
+                <option value="OGG">Maui, Hawaii</option> 
+                <option value="MIA">Miami, Florida</option>    
+                <option value="JFK">New York, New York</option> 
+                <option value="PHL">Philadelphia, Pennsylvania</option>   
+                <option value="PHX">Phoenix, Arizona</option>
+                <option value="SFO">San Francisco, California</option>
+                <option value="SEA">Seattle, Washington</option> 
+                <option value="IAD">Washington, DC</option>
+                <option value=""> </option>
+                <option value="">Destinations in Canada:</option> 
+                <option value="YUL">Montreal, Quebec</option>       
+                <option value="YYZ">Toronto, Ontario</option>       
+                <option value="YVR">Vancouver, British Columbia</option> 
+                <option value=""> </option>            
+                <option value="">Destinations in Mexico/Caribbean</option>       
+                <option value="NAS">The Bahamas--Nassau</option>       
+                <option value="BGI">Barbados--Bridgetown</option>       
+                <option value="GCM">Cayman Islands--Grand Cayman</option>
+                <option value="MBJ">Jamaica--Montego Bay</option>       
+                <option value="CUN">Mexico--Cancun</option>  
+                <option value="MEX">Mexico--Mexico City</option>       
+                <option value="SJU">Puerto Rico--San Juan</option>       
+                <option value="POS">Trinidad--Port of Spain</option>      
+                <option value=""> </option>
+                <option value="">Destinations in Latin America:</option>       
+                <option value="EZE">Argentina--Buenos Aires</option>
+                <option value="GIG">Brazil--Rio de Janeiro</option> 
+                <option value="GRU">Brazil--Sao Paulo</option>       
+                <option value="BOG">Colombia--Bogota</option>       
+                <option value="CTG">Colombia--Cartagena</option>       
+                <option value="SJO">Costa Rica--San Juan</option>       
+                <option value="UIO">Ecuador--Quito</option>       
+                <option value="PTY">Panama--Panama City</option>       
+                <option value="LIM">Peru--Lima</option>        
+                <option value="CCS">Venezuela--Caracas</option>       
+                <option value=""> </option>
+                <option value="">Destination in Europe:</option>   
+                <option value="BRU">Belgium--Brussels</option>  
+                <option value="CPH">Denmark--Cophenhagen</option>
+                <option value="LHR">England--London</option> 
+                <option value="CDG">France--Paris</option>   
+                <option value="TXL">Germany--Berlin</option>               
+                <option value="FRA">Germany--Frankfurt</option>     
+                <option value="ATH">Greece--Athens</option>       
+                <option value="BUD">Hungary--Budapest</option> 
+                <option value="DUB">Ireland--Dublin</option>       
+                <option value="MXP">Italy--Milan</option>  
+                <option value="FCO">Italy--Rome</option> 
+                <option value="AMS">The Netherlands--Amsterdam</option>  
+                <option value="WAW">Poland--Warsaw</option> 
+                <option value="LIS">Portugal--Lisbon</option>       
+                <option value="DME">Russia--Moscow</option> 
+                <option value="MAD">Spain--Madrid</option>       
+                <option value="ARN">Sweden--Stockholm</option> 
+                <option value="ZRH">Switerland--Zurich</option>       
+                <option value="GVA">Switzerland--Geneva</option> 
+                <option value=""> </option>       
+                <option value="">Destinations in Africa:</option>   
+                <option value="CAI">Egypt--Cairo</option> 
+                <option value="RAK">Morocco--Marrakech</option> 
+                <option value="CMN">Morocco--Casablanca</option> 
+                <option value="NBO">Kenya--Nairobi</option> 
+                <option value="LOS">Nigeria--Lagos</option>
+                <option value="DKR">Senegal--Dakar</option> 
+                <option value="JNB">South Africa--Johannesburg</option> 
+                <option value="CPT">South Africa--Cape Town</option> 
+                <option value="DAR">Tanzania--Dar es Salaam</option> 
+                <option value="TUN">Tunisia--Tunis</option>
+                <option value=""> </option>      
+                <option value="">Destinations in Asia:</option> 
+                <option value="PEK">China--Beijing</option>    
+                <option value="PVG">China--Shanghai</option> 
+                <option value="HKG">Hong Kong--Hong Kong</option> 
+                <option value="BOM">India--Mumbai</option> 
+                <option value="DEL">India--New Delhi</option>               
+                <option value="CGK">Indonesia--Jakarta</option> 
+                <option value="HND">Japan--Tokyo</option>
+                <option value="KUL">Malaysia--Kuala Lumpur</option>
+                <option value="MNL">Philippines--Manila</option>
+                <option value="SIN">Singapore--Changi</option> 
+                <option value="ICN">South Korea--Seoul</option>  
+                <option value="HKT">Thailand--Phuket</option> 
+                <option value="BKK">Thailand--Bangkok</option> 
+                <option value="SGN">Vietnam--Ho Chi Minh City</option> 
+                <option value=""> </option>
+                <option value="">Destinations in the Middle East:</option> 
+                <option value="TLV">Israel--Tel Aviv</option> 
+                <option value="RUH">Saudi Arabia--Riyadh</option>            
+                <option value="IST">Turkey--Istanbul</option> 
+                <option value="DXB">United Arab Emirates--Dubai</option> 
+                <option value=""> </option>
+                <option value="">Destinations in Australia/South Pacific:</option> 
+                <option value="SYD">Australia--Sydney</option> 
+                <option value="MEL">Australia--Melbourne</option>
+                <option value="POM">New Guinea--Papua</option>  
+                <option value="AKL">New Zealand--Auckland</option> 
+                <option value="PPT">Tahiti--Pape'ete</option> 
+                
+
+            </select>
+    </span></div>
+    
+    <input type="submit" value="Where Will Your Next Journey Take You?"> 
+</form>
+
+{% endblock %}
+
+
+
+ -->

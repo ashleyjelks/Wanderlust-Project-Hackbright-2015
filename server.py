@@ -1,11 +1,8 @@
-"""Wanderlust App Server"""
-
-from jinja2 import StrictUndefined
 from flask import Flask, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
+from jinja2 import StrictUndefined
 from model import connect_to_db, db, User, Flight
 import api_seed as api_seed
-
 
 app = Flask(__name__)
 
@@ -52,6 +49,7 @@ def get_search():
     print second_max_price
     print departure_date
     print return_date
+    print destination
 
     search_request = User(name=name, email=email, password=password, traveler1_name=traveler1_name, traveler2_name=traveler2_name, first_origin=first_origin, second_origin=second_origin, first_max_price=first_max_price, second_max_price=second_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
     print search_request
@@ -62,6 +60,10 @@ def get_search():
     t1 = api_seed.get_price_traveler_one(first_origin, destination, departure_date, return_date, first_max_price)
     t2 = api_seed.get_price_traveler_two(second_origin, destination, departure_date, return_date, second_max_price)
 
+    test = Flight.query.filter_by(flight_id=47).one()
+
+    print "*"*20, test
+
     return render_template("search_results.html", t1=t1, t2=t2)
 
 
@@ -70,4 +72,5 @@ if __name__ == "__main__":
     connect_to_db(app)
     DebugToolbarExtension(app)
     app.run()
+
 

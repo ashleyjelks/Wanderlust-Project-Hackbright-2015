@@ -1,190 +1,459 @@
-{% extends 'base.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Wanderlust Homepage</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+    <h1>HELLO</h1>
+<div id='map'></div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiYXNobGV5cmplbGtzIiwiYSI6IjI0OWIyNzJlYjQ2MTI0NmYzZDZkZTM3OTJmYmE3ZWQxIn0.voXof4G4kPvqAHMIc8WiVg';
+var map = L.mapbox.map('map', 'mapbox.streets');
+map.setView([37.7833, -122.4167], 40);
 
- <h1>Welcome to Wanderlust!</h1>
- <h2>To begin searching for your next journey, please fill out the details below for you and your travel partner.</h2>
- <form action = "/search_results" method="POST">
-    <div>
-    <label>Name <input type="text" name="name" ></label>
-    <label>Email <input type="email" name="email"></label>
-    <label>Password<input type="password" name="password"></label><br><br><br>
-    </div>
-    <div><span>
-    <label>Traveler #1 Name<input type="text" name="traveler1_name" ></label>
-    <label>Traveler #2 Name<input type="text" name="traveler2_name" ></label><br><br>
-    </span></div>
-    <div><span>
-    <label>Traveler #1 Origin City</label>
-    <select name="first_origin">
-        <option value="">Traveler #1's Departure City:</option>    
-        <option value="ATL">Atlanta, Georgia</option>    
-        <option value="BOS">Boston, Massachusetts</option>
-        <option value="CLT">Charlotte, North Carolina</option>  
-        <option value="ORD">Chicago, Illinois</option> 
-        <option value="DFW">Dallas, Texas</option>  
-        <option value="DEN">Denver, Colorado</option> 
-        <option value="IAH">Houston, Texas</option> 
-        <option value="LAS">Las Vegas, Nevada</option>   
-        <option value="LAX">Los Angeles, California</option>  
-        <option value="MIA">Miami, Florida</option>    
-        <option value="JFK">New York, New York</option> 
-        <option value="PHL">Philadelphia, Pennsylvania</option>   
-        <option value="PHX">Phoenix, Arizona</option>
-        <option value="SFO">San Francisco, California</option>
-        <option value="SEA">Seattle, Washington</option> 
-        <option value="IAD">Washington, DC</option>             
-    </select>
-    <label>Traveler #2 Origin City</label>
-    <select name="second_origin">
-        <option value="">Traveler #2's Departure City:</option>    
-        <option value="ATL">Atlanta, Georgia</option>    
-        <option value="BOS">Boston, Massachusetts</option>
-        <option value="CLT">Charlotte, North Carolina</option>  
-        <option value="ORD">Chicago, Illinois</option> 
-        <option value="DFW">Dallas, Texas</option>  
-        <option value="DEN">Denver, Colorado</option> 
-        <option value="IAH">Houston, Texas</option> 
-        <option value="LAS">Las Vegas, Nevada</option>   
-        <option value="LAX">Los Angeles, California</option>  
-        <option value="MIA">Miami, Florida</option>    
-        <option value="JFK">New York, New York</option> 
-        <option value="PHL">Philadelphia, Pennsylvania</option>   
-        <option value="PHX">Phoenix, Arizona</option>
-        <option value="SFO">San Francisco, California</option>
-        <option value="SEA">Seattle, Washington</option> 
-        <option value="IAD">Washington, DC</option>             
-    </select>
-    <br><br>
-    </span></div>
-    <div><span>
-    <label>Traveler #1 Max Budget<input type="number" name="first_max_price" ></label>
-    <label>Traveler #2 Max Budget<input type="number" name="second_max_price" ></label><br><br>
-    </span></div>
-    <div><span>
-    <label>Departure Date<input type="date" name="departure_date"></label>
-    <label>Return Date<input type="date" name="return_date"></label><br><br>
-    </span></div>
-    <div><span>
-        <label>Choose Your Next Adventure</label>
-            <select name="destination" required>
-                <option value=""></option>
-                <option value="">Destinations in the United States:</option>     
-                <option value="ATL">Atlanta, Georgia</option>    
-                <option value="BOS">Boston, Massachusetts</option>
-                <option value="CLT">Charlotte, North Carolina</option>  
-                <option value="ORD">Chicago, Illinois</option> 
-                <option value="DFW">Dallas, Texas</option>  
-                <option value="DEN">Denver, Colorado</option> 
-                <option value="HNL">Honolulu, Hawaii</option>       
-                <option value="IAH">Houston, Texas</option> 
-                <option value="LAS">Las Vegas, Nevada</option>   
-                <option value="LAX">Los Angeles, California</option>  
-                <option value="OGG">Maui, Hawaii</option> 
-                <option value="MIA">Miami, Florida</option>    
-                <option value="JFK">New York, New York</option> 
-                <option value="PHL">Philadelphia, Pennsylvania</option>   
-                <option value="PHX">Phoenix, Arizona</option>
-                <option value="SFO">San Francisco, California</option>
-                <option value="SEA">Seattle, Washington</option> 
-                <option value="IAD">Washington, DC</option>
-                <option value=""> </option>
-                <option value="">Destinations in Canada:</option> 
-                <option value="YUL">Montreal, Quebec</option>       
-                <option value="YYZ">Toronto, Ontario</option>       
-                <option value="YVR">Vancouver, British Columbia</option> 
-                <option value=""> </option>            
-                <option value="">Destinations in Mexico/Caribbean</option>       
-                <option value="NAS">The Bahamas--Nassau</option>       
-                <option value="BGI">Barbados--Bridgetown</option>       
-                <option value="GCM">Cayman Islands--Grand Cayman</option>
-                <option value="MBJ">Jamaica--Montego Bay</option>       
-                <option value="CUN">Mexico--Cancun</option>  
-                <option value="MEX">Mexico--Mexico City</option>       
-                <option value="SJU">Puerto Rico--San Juan</option>       
-                <option value="POS">Trinidad--Port of Spain</option>      
-                <option value=""> </option>
-                <option value="">Destinations in Latin America:</option>       
-                <option value="EZE">Argentina--Buenos Aires</option>
-                <option value="GIG">Brazil--Rio de Janeiro</option> 
-                <option value="GRU">Brazil--Sao Paulo</option>       
-                <option value="BOG">Colombia--Bogota</option>       
-                <option value="CTG">Colombia--Cartagena</option>       
-                <option value="SJO">Costa Rica--San Juan</option>       
-                <option value="UIO">Ecuador--Quito</option>       
-                <option value="PTY">Panama--Panama City</option>       
-                <option value="LIM">Peru--Lima</option>        
-                <option value="CCS">Venezuela--Caracas</option>       
-                <option value=""> </option>
-                <option value="">Destination in Europe:</option>   
-                <option value="BRU">Belgium--Brussels</option>  
-                <option value="CPH">Denmark--Cophenhagen</option>
-                <option value="LHR">England--London</option> 
-                <option value="CDG">France--Paris</option>   
-                <option value="TXL">Germany--Berlin</option>               
-                <option value="FRA">Germany--Frankfurt</option>     
-                <option value="ATH">Greece--Athens</option>       
-                <option value="BUD">Hungary--Budapest</option> 
-                <option value="DUB">Ireland--Dublin</option>       
-                <option value="MXP">Italy--Milan</option>  
-                <option value="FCO">Italy--Rome</option> 
-                <option value="AMS">The Netherlands--Amsterdam</option>  
-                <option value="WAW">Poland--Warsaw</option> 
-                <option value="LIS">Portugal--Lisbon</option>       
-                <option value="DME">Russia--Moscow</option> 
-                <option value="MAD">Spain--Madrid</option>       
-                <option value="ARN">Sweden--Stockholm</option> 
-                <option value="ZRH">Switerland--Zurich</option>       
-                <option value="GVA">Switzerland--Geneva</option> 
-                <option value=""> </option>       
-                <option value="">Destinations in Africa:</option>   
-                <option value="CAI">Egypt--Cairo</option> 
-                <option value="RAK">Morocco--Marrakech</option> 
-                <option value="CMN">Morocco--Casablanca</option> 
-                <option value="NBO">Kenya--Nairobi</option> 
-                <option value="LOS">Nigeria--Lagos</option>
-                <option value="DKR">Senegal--Dakar</option> 
-                <option value="JNB">South Africa--Johannesburg</option> 
-                <option value="CPT">South Africa--Cape Town</option> 
-                <option value="DAR">Tanzania--Dar es Salaam</option> 
-                <option value="TUN">Tunisia--Tunis</option>
-                <option value=""> </option>      
-                <option value="">Destinations in Asia:</option> 
-                <option value="PEK">China--Beijing</option>    
-                <option value="PVG">China--Shanghai</option> 
-                <option value="HKG">Hong Kong--Hong Kong</option> 
-                <option value="BOM">India--Mumbai</option> 
-                <option value="DEL">India--New Delhi</option>               
-                <option value="CGK">Indonesia--Jakarta</option> 
-                <option value="HND">Japan--Tokyo</option>
-                <option value="KUL">Malaysia--Kuala Lumpur</option>
-                <option value="MNL">Philippines--Manila</option>
-                <option value="SIN">Singapore--Changi</option> 
-                <option value="ICN">South Korea--Seoul</option>  
-                <option value="HKT">Thailand--Phuket</option> 
-                <option value="BKK">Thailand--Bangkok</option> 
-                <option value="SGN">Vietnam--Ho Chi Minh City</option> 
-                <option value=""> </option>
-                <option value="">Destinations in the Middle East:</option> 
-                <option value="TLV">Israel--Tel Aviv</option> 
-                <option value="RUH">Saudi Arabia--Riyadh</option>            
-                <option value="IST">Turkey--Istanbul</option> 
-                <option value="DXB">United Arab Emirates--Dubai</option> 
-                <option value=""> </option>
-                <option value="">Destinations in Australia/South Pacific:</option> 
-                <option value="SYD">Australia--Sydney</option> 
-                <option value="MEL">Australia--Melbourne</option>
-                <option value="POM">New Guinea--Papua</option>  
-                <option value="AKL">New Zealand--Auckland</option> 
-                <option value="PPT">Tahiti--Pape'ete</option> 
-                
+var marker = L.mapbox.featureLayer({
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.420654296875,
+          37.779398571318765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.377685546875,
+          33.94335994657882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.08251953125,
+          33.46810795527896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32177734375,
+          47.62097541515849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.96337890625,
+          39.791654835253425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.767578125,
+          32.7872745269555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.3173828125,
+          29.783449456820605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.62695312499999,
+          41.918628865183045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.375,
+          33.742612777346885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.17822265625,
+          25.819671943904044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0361328125,
+          38.89103282648849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.16845703124999,
+          39.9602803542957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.95996093749999,
+          40.74725696280421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.03759765625,
+          42.391008609205045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.83740234375,
+          35.24561909420681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.13671875,
+          36.1733569352216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.11279296875001,
+          49.23912083246698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -156.32720947265625,
+          20.820308271198467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -157.81585693359375,
+          21.299610604945617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.365234375,
+          43.70759350405294
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.564453125,
+          45.4947963896697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.34374999999999,
+          25.06569718553588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.9150390625,
+          18.437924653474393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -59.5404052734375,
+          13.162399462774145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.824951171875,
+          21.14599216495789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.15710449218749,
+          19.394067895396628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -61.512451171875,
+          10.649811055745865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.27822875976562,
+          19.285220799977402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.148681640625,
+          18.401442504848276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.51904296874999,
+          9.015302333420598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.498046875,
+          10.444597722834875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.06982421875,
+          4.631179340411012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.50830078125,
+          -0.19775351362549398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.01416015625,
+          -12.060809058367294
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.447265625,
+          -34.66935854524543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#20efef",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "title": "Rio de Janeiro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -43.2421875,
+          -22.998851594142913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -46.669921875,
+          -23.805449612314625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.884765625,
+          10.574222078332806
+        ]
+      }
+    }
+  ]
+}).addTo(map);
 
-            </select>
-    </span></div>
-    
-    <input type="submit" value="Where Will Your Next Journey Take You?"> 
-</form>
+// Iterate over the featureLayer we've called "marker"
+// and open its popup instead of clicking to trigger it.
+marker.eachLayer(function(m) {
+  m.openPopup();
+});
 
-{% endblock %}
-
-
-
+</script>
+</body>
+</html>
