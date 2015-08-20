@@ -61,6 +61,19 @@ class Flight(db.Model):
     user = db.relationship('User', backref=db.backref('flights', order_by=user_id))
 
 
+
+class SavedSearch(db.Model):
+
+    """ Flight database info for travelers."""
+
+    __tablename__ = "saved_searches"
+
+    search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable =False)
+    flight_id db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable =False)
+     
+
+
     # outbound_city_origin, outbound_city_final_destination, outbound_airline, outbound_flight_number, outbound_datetime_departure, outbound_datetime_arrival, inbound_city_origin, inbound_city_final_destination, inbound_airline, inbound_flight_number, inbound_datetime_departure, inbound_datetime_arrival, base_fare, taxes, total_fare, outbound_connecting_city, inbound_connecting_city 
 
 

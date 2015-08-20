@@ -57,16 +57,33 @@ def get_search():
     db.session.add(search_request)
     db.session.commit()
 
-    t1 = api_seed.get_price_traveler_one(first_origin, destination, departure_date, return_date, first_max_price)
-    t2 = api_seed.get_price_traveler_two(second_origin, destination, departure_date, return_date, second_max_price)
+    print first_origin
+    print destination
 
-    traveler_one = Flight.query.filter.one()
 
-    test = 
 
-    print "*"*20, test
+    t1_flight_info = Flight.query.filter_by(outbound_city_origin=first_origin, inbound_city_origin=destination).first()
+    print "*" * 100
+    print t1_flight_info.outbound_datetime_departure
 
-    return render_template("search_results.html", t1=t1, t2=t2)
+    t2_flight_info = Flight.query.filter_by(outbound_city_origin=second_origin, inbound_city_origin=destination).first()
+    print t2_flight_info.inbound_datetime_departure
+    # t2_departure_datetime = Flight.query.get(outbound_datetime_departure WHERE outbound_city_origin is second_origin and inbound_city_origin is destination).first()
+    # t1_return_datetime = Flight.query.get(inbound_datetime_departure WHERE inbound_city_origin is first_origin and inbound_city_origin is destination).first()
+    # t2_return_datetime = Flight.query.get(inbound_datetime_departure WHERE inbound_city_origin is second_origin and inbound_city_origin is destination).first()
+    
+
+    # HOW TO WRITE THESE SQLITE STATEMENTS TO SQLALCHEMY: # SELECT outbound_datetime_departure from FLIGHTS WHERE outbound_city_origin is 'SFO' and inbound_city_origin is 'JFK';
+    # t1_price = Flight.query.filter_by(total_fare=the price of this flight).first()
+    # t2_price = Flight.query.filter_by(total_fare=the price of this flight).first()
+
+
+
+    return render_template("search_results.html", user_search=search_request, t1_flight_info=t1_flight_info, t2_flight_info=t2_flight_info) 
+    # t1_name=t1_name, t2_name=t2_name, t1_dept_city=t1_dept_city, t2_dept_city=t2_dept_city, destination=destination,
+    #                         t1_departure_datetime=t1_departure_datetime, t2_return_datetime=t2_return_datetime, t1_price=t2_price)
+
+
 
 
 if __name__ == "__main__":
