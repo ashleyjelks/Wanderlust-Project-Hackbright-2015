@@ -60,7 +60,9 @@ def get_search():
     t1 = api_seed.get_price_traveler_one(first_origin, destination, departure_date, return_date, first_max_price)
     t2 = api_seed.get_price_traveler_two(second_origin, destination, departure_date, return_date, second_max_price)
 
-    test = Flight.query.filter_by(flight_id=47).one()
+    traveler_one = Flight.query.filter.one()
+
+    test = 
 
     print "*"*20, test
 

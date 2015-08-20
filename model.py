@@ -61,6 +61,10 @@ class Flight(db.Model):
     user = db.relationship('User', backref=db.backref('flights', order_by=user_id))
 
 
+    # outbound_city_origin, outbound_city_final_destination, outbound_airline, outbound_flight_number, outbound_datetime_departure, outbound_datetime_arrival, inbound_city_origin, inbound_city_final_destination, inbound_airline, inbound_flight_number, inbound_datetime_departure, inbound_datetime_arrival, base_fare, taxes, total_fare, outbound_connecting_city, inbound_connecting_city 
+
+
+
 #############################################################################
 # Helper functions
 
