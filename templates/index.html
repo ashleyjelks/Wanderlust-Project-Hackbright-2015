@@ -28,12 +28,12 @@
                 <label>Password<input type="password" name="password"></label><br><br><br>
                 </div>
                 <div><span>
-                <label>Traveler #1 Name<input type="text" name="traveler1_name" ></label>
-                <label>Traveler #2 Name<input type="text" name="traveler2_name" ></label><br><br>
+                <label>Traveler #1 Name<input type="text" name="traveler1_name" required></label>
+                <label>Traveler #2 Name<input type="text" name="traveler2_name" required></label><br><br>
                 </span></div>
                 <div><span>
                 <label>Traveler #1 Origin City</label>
-                <select name="first_origin">
+                <select name="traveler1_origin" required>
                     <option value="">Traveler #1's Departure City:</option>    
                     <option value="ATL">Atlanta, Georgia</option>    
                     <option value="BOS">Boston, Massachusetts</option>
@@ -53,7 +53,7 @@
                     <option value="IAD">Washington, DC</option>             
                 </select>
                 <label>Traveler #2 Origin City</label>
-                <select name="second_origin">
+                <select name="traveler2_origin" required>
                     <option value="">Traveler #2's Departure City:</option>    
                     <option value="ATL">Atlanta, Georgia</option>    
                     <option value="BOS">Boston, Massachusetts</option>
@@ -75,12 +75,12 @@
                 <br><br>
                 </span></div>
                 <div><span>
-                <label>Traveler #1 Max Budget<input type="number" name="first_max_price" ></label>
-                <label>Traveler #2 Max Budget<input type="number" name="second_max_price" ></label><br><br>
+                <label>Traveler #1 Max Budget<input type="number" name="traveler1_max_price" required></label>
+                <label>Traveler #2 Max Budget<input type="number" name="traveler2_max_price" required></label><br><br>
                 </span></div>
                 <div><span>
-                <label>Departure Date<input type="date" name="departure_date" min="2015-09-02" max="2015-09-16"></label>
-                <label>Return Date<input type="date" name="return_date" min="2015-09-02" max="2015-09-16"></label><br><br>
+                <label>Departure Date<input type="date" name="departure_date" value="2015-09-02" required></label>
+                <label>Return Date<input type="date" name="return_date" value="2015-09-16" required></label><br><br>
                 </span></div>
                 <div><span>
                     <label>Choose Your Next Adventure</label>

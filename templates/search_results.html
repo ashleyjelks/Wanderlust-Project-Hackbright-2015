@@ -1,9 +1,44 @@
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
 {% extends 'base.html' %}
 {% block content %}
 
- <h1>SEARCH RESULTS PAGE :)</h1>
+ <h1>Here are the results of your search. Bon Voyage!</h1>
 
- <h2>{{user_search.traveler1_name}}</h2>
+ {{user_search.traveler1_name}} will depart TRAVELER1ORIGIN On DEPARTURE DATE.
+ on AIRLINE FLIGHT NUMBER 
+ departing at DEPARTURETIME
+ arriving in DESTINATION at ARRIVALTIME.
+ Total fare is TOTALFARE with a basefare of BASEFARE and taxes of TAXES.
+
+ {{user_search.traveler1_name}} returns on RETURN DATE
+ on AIRLINE FLIGHT NUMBER 
+ departing at DEPARTURETIME
+ arriving in DESTINATION at ARRIVALTIME.
+
+
+Click here to share these flight results with a friend:
+
+Click here to save this search to your account.
+
+Click here to return to the flight search page. 
+
+
+{{user_search.traveler1_name}} will depart TRAVELER1ORIGIN On DEPARTURE DATE.
+ on AIRLINE FLIGHT NUMBER 
+ departing at DEPARTURETIME
+ arriving in DESTINATION at ARRIVALTIME.
+ Total fare is TOTALFARE with a basefare of BASEFARE and taxes of TAXES.
+
+ {{user_search.traveler1_name}} returns on RETURN DATE
+ on AIRLINE FLIGHT NUMBER 
+ departing at DEPARTURETIME
+ arriving in DESTINATION at ARRIVALTIME.
 
 
 {% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
