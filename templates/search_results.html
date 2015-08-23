@@ -1,44 +1,112 @@
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
 {% extends 'base.html' %}
 {% block content %}
+<style>
+      #map-canvas {
+        width: 500px;
+        height: 75px;
+      }
+</style>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+google.maps.event.addDomListener(window, 'load', initialize);
 
- <h1>Here are the results of your search. Bon Voyage!</h1>
+function initialize() {
 
- {{user_search.traveler1_name}} will depart TRAVELER1ORIGIN On DEPARTURE DATE.
- on AIRLINE FLIGHT NUMBER 
- departing at DEPARTURETIME
- arriving in DESTINATION at ARRIVALTIME.
- Total fare is TOTALFARE with a basefare of BASEFARE and taxes of TAXES.
+  /* position Amsterdam */
 
- {{user_search.traveler1_name}} returns on RETURN DATE
- on AIRLINE FLIGHT NUMBER 
- departing at DEPARTURETIME
- arriving in DESTINATION at ARRIVALTIME.
+  // if destination is latlng is:
+  // if destination == destination{
+  //     latlng = XYZ;
+  // }
+  var latlng = new google.maps.LatLng(52.3731, 4.8922);
+
+  var mapOptions = {
+    center: latlng,
+    scrollWheel: false,
+    zoom: 13
+  };
+  
+  var marker = new google.maps.Marker({
+    position: latlng,
+    url: '/',
+    animation: google.maps.Animation.DROP
+  });
+  
+  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  marker.setMap(map);
+
+};
+</script>
+<div class="navbar navbar-custom navbar-fixed-top">
+ <div class="navbar-header"><a class="navbar-brand" href="#">Welcome to Wanderlust</a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span><div class="container"></div>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+        <li><a href="#">Wanderlust Home</a></li>
+        <li><a href="#">Login</a></li>
+        <li>&nbsp;</li>
+      </ul>
+</div>
+
+<div id="map-canvas"></div>
+<div class="container-fluid" id="main">
+  <div class="row">
+    <div class="col-md-8" id="left">
+    
+      <h2>Search Results</h2>
+      
+      <!-- item list -->
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4><a href="">{{search_results.traveler1_name}}'s Itinerary</a></h4></div>
+      </div>
+      <h4>{{search_results.traveler1_name}}'s Departing Flight Info ({{search_results.traveler1_origin}} to {{search_results.destination}}):</h4>
+      <p>Carrier: {{t1_flight_info.outbound_airline}} flight number {{t1_flight_info.outbound_flight_number}}</p>
+      <p>Departure Date & Time: {{t1_flight_info.outbound_datetime_departure}}</p>
+      <p>Arrival Date & Time: {{t1_flight_info.outbound_datetime_arrival}}</p>
+      <br>
+      <h4>{{search_results.traveler1_name}}'s Return Flight Info ({{search_results.destination}} to {{search_results.traveler1_origin}}):</h4>
+      <p>Carrier: {{t1_flight_info.inbound_airline}} flight number {{t1_flight_info.inbound_flight_number}}</p>
+      <p>Departure Date & Time: {{t1_flight_info.inbound_datetime_departure}}</p>
+      <p>Arrival Date & Time: {{t1_flight_info.inbound_datetime_arrival}}</p>
+      <p><b>Total fare is ${{t1_flight_info.total_fare}}, including ${{t1_flight_info.taxes}} in taxes.</b></p>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4><a href="">{{search_results.traveler2_name}}'s Itinerary</a></h4></div>
+      </div>
+      <h4>{{search_results.traveler2_name}}'s Departing Flight Info ({{search_results.traveler2_origin}} to {{search_results.destination}}):</h4>
+      <p>Carrier: {{t2_flight_info.outbound_airline}} flight number {{t2_flight_info.outbound_flight_number}}</p>
+      <p>Departure Date & Time: {{t2_flight_info.outbound_datetime_departure}}</p>
+      <p>Arrival Date & Time: {{t2_flight_info.outbound_datetime_arrival}}</p>
+      <br>
+      <h4>{{search_results.traveler2_name}}'s Return Flight Info ({{search_results.destination}} to {{search_results.traveler2_origin}}):</h4>
+      <p>Carrier: {{t2_flight_info.inbound_airline}} flight number {{t2_flight_info.inbound_flight_number}}</p>
+      <p>Departure Date & Time: {{t2_flight_info.inbound_datetime_departure}}</p>
+      <p>Arrival Date & Time: {{t2_flight_info.inbound_datetime_arrival}}</p>
+      <p><b>Total fare is ${{t2_flight_info.total_fare}}, including ${{t2_flight_info.taxes}} in taxes.</b></p>
+      <hr>
+      <a href="/">Search Again</a> | <a href="http://bootply.com/129229">Email Search Results To a Friend</a>
+      </p>
+      <hr>  
+      <p>
+      <a href="http://bootply.com" target="_ext" class="center-block btn btn-primary">Add These Results to Your Account Search History</a>
+      </p>
+        
+      <hr>      
+
+    </div>
+    <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
+    
+  </div>
+</div>
+<!-- end template -->
 
 
-Click here to share these flight results with a friend:
-
-Click here to save this search to your account.
-
-Click here to return to the flight search page. 
-
-
-{{user_search.traveler1_name}} will depart TRAVELER1ORIGIN On DEPARTURE DATE.
- on AIRLINE FLIGHT NUMBER 
- departing at DEPARTURETIME
- arriving in DESTINATION at ARRIVALTIME.
- Total fare is TOTALFARE with a basefare of BASEFARE and taxes of TAXES.
-
- {{user_search.traveler1_name}} returns on RETURN DATE
- on AIRLINE FLIGHT NUMBER 
- departing at DEPARTURETIME
- arriving in DESTINATION at ARRIVALTIME.
 
 
 {% endblock %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
