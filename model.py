@@ -32,6 +32,7 @@ class Search(db.Model):
 
     
     search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
     traveler1_name = db.Column(db.String(150), nullable=True)
     traveler2_name = db.Column(db.String(150), nullable=True)
     traveler1_origin = db.Column(db.String(75), nullable=True)

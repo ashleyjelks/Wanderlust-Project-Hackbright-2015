@@ -59,6 +59,41 @@ def register_process():
 
 
 
+@app.route('/login', methods=['GET'])
+def login_page():
+    """Show login page."""
+
+    return render_template("login_page.html")
+
+
+
+@app.route('/login', methods=['POST'])
+def login_process():
+    """Process login."""
+
+    # Get form variables
+    email = request.form["email"]
+    password = request.form["password"]
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        flash("No such user")
+        return redirect("/login")
+
+    if user.password != password:
+        flash("Incorrect password")
+        return redirect("/login")
+
+    session["user_id"] = user.user_id
+    print session
+
+    flash("You are logged in!")
+    
+    return render_template("index.html")   
+
+
+
 @app.route('/search_results',  methods=['POST'])
 def get_search():
     """Process search request, renders user results of their request. """
