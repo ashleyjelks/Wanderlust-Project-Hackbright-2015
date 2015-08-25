@@ -21,6 +21,17 @@ class User(db.Model):
     name = db.Column(db.String(150), nullable=True)
     email = db.Column(db.String(150), nullable=True)
     password = db.Column(db.String(100), nullable=True)
+
+
+class Search(db.Model):
+    #User is a sublclass of db.Model
+
+    """ User of Wanderlust Application and their search parameters."""
+
+    __tablename__ = "searches"
+
+    
+    search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     traveler1_name = db.Column(db.String(150), nullable=True)
     traveler2_name = db.Column(db.String(150), nullable=True)
     traveler1_origin = db.Column(db.String(75), nullable=True)
@@ -30,6 +41,7 @@ class User(db.Model):
     departure_date = db.Column(db.String(75), nullable=True)
     return_date = db.Column(db.String(75), nullable=True)
     destination = db.Column(db.String(75), nullable=True)
+    users = db.relationship('User', backref=db.backref('searches', order_by=search_id))
 
 
 
@@ -56,8 +68,6 @@ class Flight(db.Model):
     base_fare = db.Column(db.Integer, nullable=False)
     taxes = db.Column(db.Integer, nullable=False)
     total_fare = db.Column(db.Integer, nullable=False)
-    outbound_connecting_city = db.Column(db.String(75), nullable=True)
-    inbound_connecting_city = db.Column(db.String(75), nullable=True)
     user = db.relationship('User', backref=db.backref('flights', order_by=user_id))
 
 
@@ -68,21 +78,11 @@ class SavedSearch(db.Model):
 
     __tablename__ = "saved_searches"
 
-    search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
+    saved_search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable =False)
     flight_id = db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable =False)
+    search_id = db.Column(db.Integer, db.ForeignKey('searches.search_id'), nullable =False)
      
-
-class Airline(db.Model):
-
-    """ Flight database info for travelers."""
-
-    __tablename__ = "airlines"
-
-    airline_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
-    airline = db.Column(db.String(75), nullable =True) 
-    code = db.Column(db.String(5), nullable = True)
-
 
 #############################################################################
 # Helper functions
