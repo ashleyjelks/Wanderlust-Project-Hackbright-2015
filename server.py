@@ -1,8 +1,9 @@
-from flask import Flask, render_template, redirect, request, flash, session
+from flask import Flask, render_template, redirect, request, flash, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
-from model import connect_to_db, db, User, Flight, SavedSearch
-from airline_airport_conversions import airlines, cities
+from model import connect_to_db, db, User, Search, Flight, SavedSearch
+
+
 # import api_seed as api_seed
 
 
@@ -17,20 +18,15 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 
+
 @app.route('/',)
 def homepage():
 
     """Wanderlust Homepage. Users can register for an account, login, or simply search flights."""
 
+    
     return render_template("homepage.html")
 
-
-@app.route('/index', methods=['GET'])
-def index():
-
-    """Route to gather a user's flight search parameters"""
-
-    return render_template("index.html")
 
 
 @app.route('/register', methods=['GET'])
@@ -94,13 +90,18 @@ def login_process():
 
 
 
+@app.route('/search_results', methods=['GET'])
+def index():
+
+    """Route to gather a user's flight search parameters"""
+
+    return render_template("search_results.html")
+
+
 @app.route('/search_results',  methods=['POST'])
 def get_search():
     """Process search request, renders user results of their request. """
 
-    name = request.form["name"]
-    email = request.form["email"]
-    password = request.form["password"]
     traveler1_name = request.form["traveler1_name"]
     traveler2_name = request.form["traveler2_name"]
     traveler1_origin = request.form["traveler1_origin"]
@@ -120,7 +121,13 @@ def get_search():
     
     t2_flight_info = Flight.query.filter_by(outbound_city_origin=traveler2_origin, inbound_city_origin=destination).first()
 
-    return render_template("search_results.html", search_results=search_results, t1_flight_info=t1_flight_info, t2_flight_info=t2_flight_info) 
+    # t1_display_info = {
+    #     origin_city = t1_display_info.outbound_city_origin
+    # }
+
+
+
+    return render_template("search_results.html", search_results=search_results, t1_flight_info=t1_flight_info, t2_flight_info=t2_flight_info, airlines=airlines) 
 
 
 
@@ -130,4 +137,5 @@ if __name__ == "__main__":
     connect_to_db(app)
     DebugToolbarExtension(app)
     app.run()
+    app.DEBUG_TB_INTERCEPT_REDIRECTS = False
 
