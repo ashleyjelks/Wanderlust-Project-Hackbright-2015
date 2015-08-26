@@ -9,10 +9,7 @@ from model import connect_to_db, db, User, Search, Flight, SavedSearch
 
 
 app = Flask(__name__)
-
-# Required to use Flask sessions and the debug toolbar
 app.secret_key = "ABC"
-
 # Normally, if you use an undefined variable in Jinja2, it fails silently.
 # This is horrible. Fix this so that, instead, it raises an error.
 app.jinja_env.undefined = StrictUndefined
@@ -40,19 +37,23 @@ def register_page():
 def register_process():
     """Process registration form inputs."""
 
-    name = request.form["name"]
+    firstname = request.form["firstname"]
+    lastname = request.form["lastname"]
     email = request.form["email"]
     password = request.form["password"]
 
-    new_user = User(name=name, email=email, password=password)
+    new_user = User(firstname=firstname, lastname=lastname, email=email, password=password)
 
     db.session.add(new_user)
     db.session.commit()
 
-    flash("%s is now registered with Wanderlust!. Thank you." % name)
+    flash("%s %s is now registered with Wanderlust!. Thank you." % (firstname, lastname))
 
     return render_template("index.html")
 
+
+# JSON OBJECT
+# Key lat/long: value
 
 
 @app.route('/login', methods=['GET'])
@@ -74,17 +75,17 @@ def login_process():
     user = User.query.filter_by(email=email).first()
 
     if not user:
-        flash("No such user")
+        flash("Sorry, you are not a registered Wanderlust user. Please create an account!")
         return redirect("/login")
 
     if user.password != password:
-        flash("Incorrect password")
+        flash("Incorrect password, please try again.")
         return redirect("/login")
 
     session["user_id"] = user.user_id
     print session
 
-    flash("You are logged in!")
+    flash("You are logged in to Wanderlust!")
     
     return render_template("index.html")   
 
@@ -112,22 +113,17 @@ def get_search():
     return_date = request.form["return_date"]
     destination = request.form["destination"]
 
-    search_results = Search(traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
+    search_request = Search(traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
 
-    db.session.add(search_results)
+    db.session.add(search_request)
     db.session.commit()
 
-    t1_flight_info = Flight.query.filter_by(outbound_city_origin=traveler1_origin, inbound_city_origin=destination).first()
+    t1 = Flight.query.filter_by(outbound_city_origin=traveler1_origin, inbound_city_origin=destination).first()
     
-    t2_flight_info = Flight.query.filter_by(outbound_city_origin=traveler2_origin, inbound_city_origin=destination).first()
-
-    # t1_display_info = {
-    #     origin_city = t1_display_info.outbound_city_origin
-    # }
+    t2 = Flight.query.filter_by(outbound_city_origin=traveler2_origin, inbound_city_origin=destination).first()
 
 
-
-    return render_template("search_results.html", search_results=search_results, t1_flight_info=t1_flight_info, t2_flight_info=t2_flight_info, airlines=airlines) 
+    return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2) 
 
 
 
@@ -137,5 +133,5 @@ if __name__ == "__main__":
     connect_to_db(app)
     DebugToolbarExtension(app)
     app.run()
-    app.DEBUG_TB_INTERCEPT_REDIRECTS = False
+    
 

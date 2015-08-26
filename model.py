@@ -18,7 +18,8 @@ class User(db.Model):
     __tablename__ = "users"
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
-    name = db.Column(db.String(150), nullable=True)
+    firstname = db.Column(db.String(150), nullable=True)
+    lastname = db.Column(db.String(150), nullable=True)
     email = db.Column(db.String(150), nullable=True)
     password = db.Column(db.String(100), nullable=True)
 
@@ -100,6 +101,8 @@ def connect_to_db(app):
 
     # Configure to use our SQLite database
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flightapp.db'
+    app.config['SQLALCHEMY_ECHO'] = True
+    app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     db.app = app
     db.init_app(app)
 
