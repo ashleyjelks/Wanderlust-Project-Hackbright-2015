@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, flash, session, jso
 from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from model import connect_to_db, db, User, Search, Flight, SavedSearch
+from airline_airport_conversions import airlines, cities, airports
 
 
 # import api_seed as api_seed
@@ -63,6 +64,11 @@ def login_page():
     return render_template("login_page.html")
 
 
+# @app.route('/map_cities.json')
+# def map_cities():
+#     # import latlongs
+#     return jsonify(latlongs)
+
 
 @app.route('/login', methods=['POST'])
 def login_process():
@@ -113,14 +119,29 @@ def get_search():
     return_date = request.form["return_date"]
     destination = request.form["destination"]
 
+    print traveler1_name, traveler2_name, traveler1_origin, traveler2_origin, traveler1_max_price, traveler2_max_price, departure_date, return_date, destination
+
     search_request = Search(traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
 
     db.session.add(search_request)
     db.session.commit()
 
-    t1 = Flight.query.filter_by(outbound_city_origin=traveler1_origin, inbound_city_origin=destination).first()
-    
-    t2 = Flight.query.filter_by(outbound_city_origin=traveler2_origin, inbound_city_origin=destination).first()
+    print search_request
+    print type(search_request)
+
+    t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).filter(Flight.base_fare<=traveler1_max_price).first()
+
+    if not t1:
+        t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).first()
+
+    t2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).filter(Flight.base_fare<=traveler2_max_price).first()
+
+    if not t2:
+        t2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).first()
+
+    print "This is ", t1, t2
+
+
 
 
     return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2) 
