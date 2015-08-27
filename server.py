@@ -3,6 +3,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from model import connect_to_db, db, User, Search, Flight, SavedSearch
 from airline_airport_conversions import airlines, cities, airports
+# from latlong import latlongs
 
 
 # import api_seed as api_seed
