@@ -3,7 +3,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from jinja2 import StrictUndefined
 from model import connect_to_db, db, User, Search, Flight, SavedSearch
 from airline_airport_conversions import airlines, cities, airports
-# from latlong import latlongs
+from latlong import latlongs
 
 
 # import api_seed as api_seed
@@ -65,10 +65,10 @@ def login_page():
     return render_template("login_page.html")
 
 
-# @app.route('/map_cities.json')
-# def map_cities():
-#     # import latlongs
-#     return jsonify(latlongs)
+@app.route('/map_cities.json')
+def map_cities():
+    print latlongs
+    return jsonify(latlongs)
 
 
 @app.route('/login', methods=['POST'])

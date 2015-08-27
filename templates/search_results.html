@@ -3,14 +3,29 @@
 <style>
       #map-canvas {
         width: 500px;
-        height: 75px;
+        height: 750px;
       }
 </style>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 <script>
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function initialize() {
+
+$.get('/map_cities.json', function (latlongs) {
+        // Attach markers to each bear location in returned JSON
+        var city, marker;
+
+        // console.log({{search_request.destination}});
+
+        var point = latlongs['features']
+
+        for (i = 0; i < point.length; i++){
+
+          if ("{{search_request.destination}}" === point[i]['properties']['code']){
+            var latitude = point[i]['properties']['latitude']
+            var longitude = point[i]['properties']['longitude'];
+          
 
   /* position Amsterdam */
 
@@ -18,24 +33,27 @@ function initialize() {
   // if destination == destination{
   //     latlng = XYZ;
   // }
-  var latlng = new google.maps.LatLng(52.3731, 4.8922);
+                var latlng = new google.maps.LatLng(latitude, longitude);
 
-  var mapOptions = {
-    center: latlng,
-    scrollWheel: false,
-    zoom: 13
-  };
-  
-  var marker = new google.maps.Marker({
-    position: latlng,
-    url: '/',
-    animation: google.maps.Animation.DROP
-  });
-  
-  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  marker.setMap(map);
+                var mapOptions = {
+                  center: latlng,
+                  scrollWheel: false,
+                  zoom: 13
+                };
+                
+                var marker = new google.maps.Marker({
+                  position: latlng,
+                  url: '/',
+                  animation: google.maps.Animation.DROP
+                });
+                
+                var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                marker.setMap(map);
 
-};
+              };
+            };
+          });
+          }
 </script>
 <div class="navbar navbar-custom navbar-fixed-top">
  <div class="navbar-header"><a class="navbar-brand" href="#">Welcome to Wanderlust</a>
@@ -67,11 +85,13 @@ function initialize() {
       </div>
 {% if t1 %}   
       <h4>{{search_request.traveler1_name}}'s Departing Flight Info ({{t1.outbound_city_origin}} to {{t1.outbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{t1.outbound_airline_name}} flight #{{t1.outbound_flight_number}}</p>
         <p>Departure Date & Time: {{t1.outbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{t1.outbound_datetime_arrival}}</p>
       <br>    
       <h4>{{search_request.traveler1_name}}'s Return Flight Info ({{t1.inbound_city_origin}} to {{t1.inbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{t1.inbound_airline_name}} flight #{{t1.inbound_flight_number}}</p>
         <p>Departure Date & Time: {{t1.inbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{t1.inbound_datetime_arrival}}</p>
@@ -79,11 +99,13 @@ function initialize() {
 {% elif alt1 %}
     <h3>Wanderlust couldn't find a flight within {{search_request.traveler1_name}}'s budget, here's the next best option:</h3>
       <h4>{{search_request.traveler1_name}}'s Departing Flight Info ({{alt1.outbound_city_origin}} to {{alt1.outbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{alt1.outbound_airline_name}} flight #{{alt1.outbound_flight_number}}</p>
         <p>Departure Date & Time: {{alt1.outbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{alt1.outbound_datetime_arrival}}</p>
       <br> 
       <h4>{{search_request.traveler1_name}}'s Return Flight Info ({{alt1.inbound_city_origin}} to {{alt1.inbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{alt1.inbound_airline_name}} flight #{{alt1.inbound_flight_number}}</p>
         <p>Departure Date & Time: {{alt1.inbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{alt1.inbound_datetime_arrival}}</p>
@@ -94,12 +116,14 @@ function initialize() {
         <div class="panel-heading"><h4><a href="">{{search_request.traveler2_name}}'s Itinerary</a></h4></div>
       </div>
 {% if t2 %}   
-      <h4>{{search_request.traveler1_name}}'s Departing Flight Info ({{t2.outbound_city_origin}} to {{t2.outbound_city_final_destination}}):</h4>
+      <h4>{{search_request.traveler2_name}}'s Departing Flight Info ({{t2.outbound_city_origin}} to {{t2.outbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{t2.outbound_airline_name}} flight #{{t2.outbound_flight_number}}</p>
         <p>Departure Date & Time: {{t2.outbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{t2.outbound_datetime_arrival}}</p>
       <br>    
-      <h4>{{search_request.traveler1_name}}'s Return Flight Info ({{t2.inbound_city_origin}} to {{t2.inbound_city_final_destination}}):</h4>
+      <h4>{{search_request.traveler2_name}}'s Return Flight Info ({{t2.inbound_city_origin}} to {{t2.inbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{t2.inbound_airline_name}} flight #{{t2.inbound_flight_number}}</p>
         <p>Departure Date & Time: {{t2.inbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{t2.inbound_datetime_arrival}}</p>
@@ -107,11 +131,13 @@ function initialize() {
 {% elif alt2 %}
     <h3>Wanderlust couldn't find a flight within {{search_request.traveler2_name}}'s budget, here's the next best option:</h3>
       <h4>{{search_request.traveler2_name}}'s Departing Flight Info ({{alt2.outbound_city_origin}} to {{alt2.outbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{alt2.outbound_airline_name}} flight #{{alt2.outbound_flight_number}}</p>
         <p>Departure Date & Time: {{alt2.outbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{alt2.outbound_datetime_arrival}}</p>
       <br> 
       <h4>{{search_request.traveler2_name}}'s Return Flight Info ({{alt2.inbound_city_origin}} to {{alt2.inbound_city_final_destination}}):</h4>
+        <p>Airport Information:</p>
         <p>Carrier: {{alt2.inbound_airline_name}} flight #{{alt2.inbound_flight_number}}</p>
         <p>Departure Date & Time: {{alt2.inbound_datetime_departure}}</p>
         <p>Arrival Date & Time: {{alt2.inbound_datetime_arrival}}</p>

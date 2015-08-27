@@ -8,7 +8,7 @@ latlongs = {
         "marker-size": "medium",
         "city": "Atlanta, Georgia",
         "code": "ATL",
-        "latitude": 33.747894124738075, 
+        "latitude": 33.747894124738075,
         "longitude": -84.39130783081055,
       },
     },

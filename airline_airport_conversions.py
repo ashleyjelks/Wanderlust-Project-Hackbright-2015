@@ -81,7 +81,8 @@ airlines = {
               'FM': 'Shanghai Airlines',
               'AV': 'Avianca Brazil Airlines',
               'JJ': 'TAM Airlines',
-              '4M': 'LAN Argentina Airlines'
+              '4M': 'LAN Argentina Airlines',
+              'OZ': 'Asiana Airlines'
               }
 
 
