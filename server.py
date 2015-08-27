@@ -130,21 +130,23 @@ def get_search():
     print type(search_request)
 
     t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).filter(Flight.base_fare<=traveler1_max_price).first()
+    alt1 = None
 
     if not t1:
-        t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).first()
-
+        alt1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).first()
+        
     t2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).filter(Flight.base_fare<=traveler2_max_price).first()
+    alt2 = None
 
     if not t2:
-        t2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).first()
-
+        alt2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).first()
+       
     print "This is ", t1, t2
 
 
 
 
-    return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2) 
+    return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2, alt1=alt1, alt2=alt2) 
 
 
 
