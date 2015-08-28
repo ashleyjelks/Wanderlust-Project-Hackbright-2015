@@ -162,13 +162,13 @@ def get_search():
     db.session.add(search_request)
     db.session.commit()
 
-    t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).filter(Flight.base_fare<=traveler1_max_price).first()
+    t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).filter(Flight.total_fare<=traveler1_max_price).first()
     alt1 = None
 
     if not t1:
         alt1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).first()
         
-    t2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).filter(Flight.base_fare<=traveler2_max_price).first()
+    t2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).filter(Flight.total_fare<=traveler2_max_price).first()
     alt2 = None
 
     if not t2:
