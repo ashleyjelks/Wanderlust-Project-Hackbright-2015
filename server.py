@@ -12,10 +12,7 @@ from latlong import latlongs
 
 app = Flask(__name__)
 app.secret_key = "ABC"
-# Normally, if you use an undefined variable in Jinja2, it fails silently.
-# This is horrible. Fix this so that, instead, it raises an error.
 app.jinja_env.undefined = StrictUndefined
-
 
 
 @app.route('/',)
@@ -54,9 +51,6 @@ def register_process():
     return render_template("index.html")
 
 
-# JSON OBJECT
-# Key lat/long: value
-
 
 @app.route('/login', methods=['GET'])
 def login_page():
@@ -67,7 +61,7 @@ def login_page():
 
 @app.route('/map_cities.json')
 def map_cities():
-    print latlongs
+   
     return jsonify(latlongs)
 
 
@@ -106,34 +100,44 @@ def logout():
     return redirect("/")
 
 
-# @app.route("/saved-searches")
-# def view_saved_searches():
-#     """View saved flight searches."""
 
-#     saved_search = Flight.query.get()
+@app.route('/saved_searches', methods=['POST'])
+def view_saved_searches():
+    """View saved flight searches."""
 
-    
+    t1 = request.form.get('t1_flight_id')
+    print t1
+    alt1 = request.form.get('alt1_flight_id')
+    print alt1
+    t2 = request.form.get('t2_flight_id')
+    print t2
+    alt2 = request.form.get('alt2_flight_id')
+    print alt2
 
+    user_id = session['user_id']
+    print user_id
 
-#     return render_template()
+    if t1:
+        search_t1=t1
+    else:
+        search_t1=alt1
 
+    if t2:
+        search_t2=t2
+    else:
+        search_t2=alt2
 
-# @app.route("/add_to_cart/<int:id>")
-# def add_to_saved_searches(id):
-#     """Save a search query to user searches. Display a confirmation message"""
+    search_id = request.form.get('search_id')
 
-    # # Check if we have a cart in the session dictionary and, if not, add one
-    # cart = session.setdefault('cart', [])
+    save_search = SavedSearch(user_id=user_id, search_id=search_id, t1_flight_id=search_t1, t2_flight_id=search_t2)
 
-    # # Add melon to cart
-    # cart.append(id)
+    db.session.add(save_search)
+    db.session.commit()
 
-    # # Show user success message on next page load
-    # flash("Successfully added to cart.")
+     flash("Your query has been saved to your user account.")
 
-    # # Redirect to shopping cart page
-    # return redirect("/cart")
-
+    return render_template("saved_searches.html")
+   
 
 @app.route('/search_results', methods=['GET'])
 def index():
@@ -147,6 +151,7 @@ def index():
 def get_search():
     """Process search request, renders user results of their request. """
 
+    user_id = session["user_id"]
     traveler1_name = request.form["traveler1_name"]
     traveler2_name = request.form["traveler2_name"]
     traveler1_origin = request.form["traveler1_origin"]
@@ -157,10 +162,16 @@ def get_search():
     return_date = request.form["return_date"]
     destination = request.form["destination"]
 
-    search_request = Search(traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
+    search_request = Search(user_id=user_id, traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
 
     db.session.add(search_request)
     db.session.commit()
+
+    search_request_id = Search.query.filter_by(user_id=user_id, traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination).first()
+    print "&"*100
+    print search_request_id
+    print search_request_id.user_id
+    print "&"*100
 
     t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).filter(Flight.total_fare<=traveler1_max_price).first()
     alt1 = None
@@ -174,7 +185,7 @@ def get_search():
     if not t2:
         alt2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).first()
        
-    return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2, alt1=alt1, alt2=alt2) 
+    return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2, alt1=alt1, alt2=alt2, search_request_id=search_request_id) 
 
 
 
@@ -184,5 +195,5 @@ if __name__ == "__main__":
     connect_to_db(app)
     DebugToolbarExtension(app)
     app.run()
-    
+    mail.init_app(app)
 

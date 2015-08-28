@@ -88,8 +88,9 @@ class SavedSearch(db.Model):
 
     saved_search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable =False)
-    flight_id = db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable =False)
     search_id = db.Column(db.Integer, db.ForeignKey('searches.search_id'), nullable =False)
+    t1_flight_id = db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable =False)
+    t2_flight_id = db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable =False)
      
 
 #############################################################################
@@ -100,7 +101,7 @@ def connect_to_db(app):
     """Connect the database to our Flask app."""
 
     # Configure to use our SQLite database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flightapp.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flightdata.db'
     app.config['SQLALCHEMY_ECHO'] = True
     app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
     db.app = app

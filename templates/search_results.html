@@ -13,10 +13,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function initialize() {
 
 $.get('/map_cities.json', function (latlongs) {
-        // Attach markers to each bear location in returned JSON
+        
         var city, marker;
-
-        // console.log({{search_request.destination}});
 
         var point = latlongs['features']
 
@@ -138,23 +136,26 @@ $.get('/map_cities.json', function (latlongs) {
         <p><b>Total fare is ${{alt2.total_fare}}, including ${{alt2.taxes}} in taxes.</b></p>
       <hr>
 {% endif %}      
-      <a href="/">Search Again</a> | <a href="/">Email Search Results To a Friend</a>
+      <a href="/">Search Again</a> 
       </p>
       <hr>  
-      <p>
-      <a href="" target="_ext" class="center-block btn btn-primary">Add These Results to Your Account Search History</a>
-      </p>
-      <p><button type="button"><a href="/logout">Click Here to Logout</a></button></p>        
+      <form action="/saved_searches" method="POST">
+        {% if t1 %}  
+        <input type="hidden" name="t1_flight_id" value="{{t1.flight_id}}">
+        {% elif alt1 %}
+        <input type="hidden" name="alt1_flight_id" value="{{alt1.flight_id}}">
+        {% endif %}
+        {% if t2 %}
+        <input type="hidden" name="t2_flight_id" value="{{t2.flight_id}}">
+        {% elif alt2 %}
+        <input type="hidden" name="alt2_flight_id" value="{{alt2.flight_id}}">
+        {% endif %}
+        <input type="hidden" name="search_id" value="{{search_request_id.search_id}}">
+        <input type="submit" class="center-block btn btn-primary" value="Add These Results to Your Account Search History">
+      </form>
       <hr>      
-
     </div>
-    <div class="col-md-12"><!--map-canvas will be postioned here--></div>
-    
+    <div class="col-lg-12"></div>    
   </div>
 </div>
-<!-- end template -->
-
-
-
-
 {% endblock %}

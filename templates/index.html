@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}    
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="script.js"></script>
     <div>
         <div class="well spaced" style="width:100%;">   
             <h1>Welcome to Wanderlust!</h1>
             <h2>To begin searching for your next journey, please fill out the details below for you and your travel partner.</h2>
-                <form action = "/search_results" method="POST">
+                <form action = "/search_results" id="searchparams" method="POST">
                     <div class="form-group">
-                    <label>Traveler #1 Name<input type="text" name="traveler1_name" class="form-control" required></label>
-                    <label>Traveler #2 Name<input type="text" name="traveler2_name" class="form-control" required></label><br><br>
+                    <label>Traveler #1 Name<input type="text" name="traveler1_name" id="traveler1_name" class="form-control" required></label>
+                    <label>Traveler #2 Name<input type="text" name="traveler2_name" id="traveler2_name" class="form-control" required></label><br><br>
                     </span></div>
                     <div class="form-group">
                     <label>Traveler #1 Origin City</label>
-                    <select name="traveler1_origin" required>
+                    <select name="traveler1_origin" id="traveler1_origin" required>
                         <option value="">Traveler #1's Departure City:</option>    
                         <option value="ATL">Atlanta, Georgia</option>    
                         <option value="BOS">Boston, Massachusetts</option>  
@@ -28,7 +30,7 @@
                         <option value="IAD">Washington, DC</option>             
                     </select> 
                     <label>Traveler #2 Origin City</label>
-                    <select name="traveler2_origin" required>
+                    <select name="traveler2_origin" id="traveler2_origin" required>
                         <option value="">Traveler #1's Departure City:</option>    
                         <option value="ATL">Atlanta, Georgia</option>    
                         <option value="BOS">Boston, Massachusetts</option>  
@@ -47,16 +49,16 @@
                     <br><br>
                     </div>
                     <div class="form-group">
-                    <label>Traveler #1 Max Budget<input type="number" name="traveler1_max_price" class="form-control" required></label>
-                    <label>Traveler #2 Max Budget<input type="number" name="traveler2_max_price" class="form-control" required></label><br><br>
+                    <label>Traveler #1 Max Budget<input type="number" name="traveler1_max_price" id="traveler1_max_price" class="form-control" required></label>
+                    <label>Traveler #2 Max Budget<input type="number" name="traveler2_max_price" id="traveler2_max_price" class="form-control" required></label><br><br>
                     </div>
                     <div class="form-group">
-                    <label>Departure Date<input type="date" name="departure_date" value="2015-09-02" class="form-control" required></label>
-                    <label>Return Date<input type="date" name="return_date" value="2015-09-16" class="form-control" required></label><br><br>
+                    <label>Departure Date<input type="date" name="departure_date" id="departure_date" value="2015-09-02" class="form-control" required></label>
+                    <label>Return Date<input type="date" name="return_date" id="return_date" value="2015-09-16" class="form-control" required></label><br><br>
                     </span></div>
                     <div class="form-group">
                         <label>Where Will Your Wanderlust Lead You Next?</label>
-                            <select name="destination" required>
+                            <select name="destination" id="destination" required>
                                 <option value=""></option>
                                 <option value="">Destinations in the United States:</option>       
                                 <option value="ATL">Atlanta, Georgia</option>    
