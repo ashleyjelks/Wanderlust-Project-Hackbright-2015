@@ -97,6 +97,43 @@ def login_process():
     return render_template("index.html")   
 
 
+@app.route('/logout')
+def logout():
+    """Log out."""
+
+    del session["user_id"]
+    flash("You have successfully logged out of your Wanderlust account!")
+    return redirect("/")
+
+
+# @app.route("/saved-searches")
+# def view_saved_searches():
+#     """View saved flight searches."""
+
+#     saved_search = Flight.query.get()
+
+    
+
+
+#     return render_template()
+
+
+# @app.route("/add_to_cart/<int:id>")
+# def add_to_saved_searches(id):
+#     """Save a search query to user searches. Display a confirmation message"""
+
+    # # Check if we have a cart in the session dictionary and, if not, add one
+    # cart = session.setdefault('cart', [])
+
+    # # Add melon to cart
+    # cart.append(id)
+
+    # # Show user success message on next page load
+    # flash("Successfully added to cart.")
+
+    # # Redirect to shopping cart page
+    # return redirect("/cart")
+
 
 @app.route('/search_results', methods=['GET'])
 def index():
@@ -120,15 +157,10 @@ def get_search():
     return_date = request.form["return_date"]
     destination = request.form["destination"]
 
-    print traveler1_name, traveler2_name, traveler1_origin, traveler2_origin, traveler1_max_price, traveler2_max_price, departure_date, return_date, destination
-
     search_request = Search(traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
 
     db.session.add(search_request)
     db.session.commit()
-
-    print search_request
-    print type(search_request)
 
     t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).filter(Flight.base_fare<=traveler1_max_price).first()
     alt1 = None
@@ -142,11 +174,6 @@ def get_search():
     if not t2:
         alt2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).first()
        
-    print "This is ", t1, t2
-
-
-
-
     return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2, alt1=alt1, alt2=alt2) 
 
 
