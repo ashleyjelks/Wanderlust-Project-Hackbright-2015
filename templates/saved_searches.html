@@ -1,65 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <div>Saved Search Results:</div>
-
-<ul>
-    <li>
-    {% for result in flight_list %}
-    {% for item in traveler_info %}
-    {{item[0].traveler1_name}}
-    {{result[0][0].outbound_city_origin}}
-    {{result[0][0].outbound_city_final_destination}}
-    {{result[0][0].outbound_airline_name}}
-    {{result[0][0].outbound_flight_number}}
-    {{result[0][0].outbound_datetime_departure}}
-    {{result[0][0].outbound_datetime_arrival}}
-    {{result[0][0].inbound_city_origin}}
-    {{result[0][0].inbound_city_final_destination}}
-    {{result[0][0].inbound_airline_name}}
-    {{result[0][0].inbound_flight_number}}
-    {{result[0][0].inbound_datetime_departure}}
-    {{result[0][0].inbound_datetime_arrival}}
-    {{result[0][0].outbound_destination_city_airport}}
-    {{result[0][0].inbound_destination_city_airport}}
-    {{result[0][0].outbound_city_airport}}
-    {{result[0][0].inbound_city_airport}}
-    {{result[0][0].base_fare}}
-    {{result[0][0].taxes}}
-    {{result[0][0].total_fare}}
-    </li>
-</ul>
-
-
-
-
-<ul>
-    <li>
-{{item[0].traveler2_name}}
-/{{result[1][0].outbound_city_origin}}
-/{{result[1][0].outbound_city_final_destination}}
-/{{result[1][0].outbound_airline_name}}
-/{{result[1][0].outbound_flight_number}}
-/{{result[1][0].outbound_datetime_departure}}
-/{{result[1][0].outbound_datetime_arrival}}
-/{{result[1][0].inbound_city_origin}}
-/{{result[1][0].inbound_city_final_destination}}
-/{{result[1][0].inbound_airline_name}}
-/{{result[1][0].inbound_flight_number}}
-/{{result[1][0].inbound_datetime_departure}}
-/{{result[1][0].inbound_datetime_arrival}}
-/{{result[1][0].outbound_destination_city_airport}}
-/{{result[1][0].inbound_destination_city_airport}}
-/{{result[1][0].outbound_city_airport}}
-/{{result[1][0].inbound_city_airport}}
-/{{result[1][0].base_fare}}
-/{{result[1][0].taxes}}
-/{{result[1][0].total_fare}}
-</ul>
-    </li>
-
-  {% endfor %}
-  {% endfor %}
+<div>
+    <h1>Saved Search Results:</h1><br>
+</div>
+<div>
+    <ul>
+        <li>
+        {% for result in flight_list %}{% for item in traveler_info %}
+        <h3>{{item[0].traveler1_name}}'s Flight Search Results</h3><br><br>
+        <b>Outbound Flight Info:</b><br>
+        Departure City: {{result[0][0].outbound_city_airport}}, {{result[0][0].outbound_city_origin}}<br>
+        Destination City: {{result[0][0].outbound_city_final_destination}}<br>
+        Airline: {{result[0][0].outbound_airline_name}}, Flight #{{result[0][0].outbound_flight_number}}<br>
+        Departure Date & Time: {{result[0][0].outbound_datetime_departure}}<br>
+        Arrival Date & Time: {{result[0][0].outbound_datetime_arrival}}<br><br>
+        <b>Return Flight Info:</b><br>
+        Departure City: {{result[0][0].inbound_city_airport}}, {{result[0][0].inbound_city_origin}}
+        <br>Destination City: {{result[0][0].inbound_destination_city_airport}}, {{result[0][0].inbound_city_final_destination}}<br>
+        Airline: {{result[0][0].inbound_airline_name}}, Flight #{{result[0][0].inbound_flight_number}}<br>
+        Departure Date & Time: {{result[0][0].inbound_datetime_departure}}<br>
+        Arrival Date & Time: {{result[0][0].inbound_datetime_arrival}}<br><br>
+        Base Fare: ${{result[0][0].base_fare}}<br>
+        Taxes: ${{result[0][0].taxes}}<br>
+        Total Fare: ${{result[0][0].total_fare}}
+        </li>
+    </ul>
+</div>
+<div>
+    <ul>
+        <li>
+    <h3>{{item[0].traveler2_name}}'s Flight Search Results</h3><br><br>
+    <b>Outbound Flight Info:</b><br>
+    Departure City: {{result[1][0].outbound_city_airport}}, {{result[1][0].outbound_city_origin}}<br>
+    Destination City: {{result[1][0].outbound_city_final_destination}}<br>
+    Airline: {{result[1][0].outbound_airline_name}}, Flight #{{result[1][0].outbound_flight_number}}<br>
+    Departure Time: {{result[1][0].outbound_datetime_departure}}<br>
+    Arrival Time: {{result[1][0].outbound_datetime_arrival}}<br><br>
+    <b>Return Flight Info:</b><br>
+    Departure City: {{result[1][0].inbound_city_airport}}, {{result[1][0].inbound_city_origin}}<br>
+    Destination City: {{result[1][0].inbound_city_final_destination}}<br>
+    Airline: {{result[1][0].inbound_airline_name}}, Flight #{{result[1][0].inbound_flight_number}}<br>
+    Departure Date & Time: {{result[1][0].inbound_datetime_departure}}<br>
+    Arrival Date & Time: {{result[1][0].inbound_datetime_arrival}}<br><br>
+    Base Fare: ${{result[1][0].base_fare}}<br>
+    Taxes: ${{result[1][0].taxes}}<br>
+    Total Fare: ${{result[1][0].total_fare}}
+    </ul>
+        {% endfor %}{% endfor %}
+        </li>
+</div>
 
 {% endblock %}
 
