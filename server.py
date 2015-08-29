@@ -108,23 +108,26 @@ def view_saved_searches():
 
     saved_searches = SavedSearch.query.filter_by(user_id=user_id).all()
 
-    for item in saved_searches:
+    for search in saved_searches:
         flight_list = []
-        t1_flights = Flight.query.filter_by(flight_id=item.t1_flight_id).all()
-        t2_flights = Flight.query.filter_by(flight_id=item.t2_flight_id).all()
+        t1_flights = Flight.query.filter_by(flight_id=search.t1_flight_id).all()
+        t2_flights = Flight.query.filter_by(flight_id=search.t2_flight_id).all()
         flight_list.append((t1_flights, t2_flights))
 
         print flight_list[0][0][0].base_fare
 
+    for travelers in saved_searches:
+        traveler_info = []
+        traveler = Search.query.filter_by(search_id=travelers.search_id).all()
+        traveler_info.append(traveler)
+
+        print traveler, "=traveler"
+        print traveler_info, "=traveler_info"
+        print travelers, "=travelers"
 
 
-    
 
-    # print t1_flights
-
-
-
-    return render_template("saved_searches.html", saved_searches=saved_searches, flight_list=flight_list)
+    return render_template("saved_searches.html", saved_searches=saved_searches, flight_list=flight_list, traveler_info=traveler_info)
 
 
 @app.route('/saved_searches', methods=['POST'])
