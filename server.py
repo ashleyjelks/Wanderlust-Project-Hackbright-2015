@@ -100,22 +100,48 @@ def logout():
     return redirect("/")
 
 
-
-@app.route('/saved_searches', methods=['POST'])
+@app.route('/saved_searches', methods=['GET'])
 def view_saved_searches():
     """View saved flight searches."""
 
+    user_id = session['user_id']
+
+    saved_searches = SavedSearch.query.filter_by(user_id=user_id).all()
+
+    for item in saved_searches:
+        flight_list = []
+        t1_flights = Flight.query.filter_by(flight_id=item.t1_flight_id).all()
+        t2_flights = Flight.query.filter_by(flight_id=item.t2_flight_id).all()
+        flight_list.append((t1_flights, t2_flights))
+
+        print flight_list[0][0][0].base_fare
+
+
+
+    
+
+    # print t1_flights
+
+
+
+    return render_template("saved_searches.html", saved_searches=saved_searches, flight_list=flight_list)
+
+
+@app.route('/saved_searches', methods=['POST'])
+def make_saved_searches():
+    """View saved flight searches."""
+
     t1 = request.form.get('t1_flight_id')
-    print t1
+    
     alt1 = request.form.get('alt1_flight_id')
-    print alt1
+    
     t2 = request.form.get('t2_flight_id')
-    print t2
+    
     alt2 = request.form.get('alt2_flight_id')
-    print alt2
+
 
     user_id = session['user_id']
-    print user_id
+
 
     if t1:
         search_t1=t1
@@ -128,17 +154,21 @@ def view_saved_searches():
         search_t2=alt2
 
     search_id = request.form.get('search_id')
+    print search_id, "1"
+    print user_id, "2"
+    print search_t1, "3"
+    print search_t2, "4"
 
     save_search = SavedSearch(user_id=user_id, search_id=search_id, t1_flight_id=search_t1, t2_flight_id=search_t2)
 
     db.session.add(save_search)
     db.session.commit()
 
-     flash("Your query has been saved to your user account.")
+    flash("Your query has been saved to your user account.")
 
-    return render_template("saved_searches.html")
+    return redirect("/saved_searches")
+
    
-
 @app.route('/search_results', methods=['GET'])
 def index():
 

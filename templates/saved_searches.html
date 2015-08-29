@@ -5,9 +5,17 @@
 <h1>Complete the Information Below to Register for Wanderlust</h1>
     <div>Saved Search Results:</div>
 
+<ul>
+    {% for result in flight_list %}
 
+    {{result[0][0].base_fare}}
+   
+
+{% endfor %}
+</ul>
 
 
 
 
 {% endblock %}
+
