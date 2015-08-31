@@ -9,7 +9,29 @@
           href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.css"/>
 </head>
 <body>
-    
+<div class="navbar navbar-custom navbar-fluid-top">
+ <div class="navbar-header"><a class="navbar-brand" href="/">Welcome to Wanderlust</a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span><div class="container"></div>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+        <li><a href="/">Home</a></li>
+{% if "user_id" in session %}
+        <li><a href="/logout">Logout</a></li>
+{% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+{% endif %}
+        
+        <li>&nbsp;</li>
+      </ul>
+</div>
+</div>    
 
 {% for flash in get_flashed_messages() %}
       <div class="alert alert-danger" style="width:90%; margin:0 auto;">{{ flash }}</div>

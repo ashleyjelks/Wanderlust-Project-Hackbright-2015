@@ -15,13 +15,12 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 
-@app.route('/',)
+@app.route('/', methods=['GET'])
 def homepage():
 
     """Wanderlust Homepage. Users can register for an account, login, or simply search flights."""
-
-    
-    return render_template("homepage.html")
+ 
+    return render_template("index.html")
 
 
 
@@ -91,6 +90,7 @@ def login_process():
     return render_template("index.html")   
 
 
+
 @app.route('/logout')
 def logout():
     """Log out."""
@@ -108,10 +108,10 @@ def view_saved_searches():
 
     saved_searches = SavedSearch.query.filter_by(user_id=user_id).all()
 
-    for search in saved_searches:
+    for flight in saved_searches:
         flight_list = []
-        t1_flights = Flight.query.filter_by(flight_id=search.t1_flight_id).all()
-        t2_flights = Flight.query.filter_by(flight_id=search.t2_flight_id).all()
+        t1_flights = Flight.query.filter_by(flight_id=flight.t1_flight_id).all()
+        t2_flights = Flight.query.filter_by(flight_id=flight.t2_flight_id).all()
         flight_list.append((t1_flights, t2_flights))
 
         print flight_list[0][0][0].base_fare
@@ -224,9 +224,9 @@ def get_search():
 
 
 if __name__ == "__main__":
-    app.debug = False
+    app.debug = True
     connect_to_db(app)
     DebugToolbarExtension(app)
     app.run()
-    mail.init_app(app)
+
 
