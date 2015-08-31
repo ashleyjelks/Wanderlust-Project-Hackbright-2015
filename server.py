@@ -224,7 +224,7 @@ def get_search():
 
 
 if __name__ == "__main__":
-    app.debug = True
+    app.debug = False
     connect_to_db(app)
     DebugToolbarExtension(app)
     app.run()
