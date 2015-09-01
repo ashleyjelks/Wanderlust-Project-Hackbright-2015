@@ -6,8 +6,6 @@ from airline_airport_conversions import airlines, cities, airports
 from latlong import latlongs
 
 
-# import api_seed as api_seed
-
 
 
 app = Flask(__name__)
@@ -83,7 +81,7 @@ def login_process():
         return redirect("/login")
 
     session["user_id"] = user.user_id
-    print session
+    print session, '&*1'*100
 
     flash("You are logged in to Wanderlust!")
     
@@ -107,23 +105,26 @@ def view_saved_searches():
     user_id = session['user_id']
 
     saved_searches = SavedSearch.query.filter_by(user_id=user_id).all()
+    # print saved_searches, "= saved", "$"*100
 
     for flight in saved_searches:
+        print flight
         flight_list = []
         t1_flights = Flight.query.filter_by(flight_id=flight.t1_flight_id).all()
         t2_flights = Flight.query.filter_by(flight_id=flight.t2_flight_id).all()
         flight_list.append((t1_flights, t2_flights))
 
-        print flight_list[0][0][0].base_fare
+    print flight_list, "%" * 25
+
 
     for travelers in saved_searches:
         traveler_info = []
         traveler = Search.query.filter_by(search_id=travelers.search_id).all()
         traveler_info.append(traveler)
 
-        print traveler, "=traveler"
-        print traveler_info, "=traveler_info"
-        print travelers, "=travelers"
+    # print traveler, "=traveler"
+    # print traveler_info, "=traveler_info"
+    # print travelers, "=travelers"
 
 
 
