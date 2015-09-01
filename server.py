@@ -185,7 +185,7 @@ def index():
 def get_search():
     """Process search request, renders user results of their request. """
 
-    user_id = session["user_id"]
+    user_id = session.get("user_id")
     traveler1_name = request.form["traveler1_name"]
     traveler2_name = request.form["traveler2_name"]
     traveler1_origin = request.form["traveler1_origin"]
@@ -196,16 +196,8 @@ def get_search():
     return_date = request.form["return_date"]
     destination = request.form["destination"]
 
-    search_request = Search(user_id=user_id, traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
+    
 
-    db.session.add(search_request)
-    db.session.commit()
-
-    search_request_id = Search.query.filter_by(user_id=user_id, traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination).first()
-    print "&"*100
-    print search_request_id
-    print search_request_id.user_id
-    print "&"*100
 
     t1 = Flight.query.filter_by(outbound_city_origin=cities[traveler1_origin], inbound_city_origin=cities[destination]).filter(Flight.total_fare<=traveler1_max_price).first()
     alt1 = None
@@ -218,8 +210,24 @@ def get_search():
 
     if not t2:
         alt2 = Flight.query.filter_by(outbound_city_origin=cities[traveler2_origin], inbound_city_origin=cities[destination]).first()
+
+
+    if user_id:
+        search_request = Search(user_id=user_id, traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination)
+
+        db.session.add(search_request)
+        db.session.commit()
+
+        search_request_id = Search.query.filter_by(user_id=user_id, traveler1_name=traveler1_name, traveler2_name=traveler2_name, traveler1_origin=traveler1_origin, traveler2_origin=traveler2_origin, traveler1_max_price=traveler1_max_price, traveler2_max_price=traveler2_max_price, departure_date=departure_date, return_date=return_date, destination=destination).first()
+        print "&"*100
+        print search_request_id
+        print search_request_id.user_id
+        print "&"*100
+
+        return render_template("search_results.html", search_request=search_request, search_request_id=search_request_id, t1=t1, t2=t2, alt1=alt1, alt2=alt2, destination=destination, traveler1_name=traveler1_name, traveler2_name=traveler2_name)     
        
-    return render_template("search_results.html", search_request=search_request, t1=t1, t2=t2, alt1=alt1, alt2=alt2, search_request_id=search_request_id) 
+       
+    return render_template("search_results.html", t1=t1, t2=t2, alt1=alt1, alt2=alt2, destination=destination, traveler1_name=traveler1_name, traveler2_name=traveler2_name) 
 
 
 

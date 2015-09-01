@@ -2,8 +2,8 @@
 {% block content %}
 <style>
       #map-canvas {
-        width: 1500px;
-        height: 2000px;
+        width: 25em;
+        height: 75em;
       }
 </style>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
@@ -20,7 +20,7 @@ $.get('/map_cities.json', function (latlongs) {
 
         for (i = 0; i < point.length; i++){
 
-          if ("{{search_request.destination}}" === point[i]['properties']['code']){
+          if ("{{destination}}" === point[i]['properties']['code']){
             var latitude = point[i]['properties']['latitude']
             var longitude = point[i]['properties']['longitude'];
                 var latlng = new google.maps.LatLng(latitude, longitude);
@@ -54,30 +54,30 @@ $.get('/map_cities.json', function (latlongs) {
       
       <!-- item list -->
       <div class="panel panel-default">
-        <div class="panel-heading"><h4>{{search_request.traveler1_name}}'s Itinerary</h4></div>
+        <div class="panel-heading"><h4>{{traveler1_name}}'s Itinerary</h4></div>
       </div>
 {% if t1 %}   
-      <h4>{{search_request.traveler1_name}}'s Departing Flight Info ({{t1.outbound_city_origin}} to {{t1.outbound_city_final_destination}}):</h4>
+      <h4>{{traveler1_name}}'s Departing Flight Info ({{t1.outbound_city_origin}} to {{t1.outbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{t1.outbound_city_airport}} to {{t1.inbound_city_airport}}</p>
         <b><p>Carrier: </b>{{t1.outbound_airline_name}} flight #{{t1.outbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{t1.outbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{t1.outbound_datetime_arrival}}</p>
       <br>    
-      <h4>{{search_request.traveler1_name}}'s Return Flight Info ({{t1.inbound_city_origin}} to {{t1.inbound_city_final_destination}}):</h4>
+      <h4>{{traveler1_name}}'s Return Flight Info ({{t1.inbound_city_origin}} to {{t1.inbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{t1.inbound_city_airport}} to {{t1.outbound_city_airport}}</p></p>
         <b><p>Carrier: </b>{{t1.inbound_airline_name}} flight #{{t1.outbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{t1.inbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{t1.inbound_datetime_arrival}}</p>
         <h3><p><b>Total fare is ${{t1.total_fare}}, including ${{t1.taxes}} in taxes.</b></p></h3>
 {% elif alt1 %}
-    <h4>Wanderlust couldn't find a flight within {{search_request.traveler1_name}}'s budget, here's the next best option:</h4>
-      <h4>{{search_request.traveler1_name}}'s Departing Flight Info ({{alt1.outbound_city_origin}} to {{alt1.outbound_city_final_destination}}):</h4>
+    <h4>Wanderlust couldn't find a flight within {{traveler1_name}}'s budget, here's the next best option:</h4>
+      <h4>{{traveler1_name}}'s Departing Flight Info ({{alt1.outbound_city_origin}} to {{alt1.outbound_city_final_destination}}):</h4>
         <b><p>Airport Information:</b> {{alt1.outbound_city_airport}} to {{alt1.inbound_city_airport}}</p></p>
         <b><p>Carrier:</b> {{alt1.outbound_airline_name}} flight #{{alt1.inbound_flight_number}}</p>
         <b><p>Departure Date & Time:</b> {{alt1.outbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{alt1.outbound_datetime_arrival}}</p>
       <br> 
-      <h4>{{search_request.traveler1_name}}'s Return Flight Info ({{alt1.inbound_city_origin}} to {{alt1.inbound_city_final_destination}}):</h4>
+      <h4>{{traveler1_name}}'s Return Flight Info ({{alt1.inbound_city_origin}} to {{alt1.inbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{alt1.inbound_city_airport}} to {{alt1.outbound_city_airport}}</p>
         <b><p>Carrier: </b>{{alt1.inbound_airline_name}} flight #{{alt1.outbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{alt1.inbound_datetime_departure}}</p>
@@ -86,39 +86,40 @@ $.get('/map_cities.json', function (latlongs) {
       <hr>
 {% endif %}
       <div class="panel panel-default">
-        <div class="panel-heading"><h4>{{search_request.traveler2_name}}'s Itinerary</h4></div>
+        <div class="panel-heading"><h4>{{traveler2_name}}'s Itinerary</h4></div>
       </div>
 {% if t2 %}   
-      <h4>{{search_request.traveler2_name}}'s Departing Flight Info ({{t2.outbound_city_origin}} to {{t2.outbound_city_final_destination}}):</h4>
+      <h4>{{traveler2_name}}'s Departing Flight Info ({{t2.outbound_city_origin}} to {{t2.outbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{t2.outbound_city_airport}} to {{t2.inbound_city_airport}}</p>
         <b><p>Carrier: </b>{{t2.outbound_airline_name}} flight #{{t2.outbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{t2.outbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{t2.outbound_datetime_arrival}}</p>
       <br>    
-      <h4>{{search_request.traveler2_name}}'s Return Flight Info ({{t2.inbound_city_origin}} to {{t2.inbound_city_final_destination}}):</h4>
+      <h4>{{traveler2_name}}'s Return Flight Info ({{t2.inbound_city_origin}} to {{t2.inbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{t2.inbound_city_airport}} to {{t2.outbound_city_airport}}</p>
         <b><p>Carrier: </b>{{t2.inbound_airline_name}} flight #{{t2.inbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{t2.inbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{t2.inbound_datetime_arrival}}</p>
         <h3><p><b>Total fare is ${{t2.total_fare}}, including ${{t2.taxes}} in taxes.</b></p></h3>
 {% elif alt2 %}
-    <h4>Wanderlust couldn't find a flight within {{search_request.traveler2_name}}'s budget, here's the next best option:</h4>
-      <h4>{{search_request.traveler2_name}}'s Departing Flight Info ({{alt2.outbound_city_origin}} to {{alt2.outbound_city_final_destination}}):</h4>
+    <h4>Wanderlust couldn't find a flight within {{traveler2_name}}'s budget, here's the next best option:</h4>
+      <h4>{{traveler2_name}}'s Departing Flight Info ({{alt2.outbound_city_origin}} to {{alt2.outbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{alt2.outbound_city_airport}} to {{alt2.inbound_city_airport}}</p>
         <b><p>Carrier: </b>{{alt2.outbound_airline_name}} flight #{{alt2.outbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{alt2.outbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{alt2.outbound_datetime_arrival}}</p>
       <br> 
-      <h4>{{search_request.traveler2_name}}'s Return Flight Info ({{alt2.inbound_city_origin}} to {{alt2.inbound_city_final_destination}}):</h4>
+      <h4>{{traveler2_name}}'s Return Flight Info ({{alt2.inbound_city_origin}} to {{alt2.inbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{alt2.inbound_city_airport}} to {{alt2.outbound_city_airport}}</p>
         <b><p>Carrier: </b>{{alt2.inbound_airline_name}} flight #{{alt2.inbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{alt2.inbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{alt2.inbound_datetime_arrival}}</p>
         <h3><p><b>Total fare is ${{alt2.total_fare}}, including ${{alt2.taxes}} in taxes.</b></p></h3>
       <hr>
-{% endif %}      
+      {% endif %}      
       <a href="/">Search Again</a>
       </p>
+      {% if session.get("user_id") %}
       <hr>  
       <form action="/saved_searches" method="POST">
         {% if t1 %}  
@@ -132,9 +133,10 @@ $.get('/map_cities.json', function (latlongs) {
         <input type="hidden" name="alt2_flight_id" value="{{alt2.flight_id}}">
         {% endif %}
         <input type="hidden" name="search_id" value="{{search_request_id.search_id}}">
-        <input type="submit" class="center-block btn btn-primary" value="Add These Results to Your Account Search History">
+        <input type="submit" class="center-block btn btn-info" value="Add These Results to Your Account Search History">
       </form>
-      <hr>      
+      {% endif %}
+      <hr> 
     </div>
     <div class="col-lg-4">
     <div id="map-canvas"></div>
