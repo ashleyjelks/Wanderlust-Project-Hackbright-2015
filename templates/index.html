@@ -33,11 +33,11 @@ body {
             <h1>Welcome to Wanderlust!</h1>
             <h3>To begin searching for your next journey, please fill out the details below for you and your travel partner.</h3>
         </div>
-        <form action = "/search_results" method="POST">
-            <div class="form-group">
+        <div class="form-group">
+            <form action = "/search_results" method="POST">    
                 <div class="dropdown">    
-                    <div class="form-group"><br>
-                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"><label>Traveler #1 Name Origin City and Max Budget<input type="text" name="traveler1_name" id="traveler1_name" class="form-control" value="Ashley"></label>
+                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"><label>Traveler #1 Name Origin City and Max Budget
+                            <input type="text" name="traveler1_name" id="traveler1_name" class="form-control" value="Ashley"></label>
                             <select class="form-control" name="traveler1_origin" id="traveler1_origin" required> 
                                 <ul class="dropdown-menu">   
                         <li><option value="">Traveler #1's Departure City:</option></li>    
@@ -55,11 +55,13 @@ body {
                         <li><option value="SEA">Seattle, Washington</option></li> 
                         <li><option value="IAD">Washington, DC</option></li>   
                                 </ul>
-                    </div>
-                </div>
                     <div> 
                     <label>Traveler #1 Max Budget<input type="number" name="traveler1_max_price" id="traveler1_max_price" class="form-control" value="850"></label><br><br>
                     </div>
+                        </button>
+                            </select>
+                    </div>
+
                 <div class="dropdown">    
                     <div class="form-group">
                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
@@ -86,6 +88,8 @@ body {
                     <div> 
                     <label>Traveler #2 Max Budget<input type="number" name="traveler2_max_price" id="traveler2_max_price" class="form-control" value="800"></label><br><br>
                     </div>
+                        </button>
+                            </select>
                 <div class="dropdown">    
                     <div class="form-group">
                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
@@ -138,6 +142,8 @@ body {
                                 <li><option value="YVR">Vancouver, British Columbia, Canada</option></li>
                             </select>
                                 </ul>
+                                </button>
+                            
                 </div>
                     <div class="form-group">
                     <label>Departure Date<input type="date" name="departure_date" id="departure_date" value="2015-09-02" class="form-control" required></label>

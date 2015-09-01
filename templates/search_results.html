@@ -2,8 +2,8 @@
 {% block content %}
 <style>
       #map-canvas {
-        width: 25em;
-        height: 25em;
+        width: 1500px;
+        height: 2000px;
       }
 </style>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
@@ -68,9 +68,9 @@ $.get('/map_cities.json', function (latlongs) {
         <b><p>Carrier: </b>{{t1.inbound_airline_name}} flight #{{t1.outbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{t1.inbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{t1.inbound_datetime_arrival}}</p>
-        <p><b>Total fare is ${{t1.total_fare}}, including ${{t1.taxes}} in taxes.</b></p>
+        <h3><p><b>Total fare is ${{t1.total_fare}}, including ${{t1.taxes}} in taxes.</b></p></h3>
 {% elif alt1 %}
-    <h3>Wanderlust couldn't find a flight within {{search_request.traveler1_name}}'s budget, here's the next best option:</h3>
+    <h4>Wanderlust couldn't find a flight within {{search_request.traveler1_name}}'s budget, here's the next best option:</h4>
       <h4>{{search_request.traveler1_name}}'s Departing Flight Info ({{alt1.outbound_city_origin}} to {{alt1.outbound_city_final_destination}}):</h4>
         <b><p>Airport Information:</b> {{alt1.outbound_city_airport}} to {{alt1.inbound_city_airport}}</p></p>
         <b><p>Carrier:</b> {{alt1.outbound_airline_name}} flight #{{alt1.inbound_flight_number}}</p>
@@ -82,7 +82,7 @@ $.get('/map_cities.json', function (latlongs) {
         <b><p>Carrier: </b>{{alt1.inbound_airline_name}} flight #{{alt1.outbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{alt1.inbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{alt1.inbound_datetime_arrival}}</p>
-        <p><b>Total fare is ${{alt1.total_fare}}, including ${{alt1.taxes}} in taxes.</b></p>
+        <h3><p><b>Total fare is ${{alt1.total_fare}}, including ${{alt1.taxes}} in taxes.</b></p></h3>
       <hr>
 {% endif %}
       <div class="panel panel-default">
@@ -100,9 +100,9 @@ $.get('/map_cities.json', function (latlongs) {
         <b><p>Carrier: </b>{{t2.inbound_airline_name}} flight #{{t2.inbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{t2.inbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{t2.inbound_datetime_arrival}}</p>
-        <p><b>Total fare is ${{t2.total_fare}}, including ${{t2.taxes}} in taxes.</b></p>
+        <h3><p><b>Total fare is ${{t2.total_fare}}, including ${{t2.taxes}} in taxes.</b></p></h3>
 {% elif alt2 %}
-    <h3>Wanderlust couldn't find a flight within {{search_request.traveler2_name}}'s budget, here's the next best option:</h3>
+    <h4>Wanderlust couldn't find a flight within {{search_request.traveler2_name}}'s budget, here's the next best option:</h4>
       <h4>{{search_request.traveler2_name}}'s Departing Flight Info ({{alt2.outbound_city_origin}} to {{alt2.outbound_city_final_destination}}):</h4>
         <b><p>Airport Information: </b>{{alt2.outbound_city_airport}} to {{alt2.inbound_city_airport}}</p>
         <b><p>Carrier: </b>{{alt2.outbound_airline_name}} flight #{{alt2.outbound_flight_number}}</p>
@@ -114,7 +114,7 @@ $.get('/map_cities.json', function (latlongs) {
         <b><p>Carrier: </b>{{alt2.inbound_airline_name}} flight #{{alt2.inbound_flight_number}}</p>
         <b><p>Departure Date & Time: </b>{{alt2.inbound_datetime_departure}}</p>
         <b><p>Arrival Date & Time: </b>{{alt2.inbound_datetime_arrival}}</p>
-        <p><b>Total fare is ${{alt2.total_fare}}, including ${{alt2.taxes}} in taxes.</b></p>
+        <h3><p><b>Total fare is ${{alt2.total_fare}}, including ${{alt2.taxes}} in taxes.</b></p></h3>
       <hr>
 {% endif %}      
       <a href="/">Search Again</a>
