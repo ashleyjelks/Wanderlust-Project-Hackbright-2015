@@ -16,21 +16,24 @@ body {
     -o-background-size: cover;
     position: fixed;
 
-},
-
-#id {
-  opacity: 0.1;
 }
-
 </style>
+
+<style>
+#heading { 
+  opacity: 1;
+  color: white; 
+}
+</style>
+
 {% endblock %}
 {% block content %}    
     
-<div id="bg">
-        <!-- <div class="well spaced" style="width:100%;">    -->
+        <div id="heading">
             <h1>Welcome to Wanderlust!</h1>
-            <h2>To begin searching for your next journey, please fill out the details below for you and your travel partner.</h2>
-        <form action = "/search_results" id="searchparams" method="POST">
+            <h3>To begin searching for your next journey, please fill out the details below for you and your travel partner.</h3>
+        </div>
+        <form action = "/search_results" method="POST">
             <div class="form-group">
                 <div class="dropdown">    
                     <div class="form-group"><br>
@@ -136,70 +139,12 @@ body {
                             </select>
                                 </ul>
                 </div>
-                    
-
-
-
-
-
-
                     <div class="form-group">
                     <label>Departure Date<input type="date" name="departure_date" id="departure_date" value="2015-09-02" class="form-control" required></label>
                     <label>Return Date<input type="date" name="return_date" id="return_date" value="2015-09-16" class="form-control" required></label><br><br>
                     </span></div>
-                    
-                    <!-- <div class="form-group">
-                        <label>Where Will Your Wanderlust Lead You Next?</label>
-                            <select name="destination" id="destination" required>
-                                <li><option value=""></option></li>
-                                <li><option value="">Destinations in the United States:</option></li>       
-                                <li><option value="ATL">Atlanta, Georgia</option></li>    
-                                <li><option value="BOS">Boston, Massachusetts</option></li>  
-                                <li><option value="ORD">Chicago, Illinois</option></li> 
-                                <li><option value="DFW">Dallas, Texas</option></li>  
-                                <li><option value="DEN">Denver, Colorado</option></li> 
-                                <li><option value="LAS">Las Vegas, Nevada</option></li>   
-                                <li><option value="LAX">Los Angeles, California</option></li>
-                                <li><option value="OGG">Maui, Hawaii</option></li>  
-                                <li><option value="MIA">Miami, Florida</option></li>    
-                                <li><option value="JFK">New York, New York</option></li>   
-                                <li><option value="PHX">Phoenix, Arizona</option></li>
-                                <li><option value="SFO">San Francisco, California</option></li>
-                                <li><option value="SEA">Seattle, Washington</option></li> 
-                                <li><option value="IAD">Washington, DC</option></li> 
-                                <li><option value=""> </option></li>
-                                <li><option value="">Destinations Abroad:</option></li>  
-                                <li><option value="AMS">Amsterdam, The Netherlands</option></li>
-                                <li><option value="PEK">Beijing, China</option></li> 
-                                <li><option value="TXL">Berlin, Germany</option></li> 
-                                <li><option value="EZE">Buenos Aires, Argentina</option></li>
-                                <li><option value="CUN">Cancun, Mexico</option></li> 
-                                <li><option value="CPT">Cape Town, South Africa</option></li>
-                                <li><option value="CPH">Cophenhagen, Denmark</option></li>
-                                <li><option value="DXB">Dubai, United Arab Emirates</option></li> 
-                                <li><option value="DUB">Dublin, Ireland</option></li>
-                                <li><option value="SGN">Ho Chi Minh City, Vietnam</option></li>  
-                                <li><option value="IST">Istanbul, Turkey</option></li>                               
-                                <li><option value="MAD">Madrid, Spain</option></li> 
-                                <li><option value="RAK">Marrakech, Morocco</option></li> 
-                                <li><option value="MBJ">Montego Bay, Jamaica</option></li>
-                                <li><option value="YUL">Montreal, Quebec, Canada</option></li>
-                                <li><option value="KUL">Kuala Lumpur, Malaysia</option></li>
-                                <li><option value="LHR">London, England</option></li>
-                                <li><option value="LIS">Lisbon, Portugal</option></li>
-                                <li><option value="CDG">Paris, France</option></li>
-                                <li><option value="GIG">Rio de Janeiro, Brazil</option></li>
-                                <li><option value="FCO">Rome, Italy</option></li>
-                                <li><option value="SJU">San Juan, Puerto Rico</option></li>      
-                                <li><option value="SYD">Sydney, Australia</option></li>
-                                <li><option value="HND">Tokyo, Japan</option></li>
-                                <li><option value="YYZ">Toronto, Ontario, Canada</option></li>        
-                                <li><option value="YVR">Vancouver, British Columbia, Canada</option></li>
-                            </select>
-                    </div> 
-                </div> --><!-- closes div form-group -->
                             <input type="submit" value="Ready. Set. Jet!" class="btn btn-info"> 
                  </form>
-            </div> <!-- well-spaced div -->
-    <!-- </div> closes image div -->
+            </div>
+</div> 
 {% endblock %}
