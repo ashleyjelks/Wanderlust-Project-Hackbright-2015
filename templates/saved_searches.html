@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<div>
-    <h1>Saved Search Results:</h1><br>
-</div>
-<div>
-    <ul>
-        <li>
+<div class="container-fluid"> 
+    <div>
+        <ul class="list-unstyled">
+            <li>
         {% for result in flight_list %}{% for item in traveler_info %}
-        <h3>{{item[0].traveler1_name}}'s Flight Search Results</h3><br><br>
-        <b>Outbound Flight Info:</b><br>
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-4">
+                        <h1><b>Your Saved Searches</b></h1><br>
+        <h2>{{item[0].traveler1_name}}'s Flight Search Results</h2><br><br>
+        <h4><b>Outbound Flight Info:</b><br>
         Departure City: {{result[0][0].outbound_city_airport}}, {{result[0][0].outbound_city_origin}}<br>
         Destination City: {{result[0][0].outbound_city_final_destination}}<br>
         Airline: {{result[0][0].outbound_airline_name}}, Flight #{{result[0][0].outbound_flight_number}}<br>
@@ -22,15 +23,20 @@
         Arrival Date & Time: {{result[0][0].inbound_datetime_arrival}}<br><br>
         Base Fare: ${{result[0][0].base_fare}}<br>
         Taxes: ${{result[0][0].taxes}}<br>
-        Total Fare: ${{result[0][0].total_fare}}
-        </li>
-    </ul>
-</div>
-<div>
-    <ul>
-        <li>
-    <h3>{{item[0].traveler2_name}}'s Flight Search Results</h3><br><br>
-    <b>Outbound Flight Info:</b><br>
+        Total Fare: ${{result[0][0].total_fare}}</h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+<hr>
+    <div>
+        <ul class="list-unstyled">
+            <li>
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-4">
+        <h2>{{item[0].traveler2_name}}'s Flight Search Results</h2><br><br>
+    <h4><b>Outbound Flight Info:</b><br>
     Departure City: {{result[1][0].outbound_city_airport}}, {{result[1][0].outbound_city_origin}}<br>
     Destination City: {{result[1][0].outbound_city_final_destination}}<br>
     Airline: {{result[1][0].outbound_airline_name}}, Flight #{{result[1][0].outbound_flight_number}}<br>
@@ -44,10 +50,13 @@
     Arrival Date & Time: {{result[1][0].inbound_datetime_arrival}}<br><br>
     Base Fare: ${{result[1][0].base_fare}}<br>
     Taxes: ${{result[1][0].taxes}}<br>
-    Total Fare: ${{result[1][0].total_fare}}
-    </ul>
-        {% endfor %}{% endfor %}
-        </li>
+    Total Fare: ${{result[1][0].total_fare}}</h4>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {% endfor %}{% endfor %}  
+</div>
 </div>
 
 {% endblock %}
