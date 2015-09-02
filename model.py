@@ -1,19 +1,10 @@
-""" Models and database functions for Wanderlust project. """
-
 from flask_sqlalchemy import SQLAlchemy
 
 
 db = SQLAlchemy()
 
 
-#################################################################
-
-# Defining all Models in this database
-
 class User(db.Model):
-    #User is a sublclass of db.Model
-
-    """ User of Wanderlust Application and their search parameters."""
 
     __tablename__ = "users"
 
@@ -24,14 +15,10 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=True)
 
 
-class Search(db.Model):
-    #User is a sublclass of db.Model
-
-    """ User of Wanderlust Application and their search parameters."""
+class Search(db.Model): 
 
     __tablename__ = "searches"
 
-    
     search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
     traveler1_name = db.Column(db.String(150), nullable=True)
@@ -48,8 +35,6 @@ class Search(db.Model):
 
 
 class Flight(db.Model):
-
-    """ Flight database info for travelers."""
 
     __tablename__ = "flights"
 
@@ -82,8 +67,6 @@ class Flight(db.Model):
 
 class SavedSearch(db.Model):
 
-    """ Flight database info for travelers."""
-
     __tablename__ = "saved_searches"
 
     saved_search_id = db.Column(db.Integer, autoincrement=True, primary_key=True, nullable=False)
@@ -91,10 +74,7 @@ class SavedSearch(db.Model):
     search_id = db.Column(db.Integer, db.ForeignKey('searches.search_id'), nullable =False)
     t1_flight_id = db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable =False)
     t2_flight_id = db.Column(db.Integer, db.ForeignKey('flights.flight_id'), nullable =False)
-     
 
-#############################################################################
-# Helper functions
 
 
 def connect_to_db(app):
@@ -115,5 +95,3 @@ if __name__ == "__main__":
     from server import app
     connect_to_db(app)
     print "Connected to DB."
-
-
