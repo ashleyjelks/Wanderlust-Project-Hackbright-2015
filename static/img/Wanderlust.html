@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:5000/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Wanderlust</title>
+<script type="text/javascript" src="./Wanderlust_files/jquery.min.js"></script><style type="text/css"></style>
+<script type="text/javascript" src="./Wanderlust_files/moment.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" src="static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" src="static/bootstrap/css/bootstrap-theme.min.css"> -->
+<link rel="stylesheet" type="text/css" href="./Wanderlust_files/bootstrap.css">
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.css">
+<link rel="stylesheet" href="./Wanderlust_files/toolbar.css" type="text/css"></head>
+<body data-pinterest-extension-installed="cr1.38.4">
+<div class="navbar navbar-custom navbar-fluid-top">
+ <div class="navbar-header"><a class="navbar-brand" href="./Wanderlust_files/Wanderlust.html">Welcome to Wanderlust</a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span><div class="container"></div>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+        </li><li><a href="./Wanderlust_files/Wanderlust.html">Home</a></li>
+
+        <li><a href="http://localhost:5000/login">Login</a></li>
+        <li><a href="http://localhost:5000/register">Register</a></li>
+
+        
+        <li>&nbsp;</li>
+      </ul>
+</div>
+</div>    
+
+
+
+        
+    <style type="text/css" src="static/index.css"></style>
+<div id="bg">
+        <div class="well spaced" style="width:100%;">   
+            <h1>Welcome to Wanderlust!</h1>
+            <h2>To begin searching for your next journey, please fill out the details below for you and your travel partner.</h2>
+                <form action="http://localhost:5000/search_results" id="searchparams" method="POST">
+                    <div class="form-group">
+                    <label>Traveler #1 Name<input type="text" name="traveler1_name" id="traveler1_name" class="form-control" required=""></label>
+                    <label>Traveler #2 Name<input type="text" name="traveler2_name" id="traveler2_name" class="form-control" required=""></label><br><br>
+                    </div>
+                    <div class="form-group">
+                    <label>Traveler #1 Origin City</label>
+                    <select name="traveler1_origin" id="traveler1_origin" required="">
+                        <option value="">Traveler #1's Departure City:</option>    
+                        <option value="ATL">Atlanta, Georgia</option>    
+                        <option value="BOS">Boston, Massachusetts</option>  
+                        <option value="ORD">Chicago, Illinois</option> 
+                        <option value="DFW">Dallas, Texas</option>  
+                        <option value="DEN">Denver, Colorado</option> 
+                        <option value="LAS">Las Vegas, Nevada</option>   
+                        <option value="LAX">Los Angeles, California</option>  
+                        <option value="MIA">Miami, Florida</option>    
+                        <option value="JFK">New York, New York</option>   
+                        <option value="PHX">Phoenix, Arizona</option>
+                        <option value="SFO">San Francisco, California</option>
+                        <option value="SEA">Seattle, Washington</option> 
+                        <option value="IAD">Washington, DC</option>             
+                    </select> 
+                    <label>Traveler #2 Origin City</label>
+                    <select name="traveler2_origin" id="traveler2_origin" required="">
+                        <option value="">Traveler #1's Departure City:</option>    
+                        <option value="ATL">Atlanta, Georgia</option>    
+                        <option value="BOS">Boston, Massachusetts</option>  
+                        <option value="ORD">Chicago, Illinois</option> 
+                        <option value="DFW">Dallas, Texas</option>  
+                        <option value="DEN">Denver, Colorado</option> 
+                        <option value="LAS">Las Vegas, Nevada</option>   
+                        <option value="LAX">Los Angeles, California</option>  
+                        <option value="MIA">Miami, Florida</option>    
+                        <option value="JFK">New York, New York</option>   
+                        <option value="PHX">Phoenix, Arizona</option>
+                        <option value="SFO">San Francisco, California</option>
+                        <option value="SEA">Seattle, Washington</option> 
+                        <option value="IAD">Washington, DC</option>             
+                    </select>
+                    <br><br>
+                    </div>
+                    <div class="form-group">
+                    <label>Traveler #1 Max Budget<input type="number" name="traveler1_max_price" id="traveler1_max_price" class="form-control" required=""></label>
+                    <label>Traveler #2 Max Budget<input type="number" name="traveler2_max_price" id="traveler2_max_price" class="form-control" required=""></label><br><br>
+                    </div>
+                    <div class="form-group">
+                    <label>Departure Date<input type="date" name="departure_date" id="departure_date" value="2015-09-02" class="form-control" required=""></label>
+                    <label>Return Date<input type="date" name="return_date" id="return_date" value="2015-09-16" class="form-control" required=""></label><br><br>
+                    </div>
+                    <div class="form-group">
+                        <label>Where Will Your Wanderlust Lead You Next?</label>
+                            <select name="destination" id="destination" required="">
+                                <option value=""></option>
+                                <option value="">Destinations in the United States:</option>       
+                                <option value="ATL">Atlanta, Georgia</option>    
+                                <option value="BOS">Boston, Massachusetts</option>  
+                                <option value="ORD">Chicago, Illinois</option> 
+                                <option value="DFW">Dallas, Texas</option>  
+                                <option value="DEN">Denver, Colorado</option> 
+                                <option value="LAS">Las Vegas, Nevada</option>   
+                                <option value="LAX">Los Angeles, California</option>
+                                <option value="OGG">Maui, Hawaii</option>  
+                                <option value="MIA">Miami, Florida</option>    
+                                <option value="JFK">New York, New York</option>   
+                                <option value="PHX">Phoenix, Arizona</option>
+                                <option value="SFO">San Francisco, California</option>
+                                <option value="SEA">Seattle, Washington</option> 
+                                <option value="IAD">Washington, DC</option> 
+                                <option value=""> </option>
+                                <option value="">Destinations Abroad:</option>  
+                                <option value="AMS">Amsterdam, The Netherlands</option>
+                                <option value="PEK">Beijing, China</option> 
+                                <option value="TXL">Berlin, Germany</option> 
+                                <option value="EZE">Buenos Aires, Argentina</option>
+                                <option value="CUN">Cancun, Mexico</option> 
+                                <option value="CPT">Cape Town, South Africa</option>
+                                <option value="CPH">Cophenhagen, Denmark</option>
+                                <option value="DXB">Dubai, United Arab Emirates</option> 
+                                <option value="DUB">Dublin, Ireland</option>
+                                <option value="SGN">Ho Chi Minh City, Vietnam</option>  
+                                <option value="IST">Istanbul, Turkey</option>                               
+                                <option value="MAD">Madrid, Spain</option> 
+                                <option value="RAK">Marrakech, Morocco</option> 
+                                <option value="MBJ">Montego Bay, Jamaica</option>
+                                <option value="YUL">Montreal, Quebec, Canada</option>
+                                <option value="KUL">Kuala Lumpur, Malaysia</option>
+                                <option value="LHR">London, England</option>
+                                <option value="LIS">Lisbon, Portugal</option>
+                                <option value="CDG">Paris, France</option>
+                                <option value="GIG">Rio de Janeiro, Brazil</option>
+                                <option value="FCO">Rome, Italy</option>
+                                <option value="SJU">San Juan, Puerto Rico</option>      
+                                <option value="SYD">Sydney, Australia</option>
+                                <option value="HND">Tokyo, Japan</option>
+                                <option value="YYZ">Toronto, Ontario, Canada</option>        
+                                <option value="YVR">Vancouver, British Columbia, Canada</option>
+                            </select>
+                    </div> <!-- closes div form-group -->
+                            <input type="submit" value="Ready. Set. Jet!" class="btn btn-danger"> 
+                 </form>
+            </div> <!-- well-spaced div -->
+    </div> <!-- closes image div -->
+
+
+<div id="flDebug" style="">
+  <script type="text/javascript">var DEBUG_TOOLBAR_STATIC_PATH = '/_debug_toolbar/static/'</script>
+  <script type="text/javascript" src="./Wanderlust_files/jquery.js"></script>
+  <script type="text/javascript" src="./Wanderlust_files/jquery.tablesorter.js"></script>
+  <script type="text/javascript" src="./Wanderlust_files/toolbar.js"></script>
+
+  <div style="display: none;" id="flDebugToolbar">
+    <ol id="flDebugPanelList">
+      
+      <li><a id="flHideToolBarButton" href="http://localhost:5000/#" title="Hide Toolbar">Hide »</a></li>
+      
+
+      
+      <li id="flDebugVersionPanel">
+        
+        <a href="" title="Versions" class="flDebugVersionPanel">
+        
+
+        Versions
+        <br><small>Flask 0.10.1</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugTimerPanel">
+        
+        <a href="" title="Resource Usage" class="flDebugTimerPanel">
+        
+
+        Time
+        <br><small>CPU: 7.62ms (7.73ms)</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugHeaderPanel">
+        
+        <a href="" title="HTTP Headers" class="flDebugHeaderPanel">
+        
+
+        HTTP Headers
+        
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugRequestVarsPanel">
+        
+        <a href="" title="Request Vars" class="flDebugRequestVarsPanel">
+        
+
+        Request Vars
+        
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugConfigVarsPanel">
+        
+        <a href="" title="Config" class="flDebugConfigVarsPanel">
+        
+
+        Config
+        
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugTemplatePanel">
+        
+        <a href="" title="Templates" class="flDebugTemplatePanel">
+        
+
+        Templates
+        <br><small>1 rendered</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugSQLAlchemyPanel">
+        
+        <div class="contentless">
+        
+
+        SQLAlchemy
+        <br><small>0 queries</small>
+
+        
+        </div>
+        
+        
+      </li>
+      
+      <li id="flDebugLoggingPanel">
+        
+        <a href="" title="Log Messages" class="flDebugLoggingPanel">
+        
+
+        Logging
+        <br><small>0 messages</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugRouteListPanel">
+        
+        <a href="" title="Route List" class="flDebugRouteListPanel">
+        
+
+        Route List
+        <br><small>18 routes</small>
+
+        
+        </a>
+        
+        
+      </li>
+      
+      <li id="flDebugProfilerPanel">
+        
+        <a href="" title="Profiler not active" class="flDebugProfilerPanel">
+        
+
+        Profiler
+        <br><small>in-active</small>
+
+        
+        </a>
+        
+        
+        <span class="switch inactive" title="Enable or disable the panel"></span>
+        
+      </li>
+      
+    </ol>
+  </div>
+  <div style="" id="flDebugToolbarHandle">
+    <a title="Show Toolbar" id="flShowToolBarButton" href="http://localhost:5000/#">«</a>
+  </div>
+  
+    
+    <div id="flDebugVersionPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Versions</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <h4>Installed Packages</h4>
+
+<p>
+  Installation paths relative to:
+</p>
+<pre>/Users/missjelks/src/Hackbright_Project/env/lib/python2.7/site-packages
+</pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+      <th>Installed Path</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="flDebugOdd">
+        <td>blinker</td>
+        <td>1.4</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>configparser</td>
+        <td>3.3.0.post2</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Flask</td>
+        <td>0.10.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Flask-DebugToolbar</td>
+        <td>0.10.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Flask-Mail</td>
+        <td>0.9.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Flask-SQLAlchemy</td>
+        <td>2.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>google-api-python-client</td>
+        <td>1.4.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>httplib2</td>
+        <td>0.9.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>itsdangerous</td>
+        <td>0.24</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Jinja2</td>
+        <td>2.8</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>lxml</td>
+        <td>2.3.5</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>MarkupSafe</td>
+        <td>0.23</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>oauth2client</td>
+        <td>1.4.12</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>pip</td>
+        <td>7.1.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>pyasn1</td>
+        <td>0.1.8</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>pyasn1-modules</td>
+        <td>0.0.7</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Python</td>
+        <td>2.7.6</td>
+        <td>/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>python-dateutil</td>
+        <td>2.4.2</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>requests</td>
+        <td>2.7.0</td>
+        <td>requests-2.7.0-py2.7.egg</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>rsa</td>
+        <td>3.2</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>setuptools</td>
+        <td>18.0.1</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>simplejson</td>
+        <td>3.8.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>six</td>
+        <td>1.9.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>SQLAlchemy</td>
+        <td>1.0.8</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>uritemplate</td>
+        <td>0.6</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Werkzeug</td>
+        <td>0.10.4</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>wheel</td>
+        <td>0.24.0</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>wsgiref</td>
+        <td>0.1.2</td>
+        <td>/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7</td>
+      </tr>
+    
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugTimerPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Resource Usage</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+  <colgroup>
+    <col style="width:20%">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="flDebugOdd">
+        <td>User CPU time</td>
+        <td>7.458 msec</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>System CPU time</td>
+        <td>0.166 msec</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Total CPU time</td>
+        <td>7.624 msec</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>Elapsed time</td>
+        <td>7.727 msec</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>Context switches</td>
+        <td>0 voluntary, 13 involuntary</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugHeaderPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>HTTP Headers</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr class="flDebugOdd">
+        <td>CONTENT_TYPE</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_ACCEPT</td>
+        <td>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_ACCEPT_ENCODING</td>
+        <td>gzip, deflate, sdch</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_ACCEPT_LANGUAGE</td>
+        <td>en-US,en;q=0.8,es;q=0.6,fr;q=0.4</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_CACHE_CONTROL</td>
+        <td>no-cache</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_CONNECTION</td>
+        <td>keep-alive</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_HOST</td>
+        <td>localhost:5000</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>HTTP_REFERER</td>
+        <td>http://localhost:5000/login</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>HTTP_USER_AGENT</td>
+        <td>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>QUERY_STRING</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>REMOTE_ADDR</td>
+        <td>127.0.0.1</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>REQUEST_METHOD</td>
+        <td>GET</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>SCRIPT_NAME</td>
+        <td></td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>SERVER_NAME</td>
+        <td>127.0.0.1</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>SERVER_PORT</td>
+        <td>5000</td>
+      </tr>
+    
+      <tr class="flDebugEven">
+        <td>SERVER_PROTOCOL</td>
+        <td>HTTP/1.1</td>
+      </tr>
+    
+      <tr class="flDebugOdd">
+        <td>SERVER_SOFTWARE</td>
+        <td>Werkzeug/0.10.4</td>
+      </tr>
+    
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugRequestVarsPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Request Vars</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          
+<h4>View information</h4>
+<table>
+  <thead>
+    <tr>
+      <th>View Function</th>
+      <th>args</th>
+      <th>kwargs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>__main__.homepage</td>
+      <td>[]</td>
+      <td>
+        
+          None
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<h4>COOKIES Variables</h4>
+
+  
+<table>
+  <colgroup>
+    <col style="width:20%">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr class="flDebugOdd">
+      <td>'fldt'</td>
+      <td>u'hide'</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h4>SESSION Variables</h4>
+
+  <p>No SESSION data</p>
+
+
+
+
+
+
+<h4>GET Variables</h4>
+
+  <p>No GET data</p>
+
+
+<h4>POST Variables</h4>
+
+  <p>No POST data</p>
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugConfigVarsPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Config</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            <tr class="flDebugOdd">
+                <td>APPLICATION_ROOT</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>DEBUG</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>DEBUG_TB_ENABLED</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>DEBUG_TB_HOSTS</td>
+                <td><code>()</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>DEBUG_TB_INTERCEPT_REDIRECTS</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>DEBUG_TB_PANELS</td>
+                <td><code>('flask_debugtoolbar.panels.versions.VersionDebugPanel', 'flask_debugtoolbar.panels.timer.TimerDebugPanel', 'flask_debugtoolbar.panels.headers.HeaderDebugPanel', 'flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel', 'flask_debugtoolbar.panels.config_vars.ConfigVarsDebugPanel', 'flask_debugtoolbar.panels.template.TemplateDebugPanel', 'flask_debugtoolbar.panels.sqlalchemy.SQLAlchemyDebugPanel', 'flask_debugtoolbar.panels.logger.LoggingPanel', 'flask_debugtoolbar.panels.route_list.RouteListDebugPanel', 'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel')</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>JSON_AS_ASCII</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>JSON_SORT_KEYS</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>JSONIFY_PRETTYPRINT_REGULAR</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>LOGGER_NAME</td>
+                <td><code>'__main__'</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>MAX_CONTENT_LENGTH</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>PERMANENT_SESSION_LIFETIME</td>
+                <td><code>datetime.timedelta(31)</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>PREFERRED_URL_SCHEME</td>
+                <td><code>'http'</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>PRESERVE_CONTEXT_ON_EXCEPTION</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>PROPAGATE_EXCEPTIONS</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SECRET_KEY</td>
+                <td><code>'ABC'</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SEND_FILE_MAX_AGE_DEFAULT</td>
+                <td><code>43200</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SERVER_NAME</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SESSION_COOKIE_DOMAIN</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SESSION_COOKIE_HTTPONLY</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SESSION_COOKIE_NAME</td>
+                <td><code>'session'</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SESSION_COOKIE_PATH</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SESSION_COOKIE_SECURE</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_BINDS</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_COMMIT_ON_TEARDOWN</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_DATABASE_URI</td>
+                <td><code>'sqlite:///flightdata.db'</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_ECHO</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_MAX_OVERFLOW</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_NATIVE_UNICODE</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_POOL_RECYCLE</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_POOL_SIZE</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_POOL_TIMEOUT</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>SQLALCHEMY_RECORD_QUERIES</td>
+                <td><code>None</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>SQLALCHEMY_TRACK_MODIFICATIONS</td>
+                <td><code>True</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>TESTING</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>TRAP_BAD_REQUEST_ERRORS</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugOdd">
+                <td>TRAP_HTTP_EXCEPTIONS</td>
+                <td><code>False</code></td>
+            </tr>
+        
+            <tr class="flDebugEven">
+                <td>USE_X_SENDFILE</td>
+                <td><code>False</code></td>
+            </tr>
+        
+    </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugTemplatePanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Templates</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          
+  
+  
+    <h4>index.html</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="flDebugOdd">
+          <td>g</td>
+          <td>&lt;flask.g of 'server'&gt;</td>
+        </tr>
+        
+        <tr class="flDebugEven">
+          <td>request</td>
+          <td>&lt;Request 'http://localhost:5000/' [GET]&gt;</td>
+        </tr>
+        
+        <tr class="flDebugOdd">
+          <td>session</td>
+          <td>&lt;SecureCookieSession {}&gt;</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+  
+    
+    <div id="flDebugLoggingPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Log Messages</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          
+  <p>No messages logged.</p>
+
+
+
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugRouteListPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Route List</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          <table>
+  <thead>
+    <tr>
+      <th>URL route</th>
+      <th>Endpoint name</th>
+      <th>HTTP methods</th>
+      <th>Is alias</th>
+      <th>Redirect to</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      
+        <tr>
+          <td>/</td>
+          <td>homepage</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/static/&lt;path:filename&gt;</td>
+          <td>_debug_toolbar.static</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/sqlalchemy/sql_explain</td>
+          <td>debugtoolbar.sql_select</td>
+          <td>GET, HEAD, OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/sqlalchemy/sql_select</td>
+          <td>debugtoolbar.sql_select</td>
+          <td>GET, HEAD, OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/template/&lt;key&gt;</td>
+          <td>debugtoolbar.template_editor</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/template/&lt;key&gt;</td>
+          <td>debugtoolbar.template_preview</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/_debug_toolbar/views/template/&lt;key&gt;/save</td>
+          <td>debugtoolbar.save_template</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/login</td>
+          <td>login_page</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/login</td>
+          <td>login_process</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/logout</td>
+          <td>logout</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/map_cities.json</td>
+          <td>map_cities</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/register</td>
+          <td>register_page</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/register</td>
+          <td>register_process</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/saved_searches</td>
+          <td>view_saved_searches</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/saved_searches</td>
+          <td>make_saved_searches</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/search_results</td>
+          <td>index</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/search_results</td>
+          <td>get_search</td>
+          <td>OPTIONS, POST</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+        <tr>
+          <td>/static/&lt;path:filename&gt;</td>
+          <td>static</td>
+          <td>GET, HEAD, OPTIONS</td>
+          <td>False</td>
+          <td>None</td>
+        </tr>
+      
+    
+  </tbody>
+</table>
+        </div>
+      </div>
+    </div>
+    
+  
+    
+    <div id="flDebugProfilerPanel-content" class="panelContent" style="display: none;">
+      <div class="flDebugPanelTitle">
+        <a href="" class="flDebugClose">Close</a>
+        <h3>Profiler not active</h3>
+      </div>
+      <div class="flDebugPanelContent">
+        <div class="scroll">
+          The profiler is not activated, activate it to use it
+        </div>
+      </div>
+    </div>
+    
+  
+  <div id="flDebugWindow" class="panelContent" style="display: none;"></div>
+</div>
+<script src="./Wanderlust_files/jquery.min(1).js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./Wanderlust_files/bootstrap.min.js"></script>
+
+
+<iframe id="rdbIndicator" width="100%" height="270" border="0" src="./Wanderlust_files/indicator.html" style="display: none; border: 0; position: fixed; left: 0; top: 0; z-index: 2147483647"></iframe></body></html>
